@@ -70,7 +70,7 @@ cat ~/.ssh/github.pub
 <pre>
 cat ~/.ssh/gitlab.pub
 </pre>
-* then find the place to add ssh keys there.
+* Add ssh key under preferences and under ssh keys.
 
 5. Finally, test the ssh connections
 * For github:
