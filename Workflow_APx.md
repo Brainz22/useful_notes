@@ -9,37 +9,37 @@ The operating thing to change for other services is "gitlab" and "github". The e
 
 <pre>
 ssh-keygen -t ed25519 -C "rmarroquinsolares@gmail.com" -f ~/.ssh/github
-<\pre>
+</pre>
 
-<\pre>
-ssh-keygen -t ed25519 -C "russelld@cern.ch" -f ~/.ssh/gitlab
 <pre>
+ssh-keygen -t ed25519 -C "russelld@cern.ch" -f ~/.ssh/gitlab
+</pre>
 
 2. Add the SSH keys to the SSH agent:
 
 * Start the SSH agent by running:
-<\pre>
-eval "$(ssh-agent -s)"
 <pre>
+eval "$(ssh-agent -s)"
+</pre>
 
 * add the ssh keys to the agent:
-<\pre>
+<pre>
 ssh-add ~/.ssh/github
-<pre>
+</pre>
 
-<\pre>
-ssh-add ~/.ssh/gitlab
 <pre>
+ssh-add ~/.ssh/gitlab
+</pre>
 
 3. Create a `config` file to manage multiple SSH keys:
 
--   In the terminal, create and edit the `config` file by running:
-<\pre>
-nano ~/.ssh/config
+ * In the terminal, create and edit the `config` file by running:
 <pre>
+nano ~/.ssh/config
+</pre>
 
   * then add the following content to the file:
-<\pre>
+<pre>
 # GitHub account
 Host github.com
   HostName github.com
@@ -51,34 +51,34 @@ Host gitlab.cern.ch
   HostName gitlab.cern.ch
   User git
   IdentityFile ~/.ssh/gitlab
-<pre>
+</pre>
 
   * Save and close the file by pressing `Ctrl + X`, then `Y`, and then `Enter`.
 
 4. Add the public SSH keys to your GitHub and GitLab accounts:
 -   Copy the public SSH key to your clipboard by copying the results of these command.
 - For github:
-</pre>
-cat ~/.ssh/github.pub
 <pre>
+cat ~/.ssh/github.pub
+</pre>
 
 * Then add the resulting ssh key [here](https://github.com/settings/ssh/new).
 
 * similarly for gitlab:
-```bash
+<pre>
 cat ~/.ssh/gitlab.pub
-```
+</pre>
 * then find the place to add ssh keys there.
 
 5. Finally, test the ssh connections
 * For github:
-```bash
+<pre>
 ssh -T git@github.com
-```
+</pre>
 
 * for gitlab:
-```bash
+<pre>
 ssh -T git@gitlab.cern.ch
-```
+</pre>
 
 This was a pain in the ass.
