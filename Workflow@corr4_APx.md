@@ -83,7 +83,7 @@ ssh -T git@github.com
 ssh -T git@gitlab.cern.ch
 </pre>
 
-6. If no errors at this point, do the following: 
+6. If no errors at this point, we have to clone Christian's Gitlab branch by doing the following: 
 
 <pre>
 git clone -b APxFWSv2 --single-branch --recurse-submodules ssh://git@gitlab.cern.ch:7999/cms-cactus/phase2/firmware/correlator-layer2.git
