@@ -104,7 +104,7 @@ make syn
 make bit
 </pre>
 
-Or, alternatively, just run:
+Or, alternatively, we can do it all in one by run (I did not try this):
 
 <pre>
 make
