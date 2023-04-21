@@ -91,7 +91,7 @@ mkdir correlator-layer2/build
 cd correlator-layer2/met/apx
 </pre>
 
-7. We need to source `vitis` through a file in Christian's directory. Do the following:
+7. We need to source `vitis` through a file in Christian's directory. This needs to be done for `Vitis` commands to work. Do the following:
 <pre>
 source /home/therwig/setup_vitis_20222.sh
 </pre>
