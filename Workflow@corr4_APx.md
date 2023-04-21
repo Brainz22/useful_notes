@@ -83,3 +83,34 @@ ssh -T git@github.com
 ssh -T git@gitlab.cern.ch
 </pre>
 
+6. If no errors at this point, do the following: 
+
+<pre>
+git clone -b APxFWSv2 --single-branch --recurse-submodules ssh://git@gitlab.cern.ch:7999/cms-cactus/phase2/firmware/correlator-layer2.git
+mkdir correlator-layer2/build
+cd correlator-layer2/met/apx
+</pre>
+
+7. We need to source `vitis` through a file in Christian's directory. Do the following:
+<pre>
+source /home/therwig/setup_vitis_20222.sh
+</pre>
+
+8. We need to build the framework for the firmware (I think those are the right words). We can do:
+<pre>
+make sources
+# Vivado project will now be available at build/top
+make syn
+make bit
+</pre>
+
+Or, alternatively, just run:
+
+<pre>
+make
+</pre>
+
+9. We can simulate (simulate what?) with the following:
+<pre>
+make xsim
+</pre>
