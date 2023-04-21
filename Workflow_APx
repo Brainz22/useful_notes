@@ -9,7 +9,7 @@ The operating thing to change for other services is "gitlab" and "github". The e
 
 <pre>
 ssh-keygen -t ed25519 -C "rmarroquinsolares@gmail.com" -f ~/.ssh/github
-</pre>
+<\pre>
 
 <\pre>
 ssh-keygen -t ed25519 -C "russelld@cern.ch" -f ~/.ssh/gitlab
