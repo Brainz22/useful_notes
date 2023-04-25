@@ -1,3 +1,5 @@
+(Credits: Tony Aportela)
+
 If the goal is to run things on the APx board at Fermilab, this tutorial will show you how to get started. The steps here need to be run on the `Correlator 4` server after accessing through LPC. Access to the correlator was granted by someone at Fermilab (Christian Herwig for me). 
 
 This tutorial is best if you want or plan to ssh authenticate with several services. Apparently, you just can't use github and gitlab at the same time. You need a config file and some other stuff. Wish someone told me.
