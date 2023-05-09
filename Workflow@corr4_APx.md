@@ -129,4 +129,10 @@ Once, we have the correct version of CMSSW, run: `export CMSSW_VERSION=CMSSW_12_
 12. Go to go to `correlator-common/jetmet/seededcone` (it’s in the submodules directory in `APx`). We should see the files here: https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/tree/master-125x/jetmet/seededcone. Run:
 `source /home/therwig/19p2_setup_vivado.sh`
 Then, there are several tcl files, which we need to run with `vivado_hls <the tcl file>` (you don’t really need to run the run_Sim.tcl if you don’t really need to test).
+Note: we might need to run the three commands below every time we exit the correlator: 
+<pre>
+source /cvmfs/cms.cern.ch/cmsset_default.sh
+source /home/therwig/19p2_setup_vivado.sh
+export CMSSW_VERSION=CMSSW_12_3_0_pre4
+</pre>
 
