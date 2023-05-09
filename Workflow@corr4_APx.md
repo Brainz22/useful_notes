@@ -112,7 +112,21 @@ Or, alternatively, we can do it all in one by run (I did not try this):
 make
 </pre>
 
-9. We can simulate (simulate what?) with the following:
+9. We can simulate with the following:
 <pre>
 make xsim
 </pre>
+
+10. Go to the `correlator-common` directory. For me, it is located here: `/home/rmarroqu/correlator-layer2/submodules/correlator-common`.
+
+11. Set up CMSSW firmware by running these two commands two commands :
+<pre>
+source /cvmfs/cms.cern.ch/cmsset_default.sh
+./utils/setup_cmssw.sh -run CMSSW_12_3_0_pre4 p2l1pfp:L1PF_12_3_X lict-125x-v1.15
+</pre>
+Once, we have the correct version of CMSSW, run: `export CMSSW_VERSION=CMSSW_12_3_0_pre4`.
+
+12. Go to go to `correlator-common/jetmet/seededcone` (it’s in the submodules directory in `APx`). We should see the files here: https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/tree/master-125x/jetmet/seededcone. Run:
+`source /home/therwig/19p2_setup_vivado.sh`
+Then, there are several tcl files, which we need to run with `vivado_hls <the tcl file>` (you don’t really need to run the run_Sim.tcl if you don’t really need to test).
+
