@@ -42,7 +42,7 @@ source /home/therwig/19p2_setup_vivado.sh
 export CMSSW_VERSION=CMSSW_12_3_0_pre4
 </pre>
 
-7. Once that is done, `cd` to the `apx` directory. I can get there as follows: `cd /home/rmarroqu/APXv2/correlator-layer2/JetID/apx'.
+7. Once that is done, `cd` to the `apx` directory. I can get there as follows: `cd /home/rmarroqu/APXv2/correlator-layer2/JetID/apx`. Then, you need to switch the source to Vivado 2022 by running `source /data/Xilinx/Vivado/2022.2/settings64.sh`.
 
 8. Run `make`. It might ask for a `build` directory. If it does, you can follow the instructions the error provides and try `make` again.
 
