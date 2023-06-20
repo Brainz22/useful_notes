@@ -11,7 +11,7 @@ brew install wget
 <pre>
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
 </pre>
-This will download a `.sh` file.
+This will download a `.sh` file. Note that this version explicitly has MacOS... on the file name. Thus, this file is specifically for Mac.
 
 4. Run the file as follows:
 <pre>
