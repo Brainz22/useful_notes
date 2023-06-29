@@ -1,4 +1,5 @@
 ## How To Quickly Inspect a .root File:
+(Check out `L1TaggerHistograms.ipynb` on lxplus. I played with this on that notebook)
 
 1. `import ROOT as r`
 2. `inFile = r.TFile.Open("NtuplesSet1.root", "READ")`, reads the .root file.
