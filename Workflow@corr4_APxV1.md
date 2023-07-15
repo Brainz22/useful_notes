@@ -136,6 +136,8 @@ source /home/therwig/19p2_setup_vivado.sh
 export CMSSW_VERSION=CMSSW_12_3_0_pre4
 </pre>
 
+And note that if these three lines are not run, you will not be able to build the setup.
+
 13. Swtich to vivado 2022 by doing the following:
  `source /data/Xilinx/Vivado/2022.2/settings64.sh`.
 
