@@ -1,6 +1,6 @@
 ## How To Start a Contributing through a Pull Request:
 
-1. Fork the repository you need to contribute to and keep the same nam, though it can be changed.
+1. Fork the repository you need to contribute to and keep the same name, though it can be changed.
 
 2. Clone this new fork using `git clone ...`.
 
