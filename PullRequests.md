@@ -17,7 +17,7 @@
    `git commit -m "your message here."`: commit to your changes.
 
 8. `git push` does not work yet because branch does not exist. If this is tried, it will suggest you to run a command:
-   `git push --set-upstream origin new-branch`. So, run that to define your branch and push the changes.
+   `git push --set-upstream origin <your_desired_branch_name>`. So, run that to define your branch and push the changes.
 
 9. Go back to your repository on Github.com, and you should be able to create a pull request.
 
