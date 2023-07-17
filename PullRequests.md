@@ -1,4 +1,4 @@
-## How To Start a Contributing through a Pull Request:
+## How To Start Contributing through a Pull Request:
 
 1. Fork the repository you need to contribute to and keep the same name, though it can be changed.
 
