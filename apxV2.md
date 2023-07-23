@@ -14,6 +14,7 @@ https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-layer2/-/tree/JetID
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 ./utils/setup_cmssw.sh -run CMSSW_12_3_0_pre4 p2l1pfp:L1PF_12_3_X lict-125x-v1.15
 </pre>
+The second line above is only needed once.
 Once, we have the correct version of CMSSW, run: `export CMSSW_VERSION=CMSSW_12_3_0_pre4`.
 
 6. Go to go to `correlator-common/jetmet/seededcone` (it’s in the submodules directory in `APx`) Run:
@@ -34,12 +35,12 @@ done
 
 Then, this file can be for run by doing `bash for.sh`, for example.
 
-Note: we might need to run the three commands below every time we exit the correlator: 
+Note: we might need to run the three commands below every time we exit the correlator (Make sure the this is the order, which can be inferred from lines above): 
 
 <pre>
 source /cvmfs/cms.cern.ch/cmsset_default.sh
-source /home/therwig/19p2_setup_vivado.sh
 export CMSSW_VERSION=CMSSW_12_3_0_pre4
+source /home/therwig/19p2_setup_vivado.sh
 </pre>
 
 
