@@ -2,7 +2,7 @@
 
 Here is the link for the [PYNQ-Z2 Setup Guide](https://pynq.readthedocs.io/en/latest/getting_started/pynq_z2_setup.html).
 
-1. Connect microUSB and Ethernet cable to computer. Wait for yellow/green `done` light.
+1. Connect the pink board via microUSB and Ethernet cable to computer. Wait for yellow/green `done` light. Make sure **Power** jumper is set to USB since we are powering the board via USB.
 
 2. On Linux, navigate to `Settings` and find `Network`. There, you have to choose `manual` under `IPv4`. Then, assign a static IP address and network address under `Adresses`. The IP address is `199.168.2.1` and the network address `255.255.255.0` as specified by the setup guide.
 
