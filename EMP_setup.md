@@ -15,4 +15,4 @@ You want to make sure you install the prerequisites:
 
 2. Source the following file as follows: `source ipbb-dev-2022f/env.sh`.
 
-3. 
+3. Run the `ipbb` commands specified on the link, which I also put inside the `EMP_setup.sh`. So, do `bash EMP_setup.sh`. (breaks down at the moment. Need authorizatios and github and gitlab keys?)
