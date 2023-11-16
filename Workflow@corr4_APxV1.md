@@ -85,6 +85,23 @@ ssh -T git@github.com
 ssh -T git@gitlab.cern.ch
 </pre>
 
+  - **Note**:I ran it into an error when running this on Scully. The error said:
+    ```
+    Bad owner or permission on ~/.ssh/config
+    ```
+  The resolve on stack exchange said that we need "user permission only" on our config file. Previously, their `config` had: 
+```
+ls -la ~/.ssh/
+-rw-rw-r-- 1 robert robert   31 Mar 29 11:04 config
+```
+After running the command `chmod 600 ~/.ssh/config` on workspace, mine looks like this:
+```
+ls -la ~/.ssh/
+-rw-------.  1 russelld russelld  204 Nov 15 16:50 config
+```
+It only has one `-rw` as shown. This resolved my error! 
+
+
 6. If no errors at this point, we have to clone Christian's Gitlab branch by doing the following: 
 
 <pre>
