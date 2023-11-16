@@ -8,7 +8,7 @@ The operating thing to change for other services is "gitlab" and "github". The e
 
 1. Generate SSH key pairs for both services:
 
--   Open a terminal on your local machine or online server accessed through SSH. You need to create these separately for both if you are working from an SSH. Basically, do it on your local machine, then on your SSH server. I am not sure if you could do just do it on one. For example, if you need the keys on the SSH server, can you just add them there?
+-   Open a terminal on your local machine or online server accessed through SSH. You need to create these separately for both if you are working from an SSH. Basically, do it on your local machine, then on your SSH server. I am not sure if you could do just do it on one. For example, if you need the keys on the SSH server, can you just add them there? Anyway, these instructions will work for both machines.
 -   Generate an SSH key pairs for both services by running the following commands:
 
 <pre>
