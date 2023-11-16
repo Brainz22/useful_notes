@@ -72,7 +72,7 @@ cat ~/.ssh/github.pub
 <pre>
 cat ~/.ssh/gitlab.pub
 </pre>
-* Add ssh key under preferences and under ssh keys.
+* Add ssh key under preferences and under ssh keys. If links don't change, it should be added [here](https://gitlab.cern.ch/-/profile/keys). You will need to sign in using your CERN ID.
 
 5. Finally, test the ssh connections
 * For github:
