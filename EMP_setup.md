@@ -15,4 +15,4 @@ You want to make sure you install the prerequisites:
 
 2. Source the following file as follows: `source ipbb-dev-2022f/env.sh`.
 
-3. Run the `ipbb` commands specified on the link, which I also put inside the `EMP_setup.sh`. So, do `bash EMP_setup.sh`. (breaks down at the moment. Need authorizatios and github and gitlab keys?)
+3. Run the `ipbb` commands specified on the link, which I also put inside the `EMP_setup.sh`. So, do `bash EMP_setup.sh`. (breaks down at the moment. Need authorizatios and github and gitlab keys? I added these on Scully, but they probably need to approved by Terence. I asked about this on Slack UCSD tier 2).
