@@ -10,9 +10,81 @@ You want to make sure you install the prerequisites:
 * ipbb: dev/2022f pre-release or greater - the IPbus Builder Tool. Note: a single ipbb installation is not work area specific and suffices for any number of projects. Check EMP repo.
 
 ## Building FWK
-1. Download ippb command files:
+### 1. Download ippb command files:
    `curl -L https://github.com/ipbus/ipbb/archive/dev/2022f.tar.gz | tar xvz`.
 
-2. Source the following file as follows: `source ipbb-dev-2022f/env.sh`.
+### 2. Source the following file as follows: `source ipbb-dev-2022f/env.sh`.
 
-3. Run the `ipbb` commands specified on the link, which I also put inside the `EMP_setup.sh`. So, do `bash EMP_setup.sh`. (Worked!).
+### 3. Run the `ipbb` commands specified on the link, which I also put inside the `EMP_setup.sh`. So, do `bash EMP_setup.sh`. My `EMP_setup.sh` has the following content:
+```bash
+ipbb init algo-work
+cd algo-work
+#For the EMP framework
+ipbb add git ssh://git@gitlab.cern.ch:7999/p2-xware/firmware/emp-fwk.git -r v0.7.4
+ipbb add git ssh://git@gitlab.cern.ch:7999/ttc/legacy_ttc.git -b v2.1
+ipbb add git ssh://git@gitlab.cern.ch:7999/cms-tcds/cms-tcds2-firmware.git -b v0_1_1
+ipbb add git ssh://git@gitlab.cern.ch:7999/HPTD/tclink.git -r fda0bcf
+ipbb add git ssh://git@gitlab.cern.ch:7999/dth_p1-v2/slinkrocket_ips.git -b v03.12
+ipbb add git ssh://git@gitlab.cern.ch:7999/dth_p1-v2/slinkrocket.git -b v03.12
+ipbb add git git@github.com:ipbus/ipbus-firmware.git -b v1.9
+
+#For the Jet setup
+ipbb add git ssh://git@gitlab.cern.ch:7999/rufl/RuflCore.git -r d3ddf86f
+ipbb add git ssh://git@gitlab.cern.ch:7999/cms-cactus/phase2/firmware/correlator-common.git
+ipbb add git ssh://git@gitlab.cern.ch:7999/cms-cactus/phase2/firmware/correlator-layer2.git
+```
+You might get errors when adding some of the above repos. You need to add yourself to the e-groups `emp-fwk-users` and `cms-tcds2-users` using this [link](https://e-groups.cern.ch/e-groups/EgroupsSearchForm.do).
+
+### 4. We need to add a repo containing the "payload", I think this refers to the firmaware (all connections to the board and everything. I didn't have this, so I had to create one and documented the steps below:
+   * Run `mkdir -p src/my-algo-repo/an-algo/firmware/cfg` and `mkdir -p src/my-algo-repo/an-algo/firmware/hdl`. This will create such directory trees.
+   * Rather than start from scratch, I started with `null algo payload`. Run:
+```bash
+cp algo-work/src/emp-fwk/components/payload/firmware/hdl/emp_payload.vhd src/my-algo-repo/an-algo/firmware/hdl/
+```
+   * Create a top-level IPBB dependency file. This file will directly/indirectly specify all of the files required to create a bitfile. For now, let's reference the `emp_payload` we created in in the last bullet. So, 
+```bash
+echo 'src emp_payload.vhd' >> src/my-algo-repo/an-algo/firmware/cfg/top.dep
+```
+   * Reference the default payload address table from our new depfile:
+```bash
+echo 'addrtab -c emp-fwk:components/payload emp_payload.xml' >> src/my-algo-repo/an-algo/firmware/cfg/top.dep
+```
+   * Add default constraints to the dep file:
+```bash
+echo 'src -c emp-fwk:components/payload ../ucf/emp_simple_payload.tcl' >> src/my-algo-repo/an-algo/firmware/cfg/top.dep
+```
+
+### 5. We need to choose a board. Here in our lab I think we use `VCU118`.
+We need to include the specific board dependency file. For `VCU118`, run:
+```bash
+echo `include -c emp-fwk:boards/vcu118' >> src/my-algo-repo/an-algo/firmware/cfg/top.dep`
+```
+
+### 6. Create the declaration `emp_project_decl` package:
+We need to implement a VHDL package named `emp_project_decl` that defines things like clock frequencies, input buffers, output buffers, etc.. Rather than creating one from scratch, we can start with an example package for our specific board. For `VCU118`, run the lines:
+```bash
+cp algo-work/src/emp-fwk/projects/examples/vcu118/firmware/hdl/emp_project_decl_full.vhd src/my-algo-repo/an-algo/firmware/hdl/.
+echo 'emp_project_decl_full.vhd' >> src/my-algo-repo/an-algo/firmware/cfg/top.dep
+```
+
+### 7. Create a Vivado Project (error...)
+
+Issue here when creating my own repo folder. Documentation says:
+Assuming that your top-level `.dep` file is located in source area `my-algo-repo`, at path `an-algo/firmware/cfg/top.dep`, you can create a Vivado project area (under directory `proj/my_algo`) by running:
+```bash
+ipbb proj create vivado my_algo my-algo-repo:an-algo top.dep
+cd proj/my_algo
+```
+But I get the following error shown below. Basically, there I tried to specify a directory myself since `my-algo-repo` is in `/home/users/russelld/EMP/src/my-algo-repo` and `proj/my_algo` will be in `/home/users/russelld/EMP/algo-work/proj`?
+
+```bash
+ipbb proj create vivado my_algo ../src/my-algo-repo/an-algo/firmware/cfg/top.dep
+Usage: ipbb proj create [OPTIONS] [vivado|sim|vitis-hls] PROJNAME COMPONENT
+                        [TOPDEP]
+
+Error: Invalid value for 'COMPONENT': Malformed component name : ../src/my-algo-repo/an-algo/firmware/cfg/top.dep. Expected <package>:<component>
+```
+
+
+
+
