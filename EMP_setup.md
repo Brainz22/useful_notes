@@ -88,7 +88,7 @@ Error: Invalid value for 'COMPONENT': Malformed component name : ../src/my-algo-
 ### Building the Firmware on EMP
 I am starting from here: `/home/users/russelld/EMP/algo-work/src`, then going into seeded cone in `/home/users/russelld/EMP/algo-work/src/correlator-common/jetmet/seededcone` when needed.
 
-1. In `/seededcone/`, we need to run `vivado_hls xx.tcl` on several `.tcl` files on `correlator-common.git`. First, we need to install CMSSW.
+1. In `/seededcone/`, we need to run `vivado_hls xx.tcl` on several `.tcl` files on `correlator-common.git`. First, we need to install CMSSW in `/correlator-common/` .
    * Run (this installation is only needed once):
      ```bash
      source /cvmfs/cms.cern.ch/cmsset_default.sh
@@ -111,5 +111,6 @@ for file in run_Jet*.tcl; do
     $command "$file"
 done
 ```
+So, put that code inside a `<file_name>.sh` file and run `bash <file_name>.sh`.
 
 
