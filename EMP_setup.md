@@ -105,9 +105,6 @@ I am starting from here: `/home/users/russelld/EMP/algo-work/src`, then going in
 
 2. Run the `.tcl` files. We can use a bash for loop as follows:
 ```bash
-source /home/xilinx/Vivado/2019.1/.settings64-Vivado.sh  vivado
-export CMSSW_VERSION=CMSSW_12_5_5_patch1
-
 command="vivado_hls"
 
 for file in run_Jet*.tcl; do
@@ -115,24 +112,4 @@ for file in run_Jet*.tcl; do
 done
 ```
 
-I am getting errors with some files not found on the CMSSW installed. I might need to reinstall this. Error: 
-```bash
-WARNING: [HLS 200-40] In file included from firmware/seedcone.cpp:1:
-In file included from firmware/seedcone.h:4:
-firmware/data.h:6:10: fatal error: 'DataFormats/L1TParticleFlow/interface/puppi.h' file not found
-#include "DataFormats/L1TParticleFlow/interface/puppi.h"
-         ^
-1 error generated.
-C preprocessor failed.
-    while executing
-"source run_JetLoop.tcl"
-    invoked from within
-"hls::main run_JetLoop.tcl"
-    ("uplevel" body line 1)
-    invoked from within
-"uplevel 1 hls::main {*}$args"
-    (procedure "hls_proc" line 5)
-    invoked from within
-"hls_proc $argv"
-```
 
