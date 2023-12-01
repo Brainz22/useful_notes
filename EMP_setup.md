@@ -103,7 +103,7 @@ I am starting from here: `/home/users/russelld/EMP/algo-work/src`, then going in
    source /home/xilinx/Vivado/2019.1/.settings64-Vivado.sh  vivado
    ```
 
-2. Run the `.tcl` files. We can use a bash for loop as follows:
+2. Run the `.tcl` files in `/correlator-common/jetmet/seededcone/`. We can use a bash for loop as follows:
 ```bash
 command="vivado_hls"
 
@@ -111,6 +111,6 @@ for file in run_Jet*.tcl; do
     $command "$file"
 done
 ```
-So, put that code inside a `<file_name>.sh` file and run `bash <file_name>.sh`.
+So, put that code inside a `<file_name>.sh` file and run `bash <file_name>.sh`. This should generate folders for each file and `.vhd` files inside `/firmware/`.
 
 
