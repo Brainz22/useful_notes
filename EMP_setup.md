@@ -111,6 +111,6 @@ for file in run_Jet*.tcl; do
     $command "$file"
 done
 ```
-So, put that code inside a `<file_name>.sh` file and run `bash <file_name>.sh`. This should generate folders for each file and `.vhd` files inside `/firmware/`.
+So, put that code inside a `<file_name>.sh` file and run `bash <file_name>.sh`. This should generate folders for each file and `.vhd` files inside `/firmware/` (DONE).
 
 
