@@ -67,7 +67,7 @@ cp algo-work/src/emp-fwk/projects/examples/vcu118/firmware/hdl/emp_project_decl_
 echo 'emp_project_decl_full.vhd' >> src/my-algo-repo/an-algo/firmware/cfg/top.dep
 ```
 
-### 7. Create a Vivado Project (error...)
+### 7. Create a Vivado Project (error... Skipping this)
 
 Issue here when creating my own repo folder. Documentation says:
 Assuming that your top-level `.dep` file is located in source area `my-algo-repo`, at path `an-algo/firmware/cfg/top.dep`, you can create a Vivado project area (under directory `proj/my_algo`) by running:
@@ -85,6 +85,54 @@ Usage: ipbb proj create [OPTIONS] [vivado|sim|vitis-hls] PROJNAME COMPONENT
 Error: Invalid value for 'COMPONENT': Malformed component name : ../src/my-algo-repo/an-algo/firmware/cfg/top.dep. Expected <package>:<component>
 ```
 
+### Building the Firmware on EMP
+I am starting from here: `/home/users/russelld/EMP/algo-work/src`, then going into seeded cone in `/home/users/russelld/EMP/algo-work/src/correlator-common/jetmet/seededcone` when needed.
 
+1. In `/seededcone/`, we need to run `vivado_hls xx.tcl` on several `.tcl` files on `correlator-common.git`. First, we need to install CMSSW.
+   * Run (this installation is only needed once):
+     ```bash
+     source /cvmfs/cms.cern.ch/cmsset_default.sh
+     ./utils/setup_cmssw.sh -run CMSSW_12_5_5_patch1 p2l1pfp:L1PF_12_5_X l1ct-125x-v1.15
+     ```
+     **Note** that on Scully, the file `./utils/setup_cmssw.sh` did not exist. I had to copy it from the `correlator 4`.
 
+   * Set the path by running `export CMSSW_VERSION=CMSSW_12_5_5_patch1`
+  
+   * Source `vivado 2019.1` (for now) on Scully as follows: 
+   ```bash
+   source /home/xilinx/Vivado/2019.1/.settings64-Vivado.sh  vivado
+   ```
+
+2. Run the `.tcl` files. We can use a bash for loop as follows:
+```bash
+source /home/xilinx/Vivado/2019.1/.settings64-Vivado.sh  vivado
+export CMSSW_VERSION=CMSSW_12_5_5_patch1
+
+command="vivado_hls"
+
+for file in run_Jet*.tcl; do
+    $command "$file"
+done
+```
+
+I am getting errors with some files not found on the CMSSW installed. I might need to reinstall this. Error: 
+```bash
+WARNING: [HLS 200-40] In file included from firmware/seedcone.cpp:1:
+In file included from firmware/seedcone.h:4:
+firmware/data.h:6:10: fatal error: 'DataFormats/L1TParticleFlow/interface/puppi.h' file not found
+#include "DataFormats/L1TParticleFlow/interface/puppi.h"
+         ^
+1 error generated.
+C preprocessor failed.
+    while executing
+"source run_JetLoop.tcl"
+    invoked from within
+"hls::main run_JetLoop.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel 1 hls::main {*}$args"
+    (procedure "hls_proc" line 5)
+    invoked from within
+"hls_proc $argv"
+```
 
