@@ -18,4 +18,4 @@ Failed during preprocessing.
 ```
 The error here was related to calling a missing member inside the function. The image below shows the fixes. Basically, we had to specify it to into a `config`, in this case `depthwise_config`, to retrieve `in_height`, `in_width`,etc. Then, same case for `out_width` and other members in `pointwise_config`.
 
-![Untitled](./images/SepConv2D_pr938.pdf) 
+![Untitled](./images/SepConv2D_pr938.png) 
