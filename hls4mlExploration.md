@@ -1,5 +1,5 @@
 # Issues Found and Resolution as I Explore the HLS4ML package.
-## Calling a Missing Members
+## Calling a Missing Member in a Function:
 ```bash
 ERROR: [HLS 200-70] Compilation errors found: In file included from firmware/smartpixels.cpp:1: ...
 .
