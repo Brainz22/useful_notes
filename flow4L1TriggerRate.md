@@ -16,7 +16,7 @@ mkdir L1Trigger/L1CaloTrigger/data
 cp -r ../../L1Trigger-L1CaloTrigger/Phase2_NNCaloTaus L1Trigger/L1CaloTrigger/data
 ```
 
-2. We need to go to the repo [here](https://github.com/cms-l1-dpg/Phase2-L1Nano/tree/main). Note that the first set of instructions in the "Setup" section looks like the same as what's on the twiki in step 1 (I haven't checked it line by line). But I stuck to the twiki since Emyr suggested that. After step 1, add the repo suggested in this step by running:
+2. We need to go to the repo [here](https://github.com/cms-l1-dpg/Phase2-L1Nano/tree/main). Note that the first set of instructions in the "Setup" section looks like the same as what's on the twiki in step 1 above (I haven't checked it line by line). But I stuck to the twiki since Emyr suggested that. After step 1, add the repo suggested in this step by running:
 ```bash
 ### ADDING NANO
 git clone git@github.com:cms-l1-dpg/Phase2-L1Nano.git PhysicsTools/L1Nano
@@ -24,7 +24,7 @@ scram b -j 8
 ```
 ***Note***: I ran into some authentication issues and had to add a Github SSH key to LPC (I am working from LPC). If you run into these issues, my notes [here](https://github.com/Brainz22/useful_notes/blob/main/Workflow%40corr4_APxV1.md). Step 1,2,4,5 explain how to create and add the Github key. It also shows it for Gitlab, but we only need Github.
 
-3. As instructed in the repo suggested in step 2, we have to do `cmsRun`. First, I did `cd /uscms/home/rmarroqu/nobackup/CMS_L1Trigger_Analysis/work/CMSSW_14_0_0_pre3/src/PhysicsTools/L1Nano`. Then, `cmsRun test/v33_rerunL1wTT_cfg.py`.
+3. As instructed in the repo suggested in step 2, we have to do `cmsRun`. First, I did `cd /uscms/home/rmarroqu/nobackup/CMS_L1Trigger_Analysis/work/CMSSW_14_0_0_pre3/src/PhysicsTools/L1Nano` (this the folder `\L1Nano` in the repo you cloned above). Then, `cmsRun test/v33_rerunL1wTT_cfg.py`.
 
 4. Run the `cmsDriver` Command as follows:
 ```bash
