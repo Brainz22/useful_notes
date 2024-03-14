@@ -22,7 +22,7 @@ cp -r ../../L1Trigger-L1CaloTrigger/Phase2_NNCaloTaus L1Trigger/L1CaloTrigger/da
 git clone git@github.com:cms-l1-dpg/Phase2-L1Nano.git PhysicsTools/L1Nano
 scram b -j 8
 ```
-***Note***: I ran into some authentication issues and had to add a Github SSH key to LPC (I am working from LPC). If you run into these issues, my notes [here](https://github.com/Brainz22/useful_notes/blob/main/Workflow%40corr4_APxV1.md). Step 1,2,4,5 explain how to create and add the Github key. It also shows it for Gitlab, but we only need Github.
+***Note***: I ran into some authentication issues and had to add a Github SSH key to LPC (I am working from LPC). If you run into these issues, my notes [here](https://github.com/Brainz22/useful_notes/blob/main/Workflow%40corr4_APxV1.md). Step 1,2,4,5 explain how to create and add the Github key. It also shows it for Gitlab, but we only need Github. Or, if you already have a github key and still getting the "fatal: could not read from remote repository" error, you may only need to add your Github key to the `ssh-agent`. Step 1 in the link I provided shows how to do that.
 
 3. As instructed in the repo suggested in step 2, we have to do `cmsRun`. First, I did `cd /uscms/home/rmarroqu/nobackup/CMS_L1Trigger_Analysis/work/CMSSW_14_0_0_pre3/src/PhysicsTools/L1Nano` (this the folder `\L1Nano` in the repo you cloned above). Then, `cmsRun test/v33_rerunL1wTT_cfg.py`.
 
