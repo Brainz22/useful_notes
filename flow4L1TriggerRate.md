@@ -28,11 +28,71 @@ scram b -j 8
 
 4. Run the `cmsDriver` Command as follows:
 ```bash
-cmsDriver.py step1 --conditions 131X_mcRun4_realistic_v9 -n 2 --era Phase2C17I13M9 --eventcontent NANOAOD -s RAW2DIGI,L1,L1TrackTrigger,L1P2GT,USER:PhysicsTools/L1Nano/l1tPh2Nano_cff.l1tPh2NanoTask --datatier GEN-SIM-DIGI-RAW-MINIAOD --fileout file:test.root --customise SLHCUpgradeSimulations/Configuration/aging.customise_aging_1000,Configuration/DataProcessing/Utils.addMonitoring,L1Trigger/Configuration/customisePhase2.addHcalTriggerPrimitives,L1Trigger/Configuration/customisePhase2FEVTDEBUGHLT.customisePhase2FEVTDEBUGHLT,L1Trigger/Configuration/customisePhase2TTNoMC.customisePhase2TTNoMC,PhysicsTools/L1Nano/l1tPh2Nano_cff.addFullPh2L1Nano --geometry Extended2026D95 --no_exec --nThreads 8 --filein root://cmsxrootd.fnal.gov///store/mc/Phase2Spring23DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_L1TFix_Trk1GeV_131X_mcRun4_realistic_v9_ext1-v2/80000/0061cc5d-056b-41f5-ba7b-aada40915e3f.root --mc --inputCommands=keep
+cmsDriver.py step1 --conditions 131X_mcRun4_realistic_v9 -n 2 --era Phase2C17I13M9 --eventcontent NANOAOD -s RAW2DIGI,L1,L1TrackTrigger,L1P2GT,USER:PhysicsTools/L1Nano/l1tPh2Nano_cff.l1tPh2NanoTask --datatier GEN-SIM-DIGI-RAW-MINIAOD --fileout file:test.root --customise "SLHCUpgradeSimulations/Configuration/aging.customise_aging_1000,Configuration/DataProcessing/Utils.addMonitoring,L1Trigger/Configuration/customisePhase2.addHcalTriggerPrimitives,L1Trigger/Configuration/customisePhase2FEVTDEBUGHLT.customisePhase2FEVTDEBUGHLT,L1Trigger/Configuration/customisePhase2TTNoMC.customisePhase2TTNoMC,PhysicsTools/L1Nano/l1tPh2Nano_cff.addFullPh2L1Nano" --geometry Extended2026D95 --no_exec --nThreads 8 --filein root://cmsxrootd.fnal.gov///store/mc/Phase2Spring23DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_L1TFix_Trk1GeV_131X_mcRun4_realistic_v9_ext1-v2/80000/0061cc5d-056b-41f5-ba7b-aada40915e3f.root --mc --inputCommands="keep *, drop l1tPFJets_*_*_* --outputCommands=drop l1tPFJets_*_*_*" --no_exec
 ```
+This command raises the error: 
+```bash
+----- Begin Fatal Exception 14-Mar-2024 17:28:40 CDT-----------------------
+An exception of category 'ProductNotFound' occurred while
+   [0] Processing  Event run: 1 lumi: 2610 event: 770889 stream: 1
+   [1] Running path 'NANOAODoutput_step'
+   [2] Prefetching for module NanoAODOutputModule/'NANOAODoutput'
+   [3] Calling method for module SimpleCandidateFlatTableProducer/'hpsTauTable'
+Exception Message:
+Principal::getByToken: Found zero products matching all criteria
+Looking for a container with elements of type: reco::Candidate
+Looking for module label: l1HPSPFTauEmuProducer
+Looking for productInstanceName: HPSTaus
 
-The flags below from Emyr's original suggestion (at the very end of his command) were dropped out because they raised error:
-`*, drop l1tPFJets_*_*_* --outputCommands=drop l1tPFJets_*_*_*ls`.
+   Additional Info:
+      [a] If you wish to continue processing events after a ProductNotFound exception,
+add "TryToContinue = cms.untracked.vstring('ProductNotFound')" to the "options" PSet in the configuration.
+
+----- End Fatal Exception -------------------------------------------------
+----- Begin Fatal Exception 14-Mar-2024 17:28:40 CDT-----------------------
+An exception of category 'ProductNotFound' occurred while
+   [0] Processing  Event run: 1 lumi: 2610 event: 770890 stream: 2
+   [1] Running path 'NANOAODoutput_step'
+   [2] Prefetching for module NanoAODOutputModule/'NANOAODoutput'
+   [3] Calling method for module SimpleCandidateFlatTableProducer/'hpsTauTable'
+Exception Message:
+Principal::getByToken: Found zero products matching all criteria
+Looking for a container with elements of type: reco::Candidate
+Looking for module label: l1HPSPFTauEmuProducer
+Looking for productInstanceName: HPSTaus
+
+   Additional Info:
+      [a] If you wish to continue processing events after a ProductNotFound exception,
+add "TryToContinue = cms.untracked.vstring('ProductNotFound')" to the "options" PSet in the configuration.
+
+----- End Fatal Exception -------------------------------------------------
+14-Mar-2024 17:28:40 CDT  Closed file root://cmsxrootd.fnal.gov///store/mc/Phase2Spring23DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_L1TFix_Trk1GeV_131X_mcRun4_realistic_v9_ext1-v2/80000/0061cc5d-056b-41f5-ba7b-aada40915e3f.root
+TimeReport> Time report complete in 177.784 seconds
+ Time Summary: 
+ - Min event:   21.2449
+ - Max event:   21.6435
+ - Avg event:   21.4442
+ - Total loop:  121.588
+ - Total init:  56.1953
+ - Total job:   177.784
+ - Total EventSetup: 34.9198
+ - Total non-module: 733.02
+ Event Throughput: 0.0164489 ev/s
+ CPU Summary: 
+ - Total loop:     71.9775
+ - Total init:     43.2373
+ - Total extra:    0
+ - Total children: 0.134905
+ - Total job:      115.216
+ Processing Summary: 
+ - Number of Events:  2
+ - Number of Global Begin Lumi Calls:  1
+ - Number of Global Begin Run Calls: 1
+```
+Because the above did not work. However, using the command on the [twiki](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideL1TPhase2Instructions#Recipe_for_phase2_l1t_1400pre3_v2) works: 
+```bash
+cmsDriver.py step1 --conditions 131X_mcRun4_realistic_v9 -n 2 --era Phase2C17I13M9 --eventcontent FEVTDEBUGHLT  RAW2DIGI,L1,L1TrackTrigger,L1P2GT --datatier GEN-SIM-DIGI-RAW-MINIAOD --fileout file:test.root --customise "SLHCUpgradeSimulations/Configuration/aging.customise_aging_1000,Configuration/DataProcessing/Utils.addMonitoring,L1Trigger/Configuration/customisePhase2.addHcalTriggerPrimitives,L1Trigger/Configuration/customisePhase2FEVTDEBUGHLT.customisePhase2FEVTDEBUGHLT,L1Trigger/Configuration/customisePhase2TTNoMC.customisePhase2TTNoMC" --geometry Extended2026D95 --nThreads 8 --filein "root://cmsxrootd.fnal.gov///store/mc/Phase2Spring23DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_L1TFix_Trk1GeV_131X_mcRun4_realistic_v9_ext1-v2/80000/0061cc5d-056b-41f5-ba7b-aada40915e3f.root" --mc --inputCommands='keep *, drop l1tPFJets_*_*_*, drop l1tTrackerMuons_l1tTkMuonsGmt_*_*' --outputCommands="drop l1tPFJets_*_*_*, drop l1tTrackerMuons_l1tTkMuonsGmt_*_*"
+```
 ***Note:*** You will have to validate your grid certificate in order to access the input file via `xrootd`.
 
 5. This will produce the file `step1_RAW2DIGI_L1_L1TrackTrigger_L1P2GT_USER.py`, which can be run by running `cmsRun step1_RAW2DIGI_L1_L1TrackTrigger_L1P2GT_USER.py` with `cmsenv`. After running, you will have the `test.root` we need to use to get the `LLPScores`.
