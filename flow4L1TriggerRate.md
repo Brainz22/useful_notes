@@ -36,10 +36,11 @@ The flags below from Emyr's original suggestion (at the very end of his command)
 ***Note:*** You will have to validate your grid certificate in order to access the input file via `xrootd`.
 
 5. This will produce the file `step1_RAW2DIGI_L1_L1TrackTrigger_L1P2GT_USER.py`, which can be run by running `cmsRun step1_RAW2DIGI_L1_L1TrackTrigger_L1P2GT_USER.py` with `cmsenv`. After running, you will have the `test.root` we need to use to get the `LLPScores`.
+You can check that everything looks good on the `test.root` file via `edmDumpEventContent test.root > out.txt` and opening `out.txt`.
 
-6. The branch with `LLPscore` function can installed as `git cms-checkout-topic -u ddiaz006:TOoLLip-integration`. This has the LLP tagger integration in cmssw.
+7. The branch with `LLPscore` function can installed as `git cms-checkout-topic -u ddiaz006:TOoLLip-integration`. This has the LLP tagger integration in cmssw.
 
-7. The sample code where we can get the scores from the LLP tagger is attached [here](https://gist.github.com/ddiaz006/58c547c2dfc0828c4487ed7523bc14d7). Currently, jupyter notebook fails at the loop on line 23 of this code. Then if I run the whole code as in a `.py` instead, I get error:
+8. The sample code where we can get the scores from the LLP tagger is attached [here](https://gist.github.com/ddiaz006/58c547c2dfc0828c4487ed7523bc14d7). Currently, jupyter notebook fails at the loop on line 23 of this code. Then if I run the whole code as in a `.py` instead, I get error:
 ```bash
  *** Break *** segmentation violation
 
