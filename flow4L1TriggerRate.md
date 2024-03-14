@@ -35,7 +35,7 @@ The flags below from Emyr's original suggestion (at the very end of his command)
 `*, drop l1tPFJets_*_*_* --outputCommands=drop l1tPFJets_*_*_*ls`.
 ***Note:*** You will have to validate your grid certificate in order to access the input file via `xrootd`.
 
-5. This will produce the file `step1_RAW2DIGI_L1_L1TrackTrigger_L1P2GT_USER.py`, which can be run by running `python3 step1_RAW2DIGI_L1_L1TrackTrigger_L1P2GT_USER.py` with `cmsenv`. After running, you will have the `test.root` we need to use to get the `LLPScores`.
+5. This will produce the file `step1_RAW2DIGI_L1_L1TrackTrigger_L1P2GT_USER.py`, which can be run by running `cmsRun step1_RAW2DIGI_L1_L1TrackTrigger_L1P2GT_USER.py` with `cmsenv`. After running, you will have the `test.root` we need to use to get the `LLPScores`.
 
 6. The branch with `LLPscore` function can installed as `git cms-checkout-topic -u ddiaz006:TOoLLip-integration`. This has the LLP tagger integration in cmssw.
 
