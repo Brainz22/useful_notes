@@ -16,7 +16,7 @@ mkdir L1Trigger/L1CaloTrigger/data
 cp -r ../../L1Trigger-L1CaloTrigger/Phase2_NNCaloTaus L1Trigger/L1CaloTrigger/data
 ```
 
-2. We need to go to the repo [here](https://github.com/cms-l1-dpg/Phase2-L1Nano/tree/main). Note that the first set of instructions in the "Setup" section looks like the same as what's on the twiki in step 1 above (I haven't checked it line by line). But I stuck to the twiki since Emyr suggested that. After step 1, add the repo suggested in this step by running:
+2. We need to go to the repo [here](https://github.com/cms-l1-dpg/Phase2-L1Nano/tree/main). Note that the first set of instructions in the "Setup" section looks like the same as what's on the twiki in step 1 above (I haven't checked it line by line). But I stuck to the [twiki](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideL1TPhase2Instructions#Recipe_for_phase2_l1t_1400pre3_v2) since Emyr suggested that. After step 1, add the repo suggested in this step by running:
 ```bash
 ### ADDING NANO
 git clone git@github.com:cms-l1-dpg/Phase2-L1Nano.git PhysicsTools/L1Nano
