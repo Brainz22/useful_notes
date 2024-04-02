@@ -26,7 +26,7 @@ scram b -j 8
 
 3. As instructed in the repo suggested in step 2, we have to do `cmsRun`. First, I did `cd /uscms/home/rmarroqu/nobackup/CMS_L1Trigger_Analysis/work/CMSSW_14_0_0_pre3/src/PhysicsTools/L1Nano` (this the folder `\L1Nano` in the repo you cloned above). Then, `cmsRun test/v33_rerunL1wTT_cfg.py`.
 
-4. Run the `cmsDriver` Command as follows:
+4. Run the `cmsDriver` Command inside a `.sh` file as usual, `bash cmsDriver.sh`, for example. The contents in that `.sh` file will be:
 
 Then, Daniel is suggesting: 
 ```bash
@@ -51,6 +51,17 @@ cmsDriver.py step1 \
 5. This will produce the file `step1_RAW2DIGI_L1_L1TrackTrigger_L1P2GT_USER.py`, which can be run by running `cmsRun step1_RAW2DIGI_L1_L1TrackTrigger_L1P2GT_USER.py` with `cmsenv`. After running, you will have the `test.root` we need to use to get the `LLPScores`.
 You can check that everything looks good on the `test.root` file via `edmDumpEventContent test.root > out.txt` and opening `out.txt`.
 
+### step 5 via CRAB jobs:
+
+ Use the `.py` file [here](https://gist.github.com/Brainz22/69cf0c8602e6f3eabbfcea860f60c7f0) to submit a job to produce the NANOAOD file needed for 1000 events using the `MinBias` dataset, for example. To run submit this, we will need to run:
+
+```bash
+crab submit -c CRAB_L1Nano_Minbias.py
+```
+where `CRAB_L1Nano_Minbias.py` has he crab job specifications. 
+The command `crab status -d crab_projects/crab_ucsd_MinBias` allows me to check the status of the CRAB job.
+
+-----------------------------------------------------
 7. The branch with `LLPscore` function can installed as `git cms-checkout-topic -u ddiaz006:TOoLLip-integration`. This has the LLP tagger integration in cmssw.
 
 8. The sample code where we can get the scores from the LLP tagger is attached [here](https://gist.github.com/ddiaz006/58c547c2dfc0828c4487ed7523bc14d7). Currently, jupyter notebook fails at the loop on line 23 of this code. Then if I run the whole code as in a `.py` instead, I get error:
