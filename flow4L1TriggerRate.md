@@ -24,11 +24,20 @@ scram b -j 8
 ```
 ***Note***: I ran into some authentication issues and had to add a Github SSH key to LPC (I am working from LPC). If you run into these issues, my notes [here](https://github.com/Brainz22/useful_notes/blob/main/Workflow%40corr4_APxV1.md). Step 1,2,4,5 explain how to create and add the Github key. It also shows it for Gitlab, but we only need Github. Or, if you already have a github key and still getting the "fatal: could not read from remote repository" error, you may only need to add your Github key to the `ssh-agent`. Step 1 in the link I provided shows how to do that.
 
-3. As instructed in the repo suggested in step 2, we have to do `cmsRun`. First, I did `cd /uscms/home/rmarroqu/nobackup/CMS_L1Trigger_Analysis/work/CMSSW_14_0_0_pre3/src/PhysicsTools/L1Nano` (this the folder `\L1Nano` in the repo you cloned above). Then, `cmsRun test/v33_rerunL1wTT_cfg.py`.
+3. Do the following things:
 
-4. Run the `cmsDriver` Command inside a `.sh` file as usual, `bash cmsDriver.sh`, for example. The contents in that `.sh` file will be:
+* comment out the line [here](https://github.com/cms-l1-dpg/Phase2-L1Nano/blob/main/python/l1tPh2Nanotables_cff.py#L403) in the local repo you just cloned in step 2. 
+* add the following line to `PhysicsTools/L1Nano/python/l1tPh2Nanotables_cff.py`:
+`llpTagScore = ExtVar(cms.InputTag("l1tTOoLLiPProducerCorrectedEmulator", "L1PFLLPJets"),float, doc="NN LLP Tag score")`,
+you can place it under the existing
+`btagScore = ...`
 
-Then, Daniel is suggesting: 
+
+4. As instructed in the repo suggested in step 2, we have to do `cmsRun`. First, I did `cd /uscms/home/rmarroqu/nobackup/CMS_L1Trigger_Analysis/work/CMSSW_14_0_0_pre3/src/PhysicsTools/L1Nano` (this the folder `\L1Nano` in the repo you cloned above). Then, `cmsRun test/v33_rerunL1wTT_cfg.py`.
+
+5. Run the `cmsDriver` Command inside a `.sh` file as usual, `bash cmsDriver.sh`, for example. The contents in that `.sh` file will be:
+
+as Daniel suggested: 
 ```bash
 cmsDriver.py step1 \
 --conditions 131X_mcRun4_realistic_v9 \
@@ -48,18 +57,20 @@ cmsDriver.py step1 \
 ```
 ***Note:*** You will have to validate your grid certificate in order to access the input file via `xrootd`.
 
-5. This will produce the file `step1_RAW2DIGI_L1_L1TrackTrigger_L1P2GT_USER.py`, which can be run by running `cmsRun step1_RAW2DIGI_L1_L1TrackTrigger_L1P2GT_USER.py` with `cmsenv`. After running, you will have the `test.root` we need to use to get the `LLPScores`.
+6. This will produce the file `step1_RAW2DIGI_L1_L1TrackTrigger_L1P2GT_USER.py`, which can be run by running `cmsRun step1_RAW2DIGI_L1_L1TrackTrigger_L1P2GT_USER.py` with `cmsenv`. After running, you will have the `test.root` we need to use to get the `LLPScores`.
 You can check that everything looks good on the `test.root` file via `edmDumpEventContent test.root > out.txt` and opening `out.txt`.
 
-### step 5 via CRAB jobs:
+### step 6 via CRAB jobs:
 
- Use the `.py` file [here](https://gist.github.com/Brainz22/69cf0c8602e6f3eabbfcea860f60c7f0) to submit a job to produce the NANOAOD file needed for 1000 events using the `MinBias` dataset, for example. To run submit this, we will need to run:
+ Use the `.py` file [here](https://gist.github.com/Brainz22/69cf0c8602e6f3eabbfcea860f60c7f0) to submit a job to produce the NANOAOD file needed for 1000 events using the `MinBias` dataset, for example. To submit this, we will need to run:
 
 ```bash
 crab submit -c CRAB_L1Nano_Minbias.py
 ```
 where `CRAB_L1Nano_Minbias.py` has he crab job specifications. 
 The command `crab status -d crab_projects/crab_ucsd_MinBias` allows me to check the status of the CRAB job.
+
+We can check that a Tier server does exist by doing for example: `crab checkwrite --site=T3_US_FNALLPC` on LPC. I am running into permission issues, which might be related to my LPC and CERN grid Certificate being different...
 
 -----------------------------------------------------
 7. The branch with `LLPscore` function can installed as `git cms-checkout-topic -u ddiaz006:TOoLLip-integration`. This has the LLP tagger integration in cmssw.
