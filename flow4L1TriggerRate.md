@@ -74,9 +74,60 @@ We can check that a Tier server does exist by doing for example: `crab checkwrit
 
 ### Producing Rates via [Phase2-L1MenuTools](https://github.com/cms-l1-dpg/Phase2-L1MenuTools/tree/main):
 
-1. Follow the setup instructions. Basically, we need a separate environment with python 3.11, `git clone` the repo, and run `pip install -e .` to install it.
+1. Follow the setup instructions. Basically, we need a separate environment with python 3.11, `git clone` the repo, and run `pip install -e .` to install it. I am creating my environment as follows:
+```bash
+mamba create --name <name> python=3.11
+```
+***Note:*** I was running into issues because `cmsenv` (I think). It fixed things after I restarted the `ssh` connenction and ran the command above to create the environment.
 
-2. 
+3. Then inside it, go into `configs/v38nano/caching.yaml` and uncomment things that are not needed. Then, add the things for `MinBias`, for example. Right now, I have (spacing might be off): 
+
+```yaml
+V38nano:
+  MinBias:
+    ntuple_path: /uscms/home/rmarroqu/nobackup/cmsL1trigger_Analysis/work/CMSSW_14_0_0_pre3/src/MinBias/hadded/complete_hadd.root
+    trees_branches:
+      Events:
+        # PV
+        L1PV: [z0]
+        ## EG
+        # L1tkPhoton: "all" 
+        # L1tkElectron: "all" 
+        # L1EGbarrel: "all" 
+        # L1EGendcap: "all" 
+        ## MUONS
+        # L1gmtTkMuon: "all" 
+        # L1gmtMuon: "all"  # aka gmtMuon
+        # L1gmtDispMuon: "all"
+        ## TAUS
+        # L1nnPuppiTau: "all" 
+        # L1hpsTau: "all" 
+        # L1caloTau: "all" 
+        # L1nnCaloTau: "all"
+        ## MET/Sums
+        # L1puppiMET: [pt, phi]
+        # L1puppiMLMET: [pt]
+        # L1puppiJetSC4sums: [pt, phi]
+        # L1puppiHistoJetSums: [pt, phi]
+        # # jets
+        L1puppiJetSC4: [pt, eta, phi]
+        L1puppiJetSC8: [pt, eta, phi]
+        L1puppiExtJetSC4: [pt, eta, phi, btagScore, llpTagScore]
+        L1puppiJetHisto: [pt, eta, phi]
+        L1caloJet: [pt, eta, phi]
+
+```
+3. We need to cache our objects. Run `cache_objects configs/V38nano/caching.yaml`. I was getting an error about a missing directory `cache/V38nano`. So, I just created manually via mkdir and it worked. The cached files needed for the rates will be here.
+
+4. Make some additions to some files... Emyr sent me instructions and I will put them here. I have already added
+
+5. To make rate plots, run `rate_plots configs/V38nano/rate_plots/jets.yaml`. Output of this command tells you where files will be saved.  
+
+
+I am caching all the files overnight so that I can run `rate_plots` in the morning...
+
+
+
 -----------------------------------------------------
 7. The branch with `LLPscore` function can installed as `git cms-checkout-topic -u ddiaz006:TOoLLip-integration`. This has the LLP tagger integration in cmssw.
 
