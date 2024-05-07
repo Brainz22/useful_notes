@@ -78,9 +78,10 @@ We can check that a Tier server does exist by doing for example: `crab checkwrit
 ```bash
 mamba create --name <name> python=3.11
 ```
+For me, I made `RatesV38`.
 ***Note:*** I was running into issues because `cmsenv` (I think). It fixed things after I restarted the `ssh` connenction and ran the command above to create the environment.
 
-3. Then inside it, go into `configs/v38nano/caching.yaml` and uncomment things that are not needed. Then, add the things for `MinBias`, for example. Right now, I have (spacing might be off): 
+2. Then inside it, go into `configs/v38nano/caching.yaml` and uncomment things that are not needed. Then, add the things for `MinBias`, for example. Right now, I have (spacing might be off): 
 
 ```yaml
 V38nano:
@@ -119,12 +120,34 @@ V38nano:
 ```
 3. We need to cache our objects. Run `cache_objects configs/V38nano/caching.yaml`. I was getting an error about a missing directory `cache/V38nano`. So, I just created manually via mkdir and it worked. The cached files needed for the rates will be here.
 
-4. Make some additions to some files... Emyr sent me instructions and I will put them here. I have already added
+4. We need to add a definition of the LLP tagger selection to the jet object definition in [objects/jets.yaml](https://github.com/cms-l1-dpg/Phase2-L1MenuTools/blob/main/configs/V38nano/objects/jets.yaml). It should be something similar to what was done for the b tagger. Under the section `L1puppiExtJetSC4`, add:
+   ```yaml
+    llpjetnnLoose:
+      label : "Loose LLP"
+      cuts:
+        inclusive:
+          - "abs({eta}) < 2.4"
+          - "{llpTagScore} > 0.8"
+    llpjetnnTight:
+      label : "Tight LLP"
+      cuts:
+        inclusive:
+          - "abs({eta}) < 2.4"
+          - "{llpTagScore} > 0.95"
+   ```
+5. We need to include the jets with a cut on the LLP score by editing the [rate plot configuration file](https://github.com/cms-l1-dpg/Phase2-L1MenuTools/blob/main/configs/V38nano/rate_plots/jets.yaml#L31-L43). Under the `test_objects` sections, add:
+```yaml
+   test_objects:
+     - L1puppiJetSC4:default
+     - L1puppiExtJetSC4:default
+     - L1puppiExtJetSC4:llpjetnnLoose
+     - L1puppiExtJetSC4:llpjetnnTight
+```
 
-5. To make rate plots, run `rate_plots configs/V38nano/rate_plots/jets.yaml`. Output of this command tells you where files will be saved.  
+6. To make rate plots, run `rate_plots configs/V38nano/rate_plots/jets.yaml`. Output of this command tells you where files will be saved.  
 
 
-I am caching all the files overnight so that I can run `rate_plots` in the morning... remember, I will need to activate RatesV38.
+ Remember, I will need to activate RatesV38.
 
 
 
