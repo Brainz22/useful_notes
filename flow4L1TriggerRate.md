@@ -1,4 +1,4 @@
-1. We have to install `CMSSW_14_0_pre3` by following the recipe on the twiki [here](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideL1TPhase2Instructions#Recipe_for_phase2_l1t_1400pre3_v2). Basically, we have to run: 
+1. We have to install `CMSSW_14_0_pre3` by following the recipe on the twiki [here](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideL1TPhase2Instructions#Recipe_for_phase2_l1t_1400pre3_v2). Check that you have the correct SCRAM architecture for the correct OS. `el8` requires `export SCRAM_ARCH=el8_amd64_gcc12` for example. The link for different `CMSSW`'s and respective `SCRAM ARCH`'s is [here](https://cms-talk.web.cern.ch/c/offcomp/orp/swrelannounce/221). Then, basically, we have to run: 
 ```bash
 cmsrel CMSSW_14_0_0_pre3
 cd CMSSW_14_0_0_pre3/src/
@@ -120,7 +120,7 @@ V38nano:
 ```
 3. We need to cache our objects. Run `cache_objects configs/V38nano/caching.yaml`. I was getting an error about a missing directory `cache/V38nano`. So, I just created manually via mkdir and it worked. The cached files needed for the rates will be here.
 
-4. We need to add a definition of the LLP tagger selection to the jet object definition in [objects/jets.yaml](https://github.com/cms-l1-dpg/Phase2-L1MenuTools/blob/main/configs/V38nano/objects/jets.yaml). It should be something similar to what was done for the b tagger. Under the section `L1puppiExtJetSC4`, add:
+4. We need to add a definition of the LLP tagger selection to the jet object definition in [/configs/V38nano/objects/jets.yaml](https://github.com/cms-l1-dpg/Phase2-L1MenuTools/blob/main/configs/V38nano/objects/jets.yaml). It should be something similar to what was done for the b tagger. Under the section `L1puppiExtJetSC4`, add:
    ```yaml
     llpjetnnLoose:
       label : "Loose LLP"
@@ -135,7 +135,7 @@ V38nano:
           - "abs({eta}) < 2.4"
           - "{llpTagScore} > 0.95"
    ```
-5. We need to include the jets with a cut on the LLP score by editing the [rate plot configuration file](https://github.com/cms-l1-dpg/Phase2-L1MenuTools/blob/main/configs/V38nano/rate_plots/jets.yaml#L31-L43). Under the `test_objects` sections, add:
+5. We need to include the jets with a cut on the LLP score by editing the [rate plot configuration file](https://github.com/cms-l1-dpg/Phase2-L1MenuTools/blob/main/configs/V38nano/rate_plots/jets.yaml#L31-L43) located in `/configs/V38nano/rate_plots`. Under the `test_objects` sections, add:
 ```yaml
    test_objects:
      - L1puppiJetSC4:default
