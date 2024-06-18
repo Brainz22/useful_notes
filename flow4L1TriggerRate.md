@@ -81,7 +81,7 @@ mamba create --name <name> python=3.11
 For me, I made `RatesV38`.
 ***Note:*** I was running into issues because `cmsenv` (I think). It fixed things after I restarted the `ssh` connenction and ran the command above to create the environment.
 
-***Note2:*** If `git clone` does not clone the entire repo, i.e., you are missing folder, remove the folder and manually clone the main branch as:
+***Note2:*** If `git clone` does not clone the entire repo, i.e., you are missing folders, remove the repo and manually clone the main branch as:
 ```
 git clone --single-branch --branch main https://github.com/cms-l1-dpg/Phase2-L1MenuTools.git
 ```
