@@ -123,7 +123,9 @@ V38nano:
         L1caloJet: [pt, eta, phi]
 
 ```
-3. We need to cache our objects. Run `cache_objects configs/V38nano/caching.yaml`. I was getting an error about a missing directory `cache/V38nano`. So, I just created manually via mkdir and it worked. The cached files needed for the rates will be here.
+3. We need to cache our objects. 
+ * Delete the `cache` folder if there is one. Then, make a new directory with location `Phase2-L1MenuTools/cache/V38nano`.
+ * Run `cache_objects configs/V38nano/caching.yaml`.
 
 4. We need to add a definition of the LLP tagger selection to the jet object definition in [/configs/V38nano/objects/jets.yaml](https://github.com/cms-l1-dpg/Phase2-L1MenuTools/blob/main/configs/V38nano/objects/jets.yaml). It should be something similar to what was done for the b tagger. Under the section `L1puppiExtJetSC4`, add:
    ```yaml
