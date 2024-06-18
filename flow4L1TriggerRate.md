@@ -154,7 +154,7 @@ V38nano:
 6. To make rate plots, run `rate_plots configs/V38nano/rate_plots/jets.yaml`. Output of this command tells you where files will be saved.  
 
 
- Remember, I will need to activate RatesV38.
+ Remember, I will need to activate RatesV38 and indentation on the `.yaml` files is important.
 
 
 
