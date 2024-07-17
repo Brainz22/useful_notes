@@ -113,4 +113,15 @@ done
 ```
 So, put that code inside a `<file_name>.sh` file and run `bash <file_name>.sh`. This should generate folders for each file and `.vhd` files inside `/firmware/` (DONE).
 
+# Building Project
+
+After cloning the correct repos specified 1-4, and assuming I cloned the master branch of `correlator layer 2`:
+
+*   Create a project via:
+```bash
+ipbb proj create sim jet-sim correlator-layer2:jet_seededcone/board/serenity top_sim.dep
+```
+This will add the `jet-sim` project in `../proj`.
+
+*   
 
