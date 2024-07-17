@@ -29,9 +29,9 @@ ipbb add git ssh://git@gitlab.cern.ch:7999/dth_p1-v2/slinkrocket.git -b v03.12
 ipbb add git git@github.com:ipbus/ipbus-firmware.git -b v1.9
 
 #For the Jet setup
-ipbb add git ssh://git@gitlab.cern.ch:8443/rufl/RuflCore.git -r d3ddf86f
-ipbb add git ssh://git@gitlab.cern.ch:8443/cms-cactus/phase2/firmware/correlator-common.git
-ipbb add git ssh://git@gitlab.cern.ch:8443/cms-cactus/phase2/firmware/correlator-layer2.git
+ipbb add git ssh://git@gitlab.cern.ch:7999/rufl/RuflCore.git -r d3ddf86f
+ipbb add git ssh://git@gitlab.cern.ch:7999/cms-cactus/phase2/firmware/correlator-common.git
+ipbb add git ssh://git@gitlab.cern.ch:7999/cms-cactus/phase2/firmware/correlator-layer2.git
 ```
 You might get errors when adding some of the above repos. You need to add yourself to the e-groups `emp-fwk-users` and `cms-tcds2-users` using this [link](https://e-groups.cern.ch/e-groups/EgroupsSearchForm.do).
 
