@@ -113,7 +113,7 @@ done
 ```
 So, put that code inside a `<file_name>.sh` file and run `bash <file_name>.sh`. This should generate folders for each file and `.vhd` files inside `/firmware/` (DONE).
 
-# Building Project
+# Building Project and Running a Quick Simulation
 
 After cloning the correct repos specified 1-4, and assuming I cloned the master branch of `correlator layer 2`:
 
@@ -134,4 +134,46 @@ Locate the `.xpr` file that will be generated and run:
 vivado jet-sim.xpr
 ```
 Make sure GUI can be activated, i.e. use `ssh -Y ...`.
+
+# Deploying the Full Jet Project with the LLP Tagger:
+
+*    Set up CMSSW
+```bash
+source /cvmfs/cms.cern.ch/cmsset_default.sh
+
+cd src/correlator-common/
+./utils/setup_cmssw.sh -run CMSSW_14_0_0_pre3 cms-l1t-offline:phase2-l1t-integration-14_0_0_pre3 phase2-l1t-1400pre3_v9 # found in .gitlab-ci.yml
+```
+   Some errors may arise, but ignore:
+```bash
+/cvmfs/cms.cern.ch/el8_amd64_gcc11/external/gcc/11.4.1-30ebdc301ebd200f2ae0e3d880258e65/bin/../lib/gcc/x86_64-redhat-linux-gnu/11.4.1/../../../../x86_64-redhat-linux-gnu/bin/ld.bfd: cannot find -lssl: No such file or directory
+/cvmfs/cms.cern.ch/el8_amd64_gcc11/external/gcc/11.4.1-30ebdc301ebd200f2ae0e3d880258e65/bin/../lib/gcc/x86_64-redhat-linux-gnu/11.4.1/../../../../x86_64-redhat-linux-gnu/bin/ld.bfd: cannot find -lcrypto: No such file or directory
+collect2: error: ld returned 1 exit status
+gmake: *** [config/SCRAM/GMake/Makefile.rules:1793: tmp/el8_amd64_gcc11/src/L1Trigger/L1CaloTrigger/plugins/L1TriggerL1CaloTriggerAuto/libL1TriggerL1CaloTriggerAuto.so] Error 1
+gmake: *** [There are compilation/build errors. Please see the detail log above.] Error 2
+```
+   Export to environment `export CMSSW_VERSION=CMSSW_14_0_0_pre3`.
+
+
+*   Add Vivado variables: `source /data/software/xilinx/Vivado/2020.1/settings64.sh` (might change depending on your local server).
+
+      Every time I log out and log back in, I need to run:
+   ```bash
+   source /cvmfs/cms.cern.ch/cmsset_default.sh
+   export CMSSW_VERSION=CMSSW_13_3_0_pre3
+   source /data/software/xilinx/Vivado/2020.1/settings64.sh
+   ```
+
+*   To get rid of errors because of definitions in `CMSSW` only defining the `btagger`, I made changes as follows:
+Because I need `llpTagScore` instead of `btag_Score`, I thought of changing things in my `CMSSW`. Thus, I manually changed things that were defined as `b_tag` to `llp_tag` and `Btag` to `LLPtag` in the files `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/jets.h`, `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/dataformats.h`, and `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/gt_datatypes.h`.
+
+* Run `vivado_hls -f *.tcl`. Currently failing `vivado_hls -f run_Sim.tcl`run because:
+```bash
+WARNING: [HLS 200-40] Cannot find test bench file '../../dumpfiles/TTbar_PU200_Barrel.dump'
+WARNING: [HLS 200-40] Cannot find test bench file '../../dumpfiles/TTbar_PU200_HGCal.dump'
+WARNING: [HLS 200-40] Cannot find test bench file '../../dumpfiles/TTbar_PU200_HGCalNoTK.dump'
+WARNING: [HLS 200-40] Cannot find test bench file 'JetsOut.txt'
+WARNING: [HLS 200-40] Cannot find test bench file 'JetsOut_lr.txt'
+```
+
 
