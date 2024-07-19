@@ -160,7 +160,7 @@ gmake: *** [There are compilation/build errors. Please see the detail log above.
       Every time I log out and log back in, I need to run:
    ```bash
    source /cvmfs/cms.cern.ch/cmsset_default.sh
-   export CMSSW_VERSION=CMSSW_13_3_0_pre3
+   export CMSSW_VERSION=CMSSW_14_0_0_pre3
    source /data/software/xilinx/Vivado/2020.1/settings64.sh
    ```
 
