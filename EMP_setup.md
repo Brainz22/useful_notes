@@ -177,10 +177,10 @@ WARNING: [HLS 200-40] Cannot find test bench file '../../dumpfiles/TTbar_PU200_H
 WARNING: [HLS 200-40] Cannot find test bench file 'JetsOut.txt'
 WARNING: [HLS 200-40] Cannot find test bench file 'JetsOut_lr.txt'
 ```
+You can download the files from [here](https://cactus.web.cern.ch/cactus/phase2/firmware/correlator-common/tags/1.5.10/dumpfiles/). Or,
 If working on `lxplus`, you should not run into this issue. Because I was working locally, I `git clone`d the `correlator-common` branch and built the `CMSSW_14...` there. Then, I used `scp russelld@lxplus.cern.ch:/afs/cern.ch/user/r/russelld/EMP/correlator-common/dumpfiles/* dump/` after making `dump/`. 
 
    -   Next, I ran zip the folder: `tar -czvf dump.tar.gz dump`.
    -   `scp` to Mulder: `scp dump.tar.gz russelld@mulder.t2.ucsd.edu:/home/users/russelld/EMP/Serenity/work/LLPtag-work/src/correlator-common/dumpfiles/`.
    -    mulder, untar the folder: `tar -xzvf dump.tar.gz`.
-
 
