@@ -187,5 +187,18 @@ If working on `lxplus`, you should not run into this issue. Because I was workin
 
 5.   Add the `LLPtag` folder with the hls files, similar to [here](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/tree/btag_nn_token/jetmet/seededcone/btag?ref_type=heads).
 
-6.   
+6.   I add and change accordingly following the branch in the attached in step 5. `firmware_hls` is the folder resulting from converting our model using `hls4ml`. The new chages there need to be included in the `data.h` and add the `synchronizer.h`. Some new variables may need to be defined here and there Check errors.
+
+7.   The main changes will be in the `LLPag` folder (`cd ..` from `firmware_hls`). We need the `.tcl` to `C synthesize` the wrapper `.cpp` files. One of the `.tcl` files is for the `NN`, while the other is for the `synchronizer`. For me, `firmware_hls/algo_LLP.cpp` is the wrapper, which also contains the `synchronizer`. Once we have those things, we can run everything with the following `.sh` file and run it using the `bash` command:
+```bash
+#Use vivado2022.1 for compilation
+command="vitis_hls -f"
+
+rm -rf proj_llp/ #made by run_hls_LLP.tcl
+rm -rf proj_llp_sync/ #made by run_llptag_sync.tcl
+rm -rf firmware/
+
+$command run_llptag_sync.tcl
+$command run_hls_LLP.tcl
+```
 
