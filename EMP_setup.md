@@ -183,4 +183,9 @@ If working on `lxplus`, you should not run into this issue. Because I was workin
    -   Next, I ran zip the folder: `tar -czvf dump.tar.gz dump`.
    -   `scp` to Mulder: `scp dump.tar.gz russelld@mulder.t2.ucsd.edu:/home/users/russelld/EMP/Serenity/work/LLPtag-work/src/correlator-common/dumpfiles/`.
    -    mulder, untar the folder: `tar -xzvf dump.tar.gz`.
+   -    Run `vivado_hls -f run_Sim.tcl`
+
+5.   Add the `LLPtag` folder with the hls files, similar to [here](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/tree/btag_nn_token/jetmet/seededcone/btag?ref_type=heads).
+
+6.   
 
