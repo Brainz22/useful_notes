@@ -137,9 +137,9 @@ Make sure GUI can be activated, i.e. use `ssh -Y ...`.
 
 # Deploying the Full Jet Project with the LLP Tagger:
 
-The project is built using the following two gitlab repos (which are added in step 3): [correlator-layer2](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-layer2/-/tree/master/jet_seededcone?ref_type=heads) and [correlator-common](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common).
+The project is built using the following two gitlab repos (which are added in step 3 in the beginning): [correlator-layer2](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-layer2/-/tree/master/jet_seededcone?ref_type=heads) and [correlator-common](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common).
 
-*    Set up CMSSW
+1.    Set up CMSSW
 ```bash
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 
@@ -157,7 +157,7 @@ gmake: *** [There are compilation/build errors. Please see the detail log above.
    Export to environment `export CMSSW_VERSION=CMSSW_14_0_0_pre3`.
 
 
-*   Add Vivado variables: `source /data/software/xilinx/Vivado/2020.1/settings64.sh` (might change depending on your local server).
+2.   Add Vivado variables: `source /data/software/xilinx/Vivado/2020.1/settings64.sh` (might change depending on your local server).
 
       Every time I log out and log back in, I need to run:
    ```bash
@@ -166,10 +166,10 @@ gmake: *** [There are compilation/build errors. Please see the detail log above.
    source /data/software/xilinx/Vivado/2020.1/settings64.sh
    ```
 
-*   To get rid of errors because of definitions in `CMSSW` only defining the `btagger`, I made changes as follows:
+3.   To get rid of errors because of definitions in `CMSSW` only defining the `btagger`, I made changes as follows:
 Because I need `llpTagScore` instead of `btag_Score`, I thought of changing things in my `CMSSW`. Thus, I manually changed things that were defined as `b_tag` to `llp_tag` and `Btag` to `LLPtag` in the files `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/jets.h`, `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/dataformats.h`, and `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/gt_datatypes.h`.
 
-*    Run `vivado_hls -f *.tcl`. Currently failing `vivado_hls -f run_Sim.tcl`run because:
+4.    Run `vivado_hls -f *.tcl`. Currently failing `vivado_hls -f run_Sim.tcl`run because:
 ```bash
 WARNING: [HLS 200-40] Cannot find test bench file '../../dumpfiles/TTbar_PU200_Barrel.dump'
 WARNING: [HLS 200-40] Cannot find test bench file '../../dumpfiles/TTbar_PU200_HGCal.dump'
