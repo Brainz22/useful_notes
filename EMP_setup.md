@@ -137,6 +137,8 @@ Make sure GUI can be activated, i.e. use `ssh -Y ...`.
 
 # Deploying the Full Jet Project with the LLP Tagger:
 
+The project is built using the following two gitlab repos (which are added in step 3): [correlator-layer2](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-layer2/-/tree/master/jet_seededcone?ref_type=heads) and [correlator-common](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common).
+
 *    Set up CMSSW
 ```bash
 source /cvmfs/cms.cern.ch/cmsset_default.sh
@@ -167,7 +169,7 @@ gmake: *** [There are compilation/build errors. Please see the detail log above.
 *   To get rid of errors because of definitions in `CMSSW` only defining the `btagger`, I made changes as follows:
 Because I need `llpTagScore` instead of `btag_Score`, I thought of changing things in my `CMSSW`. Thus, I manually changed things that were defined as `b_tag` to `llp_tag` and `Btag` to `LLPtag` in the files `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/jets.h`, `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/dataformats.h`, and `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/gt_datatypes.h`.
 
-* Run `vivado_hls -f *.tcl`. Currently failing `vivado_hls -f run_Sim.tcl`run because:
+*    Run `vivado_hls -f *.tcl`. Currently failing `vivado_hls -f run_Sim.tcl`run because:
 ```bash
 WARNING: [HLS 200-40] Cannot find test bench file '../../dumpfiles/TTbar_PU200_Barrel.dump'
 WARNING: [HLS 200-40] Cannot find test bench file '../../dumpfiles/TTbar_PU200_HGCal.dump'
@@ -175,5 +177,10 @@ WARNING: [HLS 200-40] Cannot find test bench file '../../dumpfiles/TTbar_PU200_H
 WARNING: [HLS 200-40] Cannot find test bench file 'JetsOut.txt'
 WARNING: [HLS 200-40] Cannot find test bench file 'JetsOut_lr.txt'
 ```
+If working on `lxplus`, you should not run into this issue. Because I was working locally, I `git clone`d the `correlator-common` branch and built the `CMSSW_14...` there. Then, I used `scp russelld@lxplus.cern.ch:/afs/cern.ch/user/r/russelld/EMP/correlator-common/dumpfiles/* dump/` after making `dump/`. 
+
+   -   Next, I ran zip the folder: `tar -czvf dump.tar.gz dump`.
+   -   `scp` to Mulder: `scp dump.tar.gz russelld@mulder.t2.ucsd.edu:/home/users/russelld/EMP/Serenity/work/LLPtag-work/src/correlator-common/dumpfiles/`.
+   -    mulder, untar the folder: `tar -xzvf dump.tar.gz`.
 
 
