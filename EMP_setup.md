@@ -164,6 +164,9 @@ gmake: *** [There are compilation/build errors. Please see the detail log above.
    source /cvmfs/cms.cern.ch/cmsset_default.sh
    export CMSSW_VERSION=CMSSW_14_0_0_pre3
    source /data/software/xilinx/Vivado/2020.1/settings64.sh
+   #License
+   export XILINXD_LICENSE_FILE=2100@cselm2.ucsd.edu
+   export LM_LICENSE_FILE=2100@cselm2.ucsd.edu
    ```
 
 3.   To get rid of errors because of definitions in `CMSSW` only defining the `btagger`, I made changes as follows:
