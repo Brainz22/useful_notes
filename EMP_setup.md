@@ -13,6 +13,12 @@ You want to make sure you install the prerequisites:
 ### 1. Download ippb command files:
    `curl -L https://github.com/ipbus/ipbb/archive/dev/2023a.tar.gz | tar xvz`.
 
+### 1.1 Create and activate a new python environment with `python=2.7`
+```bash
+mamba create --name jetID python=2.7
+mamba activate jetID
+```
+
 ### 2. Source the following file as follows: `source ipbb-dev-2023a/env.sh`.
 
 ### 3. Run the `ipbb` commands specified on the link, which I also put inside the `EMP_setup.sh`. So, do `bash EMP_setup.sh`. My `EMP_setup.sh` has the following content:
