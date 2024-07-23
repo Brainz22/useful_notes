@@ -10,14 +10,15 @@ You want to make sure you install the prerequisites:
 * ipbb: dev/2022f pre-release or greater - the IPbus Builder Tool. Note: a single ipbb installation is not work area specific and suffices for any number of projects. Check EMP repo.
 
 ## Building FWK
-### 1. Download ippb command files:
-   `curl -L https://github.com/ipbus/ipbb/archive/dev/2023a.tar.gz | tar xvz`.
 
-### 1.1 Create and activate a new python environment with `python=2.7`
+### 1. Create and activate a new python environment with `python=2.7`
 ```bash
 mamba create --name jetID python=2.7
 mamba activate jetID
 ```
+
+### 1.1 Download ippb command files:
+   `curl -L https://github.com/ipbus/ipbb/archive/dev/2023a.tar.gz | tar xvz`.
 
 ### 2. Source the following file as follows: `source ipbb-dev-2023a/env.sh`.
 
