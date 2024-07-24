@@ -170,8 +170,8 @@ gmake: *** [There are compilation/build errors. Please see the detail log above.
    ```bash
    source /cvmfs/cms.cern.ch/cmsset_default.sh
    export CMSSW_VERSION=CMSSW_14_0_0_pre3
-   #source /data/software/xilinx/Vivado/2020.1/settings64.sh
-   source /home/xilinx/Vivado/2019.2/settings64.sh
+   #source /data/software/xilinx/Vivado/2020.1/settings64.sh #for opening GUI and LLPtagger synth
+   source /home/xilinx/Vivado/2019.2/settings64.sh #For synthesis of everything else
    #License
    export XILINXD_LICENSE_FILE=2100@cselm2.ucsd.edu
    export LM_LICENSE_FILE=2100@cselm2.ucsd.edu
