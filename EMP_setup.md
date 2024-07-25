@@ -9,6 +9,10 @@ You want to make sure you install the prerequisites:
 * Python 2.7 - available on most linux distributions, natively or as miniconda distribution.
 * ipbb: dev/2022f pre-release or greater - the IPbus Builder Tool. Note: a single ipbb installation is not work area specific and suffices for any number of projects. Check EMP repo.
 
+### Useful commands to help debug:
+
+* `ipbb dep report` after `ipbb proj create ...`.
+
 ## Building FWK
 
 ### 1. Create and activate a new python environment with `python=2.7`
