@@ -12,6 +12,7 @@ You want to make sure you install the prerequisites:
 ### Useful commands to help debug:
 
 * `ipbb dep report` after `ipbb proj create ...`.
+* `lsof | grep <.nfs0000000358311012000009a8>`, then `kill PID`. The PID will be shown by the List of Open Files `lsof` with input file given.
 
 ## Building FWK
 
@@ -131,7 +132,7 @@ After cloning the correct repos specified 1-4, and assuming I cloned the master 
 *   Create a project via:
 ```bash
 source /data/software/xilinx/Vivado/2020.1/settings64.sh # Mulder or Scully
-ipbb proj create vivado jet-sim correlator-layer2:jet_seededcone/board/serenity top_sim.dep
+ipbb proj create vivado LLPtagging correlator-layer2:jet_seededcone/board/serenity top_sim.dep
 ```
 This will add the `jet-sim` project in `../proj`.
 
