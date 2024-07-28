@@ -1,5 +1,9 @@
 # Setting up EMP FWK
 
+### Notes:
+
+* `csynth` of the tagger fails with `Vivado2019.2`, so I moved to `Vitis2020.1`.
+
 ### Prequisites:
 How to build the framework: https://serenity.web.cern.ch/serenity/emp-fwk/firmware/instructions.html.
 
