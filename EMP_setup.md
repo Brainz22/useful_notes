@@ -157,7 +157,20 @@ The project is built using the following two gitlab repos (which are added in st
 
 0. We need to download and synthesize the IPs, as stated on the instructions [here](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-layer2/-/tree/master/jet_seededcone?ref_type=heads). After running the two commands there, move on to step 1.
 
-1.    Set up CMSSW
+   *   Working on FNAL Correlator 4, the second command fails at the moment with the error:
+```bash
+COPY core "JetLoop" from local correlator-common instance
+Traceback (most recent call last):
+File "correlator-layer2/util/hls_cores.py", line 205, in <module>
+ get_correlator_common_hls(os.path.join(opt.CCPATH, cr[0]), cr[1], ci_url_base)
+File "correlator-layer2/util/hls_cores.py", line 98, in get_correlator_common_hls
+ for vhd_file in os.listdir(local_build_dir):
+FileNotFoundError: [Errno 2] No such file or directory: 'correlator-common/jetmet/seededcone/JetLoop/solution/impl/vhdl'
+```
+Maybe I need to run thsi after running `vivado_hls -f` on the respective files, since it looks for a folder create after that.
+   
+
+2.    Set up CMSSW
 ```bash
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 
