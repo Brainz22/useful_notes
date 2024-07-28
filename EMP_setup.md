@@ -155,6 +155,8 @@ Make sure GUI can be activated, i.e. use `ssh -Y ...`.
 
 The project is built using the following two gitlab repos (which are added in step 3 in the beginning): [correlator-layer2](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-layer2/-/tree/master/jet_seededcone?ref_type=heads) and [correlator-common](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common).
 
+0. We need to download and synthesize the IPs, as stated on the instructions [here](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-layer2/-/tree/master/jet_seededcone?ref_type=heads). After running the two commands there, move on to step 1.
+
 1.    Set up CMSSW
 ```bash
 source /cvmfs/cms.cern.ch/cmsset_default.sh
