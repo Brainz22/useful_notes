@@ -49,6 +49,23 @@ ipbb add git ssh://git@gitlab.cern.ch:7999/rufl/RuflCore.git -r d3ddf86f
 ipbb add git ssh://git@gitlab.cern.ch:7999/cms-cactus/phase2/firmware/correlator-common.git
 ipbb add git ssh://git@gitlab.cern.ch:7999/cms-cactus/phase2/firmware/correlator-layer2.git
 ```
+For Correlator 2 on FNAL, I had to use the following for some reason:
+
+```bash
+ipbb add git https://:@gitlab.cern.ch:8443/p2-xware/firmware/emp-fwk.git -r v0.8.1
+ipbb add git https://gitlab.cern.ch/ttc/legacy_ttc.git -b v2.1
+ipbb add git https://:@gitlab.cern.ch:8443/cms-tcds/cms-tcds2-firmware.git -b v0_1_1
+ipbb add git https://gitlab.cern.ch/HPTD/tclink.git -r fda0bcf
+ipbb add git https://gitlab.cern.ch/dth_p1-v2/slinkrocket_ips.git -b v03.12
+ipbb add git https://:@gitlab.cern.ch:8443/dth_p1-v2/slinkrocket.git -b v03.12
+ipbb add git https://github.com/ipbus/ipbus-firmware -b v1.9
+
+#For the Jet & MET setup
+ipbb add git https://:@gitlab.cern.ch:8443/rufl/RuflCore.git -r d3ddf86f
+ipbb add git https://:@gitlab.cern.ch:8443/cms-cactus/phase2/firmware/correlator-common.git -b PM_SerenityTest
+ipbb add git https://:@gitlab.cern.ch:8443/cms-cactus/phase2/firmware/correlator-layer2.git
+```
+
 You might get errors when adding some of the above repos. You need to add yourself to the e-groups `emp-fwk-users` and `cms-tcds2-users` using this [link](https://e-groups.cern.ch/e-groups/EgroupsSearchForm.do). Additionally, you might need `gitlab` and `github` keys. I put instructions on the notes [here](https://github.com/Brainz22/useful_notes/blob/main/Workflow%40corr4_APxV1.md).
 
 ### 4. We need to add a repo containing the "payload", I think this refers to the firmaware (all connections to the board and everything. I didn't have this, so I had to create one and documented the steps below:
