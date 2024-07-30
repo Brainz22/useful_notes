@@ -49,7 +49,7 @@ ipbb add git ssh://git@gitlab.cern.ch:7999/rufl/RuflCore.git -r d3ddf86f
 ipbb add git ssh://git@gitlab.cern.ch:7999/cms-cactus/phase2/firmware/correlator-common.git
 ipbb add git ssh://git@gitlab.cern.ch:7999/cms-cactus/phase2/firmware/correlator-layer2.git
 ```
-For Correlator 2 on FNAL, I had to use the following for some reason:
+For Correlator 2 on FNAL, I had to use `kinit username@CERN.CH` and add repos the following way for some reason:
 
 ```bash
 ipbb add git https://:@gitlab.cern.ch:8443/p2-xware/firmware/emp-fwk.git -r v0.8.1
