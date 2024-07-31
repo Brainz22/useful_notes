@@ -205,7 +205,7 @@ gmake: *** [There are compilation/build errors. Please see the detail log above.
    Export to environment `export CMSSW_VERSION=CMSSW_14_0_0_pre3`.
 
 
-2.   Add Vivado variables: `source /data/software/xilinx/Vivado/2020.1/settings64.sh` (might change depending on your local server).
+2.   Add Vivado variables: `source /data/software/xilinx/Vivado/2020.1/settings64.sh` (might change depending on your local server). Preferably, use `Vivado2019.2` to run produce wrappers, i.e. to run `vivado_hls -f`.
 
       Every time I log out and log back in, I need to run:
    ```bash
