@@ -2,7 +2,7 @@
 
 ### Notes:
 
-* `csynth` of the tagger fails with `Vivado2019.2` and `Vitis2020.1`, so I moved to `Vitis2023.2`.
+* `csynth` of the tagger fails with `Vivado2019.2` and `Vitis2020.1`, so I moved to `Vitis2020.2`.
 
 ### Prequisites:
 How to build the framework: https://serenity.web.cern.ch/serenity/emp-fwk/firmware/instructions.html.
