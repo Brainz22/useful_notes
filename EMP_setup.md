@@ -216,6 +216,9 @@ gmake: *** [There are compilation/build errors. Please see the detail log above.
    #License
    export XILINXD_LICENSE_FILE=2100@cselm2.ucsd.edu
    export LM_LICENSE_FILE=2100@cselm2.ucsd.edu
+   #license @corr4
+   export XILINXD_LICENSE_FILE=2100@xilinx-lic.fnal.gov
+   export LM_LICENSE_FILE=2100@xilinx-lic.fnal.gov
    ```
 
 3.   To get rid of errors because of definitions in `CMSSW` only defining the `btagger`, I made changes as follows:
