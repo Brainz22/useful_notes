@@ -174,7 +174,7 @@ gmake: *** [There are compilation/build errors. Please see the detail log above.
    ```
 
 3.   To get rid of errors because of definitions in `CMSSW` only defining the `btagger`, I made changes as follows:
-Because I need `llpTagScore` instead of `btag_Score`, I thought of changing things in my `CMSSW`. Thus, I manually changed things that were defined as `b_tag` to `llp_tag` and `Btag` to `LLPtag` in the files `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/jets.h`, `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/dataformats.h`, and `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/gt_datatypes.h`.
+Because I need `llpTagScore` instead of `btag_Score`, I thought of changing things in my `CMSSW`. Thus, I manually changed things that were defined as `b_tag` to `llp_tag` and `Btag` to `LLPtag` in the files `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/jets.h`, `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/dataformats.h`, and `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/gt_datatypes.h`. Also, add `llptag` wherever we see `btag` in `correlator-common/jetmet/seededcone/RUFL/Jet/firmware/hdl/PkgJet.vhd` and include the correct number of bits.
 
 4.    Run `vivado_hls -f *.tcl`. Currently failing `vivado_hls -f run_Sim.tcl`run because:
 ```bash
