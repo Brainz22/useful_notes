@@ -62,7 +62,7 @@ ipbb add git https://github.com/ipbus/ipbus-firmware -b v1.9
 
 #For the Jet & MET setup
 ipbb add git https://:@gitlab.cern.ch:8443/rufl/RuflCore.git -r d3ddf86f
-ipbb add git https://:@gitlab.cern.ch:8443/cms-cactus/phase2/firmware/correlator-common.git -b PM_SerenityTest
+ipbb add git https://:@gitlab.cern.ch:8443/cms-cactus/phase2/firmware/correlator-common.git
 ipbb add git https://:@gitlab.cern.ch:8443/cms-cactus/phase2/firmware/correlator-layer2.git
 ```
 
