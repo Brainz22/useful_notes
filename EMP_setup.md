@@ -193,12 +193,12 @@ If working on `lxplus`, you should not run into this issue. Because I was workin
    -    Run `vivado_hls -f run_Sim.tcl`
 
 5.   Add the `LLPtag` folder with the hls files, similar to [here](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/tree/btag_nn_token/jetmet/seededcone/btag?ref_type=heads).
-      5.1 Following the link, add the files `algo_llp.cpp` and `algo_llp.h` similar to the `btagger` on the link. Make sure you pay attention to the changes in `make_inputs`.
-      5.2 Add `synchronizer.h`.
-      5.3 Add `data.h` and make changes to the respective file following the one for the btagger.
-      5.4 Add the respective `.tcl` files in one directory above `../`.
-      5.5 Remember that wrappers need to be put in the default library. Thus, edit the `.tcl` files above, accordingly.
-      5.6 Add the wrappers (similar to the ones from the btagger) in `seededcone/firmware/`. Change the bits number to be 57 + output bits of `LLPtagger`. Right now, I am trying with 6 because total number must be 64.
+      * Following the link, add the files `algo_llp.cpp` and `algo_llp.h` similar to the `btagger` on the link. Make sure you pay attention to the changes in `make_inputs`.
+      * Add `synchronizer.h`.
+      * Add `data.h` and make changes to the respective file following the one for the btagger.
+      * Add the respective `.tcl` files in one directory above `../`.
+      * Remember that wrappers need to be put in the default library. Thus, edit the `.tcl` files above, accordingly.
+      * Add the wrappers (similar to the ones from the btagger) in `seededcone/firmware/`. Change the bits number to be 57 + output bits of `LLPtagger`. Right now, I am trying with 6 because total number must be 64.
 
 7.  Add variables accordingly in `src/correlator-layer2/jet_seededcone/firmware/hdl/PkgConstants.vhd`, similar to the `btag_nn_token` branch. 
 
