@@ -193,10 +193,16 @@ If working on `lxplus`, you should not run into this issue. Because I was workin
    -    Run `vivado_hls -f run_Sim.tcl`
 
 5.   Add the `LLPtag` folder with the hls files, similar to [here](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/tree/btag_nn_token/jetmet/seededcone/btag?ref_type=heads).
+      5.1 Following the link, add the files `algo_llp.cpp` and `algo_llp.h` similar to the `btagger` on the link. Make sure you pay attention to the changes in `make_inputs`.
+      5.2 Add `synchronizer.h`.
+      5.3 Add `data.h` and make changes to the respective file following the one for the btagger.
+      5.4 Add the respective `.tcl` files in one directory above `../`.
+      5.5 Remember that wrappers need to be put in the default library. Thus, edit the `.tcl` files above, accordingly.
+      5.6 Add the wrappers (similar to the ones from the btagger) in `seededcone/firmware/`. Change the bits number to be 57 + output bits of `LLPtagger`. Right now, I am trying with 6 because total number must be 64.
 
-6.   I add and change accordingly following the branch in the attached in step 5. `firmware_hls` is the folder resulting from converting our model using `hls4ml`. The new chages there need to be included in the `data.h` and add the `synchronizer.h`. Some new variables may need to be defined here and there Check errors.
+7.  Add variables accordingly in `src/correlator-layer2/jet_seededcone/firmware/hdl/PkgConstants.vhd`, similar to the `btag_nn_token` branch. 
 
-7.   The main changes will be in the `LLPag` folder (`cd ..` from `firmware_hls`). We need the `.tcl` to `C synthesize` the wrapper `.cpp` files. One of the `.tcl` files is for the `NN`, while the other is for the `synchronizer`. For me, `firmware_hls/algo_LLP.cpp` is the wrapper, which also contains the `synchronizer`. Once we have those things, we can run everything with the following `.sh` file and run it using the `bash` command:
+8.   The main changes will be in the `LLPag` folder (`cd ..` from `firmware_hls`). We need the `.tcl` to `C synthesize` the wrapper `.cpp` files. One of the `.tcl` files is for the `NN`, while the other is for the `synchronizer`. For me, `firmware_hls/algo_LLP.cpp` is the wrapper, which also contains the `synchronizer`. Once we have those things, we can run everything with the following `.sh` file and run it using the `bash` command:
 ```bash
 #Use vivado2022.1 for compilation
 command="vitis_hls -f"
