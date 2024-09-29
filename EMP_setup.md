@@ -200,9 +200,11 @@ If working on `lxplus`, you should not run into this issue. Because I was workin
       * Remember that wrappers need to be put in the default library. Thus, edit the `.tcl` files above, accordingly.
       * Add the wrappers (similar to the ones from the btagger) in `seededcone/firmware/`. Change the bits number to be 57 + output bits of `LLPtagger`. Right now, I am trying with 6 because total number must be 64.
 
-7.  Add variables accordingly in `src/correlator-layer2/jet_seededcone/firmware/hdl/PkgConstants.vhd`, similar to the `btag_nn_token` branch. 
+7.  Add variables accordingly in `src/correlator-layer2/jet_seededcone/firmware/hdl/PkgConstants.vhd`, similar to the `btag_nn_token` branch.
 
-8.   The main changes will be in the `LLPag` folder (`cd ..` from `firmware_hls`). We need the `.tcl` to `C synthesize` the wrapper `.cpp` files. One of the `.tcl` files is for the `NN`, while the other is for the `synchronizer`. For me, `firmware_hls/algo_LLP.cpp` is the wrapper, which also contains the `synchronizer`. Once we have those things, we can run everything with the following `.sh` file and run it using the `bash` command:
+8.  Make changes to the file `correlator-common/jetmet/seededcone/JetControl/firmware/hdl/JetControl.vhd` following the [btagger](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/tree/btag_nn_token/jetmet/seededcone/btag?ref_type=heads).
+
+9.   The main changes will be in the `LLPag` folder (`cd ..` from `firmware_hls`). We need the `.tcl` to `C synthesize` the wrapper `.cpp` files. One of the `.tcl` files is for the `NN`, while the other is for the `synchronizer`. For me, `firmware_hls/algo_LLP.cpp` is the wrapper, which also contains the `synchronizer`. Once we have those things, we can run everything with the following `.sh` file and run it using the `bash` command:
 ```bash
 #Use vivado2022.1 for compilation
 command="vitis_hls -f"
