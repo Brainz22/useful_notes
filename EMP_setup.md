@@ -202,7 +202,7 @@ If working on `lxplus`, you should not run into this issue. Because I was workin
 
 7.  Add variables accordingly in `src/correlator-layer2/jet_seededcone/firmware/hdl/PkgConstants.vhd`, similar to the `btag_nn_token` branch.
 
-8.  Make changes to the file `correlator-common/jetmet/seededcone/JetControl/firmware/hdl/JetControl.vhd` following the [btagger](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/tree/btag_nn_token/jetmet/seededcone/btag?ref_type=heads).
+8.  Make changes to the file `correlator-common/jetmet/seededcone/JetControl/firmware/hdl/JetControl.vhd` following the [btagger]([https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/tree/btag_nn_token/jetmet/seededcone/btag?ref_type=heads](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/blob/btag_nn_token/jetmet/seededcone/JetControl/firmware/hdl/JetControl.vhd?ref_type=heads).
 
 9.   The main changes will be in the `LLPag` folder (`cd ..` from `firmware_hls`). We need the `.tcl` to `C synthesize` the wrapper `.cpp` files. One of the `.tcl` files is for the `NN`, while the other is for the `synchronizer`. For me, `firmware_hls/algo_LLP.cpp` is the wrapper, which also contains the `synchronizer`. Once we have those things, we can run everything with the following `.sh` file and run it using the `bash` command:
 ```bash
