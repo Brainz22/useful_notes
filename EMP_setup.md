@@ -195,7 +195,7 @@ If working on `lxplus`, you should not run into this issue. Because I was workin
 5.   Add the `LLPtag` folder with the hls files, similar to [here](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/tree/btag_nn_token/jetmet/seededcone/btag?ref_type=heads).
       * Following the link, add the files `algo_llp.cpp` and `algo_llp.h` similar to the `btagger` on the link. Make sure you pay attention to the changes in `make_inputs`.
       * Add `synchronizer.h`.
-      * Add `data.h` and make changes to the respective file following the one for the btagger.
+      * Add `data.h` and make changes to the respective file following the one for the btagger file [here](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/blob/btag_nn_token/jetmet/seededcone/firmware/data.h?ref_type=heads). Basically, we need to define `lllp_tag_score_t`, a `clear()` function, and some constants similar to the file on the link.
       * Add the respective `.tcl` files in one directory above `../`.
       * Remember that wrappers need to be put in the default library. Thus, edit the `.tcl` files above, accordingly.
       * Add the wrappers (similar to the ones from the btagger) in `seededcone/firmware/`. Change the bits number to be 57 + output bits of `LLPtagger`. Right now, I am trying with 6 because total number must be 64.
