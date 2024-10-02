@@ -20,4 +20,17 @@ and copy things there.
 
 5. `cd MADGRAPH_Test` and run the `.dat file` with `mg5_aMC <file-name>.dat`.
 
+## Producing CMS Gridpack
+
+1. I am starting from the directory 
+```bash
+[russelld@lxplus820 work]$ pwd
+/afs/cern.ch/user/r/russelld/ALPs/work
+[russelld@lxplus820 work]$ ls
+LLP-Reinterpretation
+[russelld@lxplus820 work]$
+```
+Then, run `git clone git@github.com:cms-sw/genproductions.git genproductions`. This will clone the needed repo.
+
+2. Run `cd genproductions/bin/MadGraph5_aMCatNLO/`...
 
