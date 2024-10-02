@@ -223,3 +223,8 @@ $command run_hls_LLP.tcl
 
 12. Run all other `.tcl` files using `vivado_hls -f <file.tcl>`, but vivado version `2019.2`.
 
+13. In the folder `correlator-common/jetmet/jec`, I had to use vitis 2022.2 and run `vitis_hls -f run_Synth.tcl`. Otherwise, either `jec_main.vhd` would come out with different name after synthesis or the bits did not match in `JetCorrectionWrapped.vhd`.
+
+14. Same thing in the folder `correlator-common/jetmet/htmht`. Use vitis 2019.2 and run `bash synth_all.sh`.
+
+15. After everything is synthesized without errors, follow the previous section `Building Project and Running a Quick Simulation`.
