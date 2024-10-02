@@ -20,6 +20,9 @@ and copy things there.
 
 5. `cd MADGRAPH_Test` and run the `.dat file` with `mg5_aMC <file-name>.dat`.
 
+6. After execution, the above will generate a new folder based on the output command at the end of the `.dat` file. In this folder, we will need the `proc`(process) card and `run` card, which are also `.dat` files.
+
+
 ## Producing CMS Gridpack
 
 1. I am starting from the directory 
@@ -32,5 +35,8 @@ LLP-Reinterpretation
 ```
 Then, run `git clone git@github.com:cms-sw/genproductions.git genproductions`. This will clone the needed repo.
 
-2. Run `cd genproductions/bin/MadGraph5_aMCatNLO/`...
+2. Run `cd genproductions/bin/MadGraph5_aMCatNLO/`. At this location, we can try the example cards to run a simulation to see if things work. Run `./gridpack_generation.sh wplustest_4f_LO cards/examples/wplustest_4f_LO 1nd`. This command should run without any immediate errors.
+
+3. The next would be to copy over the `proc` and `run` cards and create a new folder in `/cards/`, following the same format as the above `cards/examples/wplustest_4f_LO`.  
+
 
