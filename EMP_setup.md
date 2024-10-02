@@ -204,9 +204,13 @@ If working on `lxplus`, you should not run into this issue. Because I was workin
 
 8.  Make changes to the file `correlator-common/jetmet/seededcone/JetControl/firmware/hdl/JetControl.vhd` following the [btagger](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/blob/btag_nn_token/jetmet/seededcone/JetControl/firmware/hdl/JetControl.vhd?ref_type=heads).
 
-9.   The main changes will be in the `LLPag` folder (`cd ..` from `firmware_hls`). We need the `.tcl` to `C synthesize` the wrapper `.cpp` files. One of the `.tcl` files is for the `NN`, while the other is for the `synchronizer`. For me, `firmware_hls/algo_LLP.cpp` is the wrapper, which also contains the `synchronizer`. Once we have those things, we can run everything with the following `.sh` file and run it using the `bash` command:
+9. Add the `.vhd` wrappers in the location `correlator-common/jetmet/seededcone/firmware/`. These are similar to the ones for the btagger [here](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/tree/btag_nn_token/jetmet/seededcone/firmware?ref_type=heads). So, use those and change things accordingly.
+
+10. Add the `BitonicSort.vhd` file and the change the respective `.dep` file similar to the way done in [these folders](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/tree/btag_nn_token/l2-deregionizer/RUFL/IO/firmware?ref_type=heads). 
+
+11.   The main changes will be in the `LLPag` folder (`cd ..` from `firmware_hls`). We need the `.tcl` to `C synthesize` the wrapper `.cpp` files. One of the `.tcl` files is for the `NN`, while the other is for the `synchronizer`. For me, `firmware_hls/algo_LLP.cpp` is the wrapper, which also contains the `synchronizer`. Once we have those things, we can run everything with the following `.sh` file and run it using the `bash` command (make sure you use Vitis 2022.2 for this):
 ```bash
-#Use vivado2022.1 for compilation
+#Use vivado2022.2 for compilation
 command="vitis_hls -f"
 
 rm -rf proj_llp/ #made by run_hls_LLP.tcl
@@ -216,4 +220,6 @@ rm -rf firmware/
 $command run_llptag_sync.tcl
 $command run_hls_LLP.tcl
 ```
+
+12. Run all other `.tcl` files using `vivado_hls -f <file.tcl>`, but vivado version `2019.2`.
 
