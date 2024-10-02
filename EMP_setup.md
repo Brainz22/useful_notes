@@ -107,16 +107,16 @@ After cloning the correct repos specified 1-4, and assuming I cloned the master 
 source /data/software/xilinx/Vivado/2020.1/settings64.sh # Mulder or Scully
 ipbb proj create vivado LLPtagging correlator-layer2:jet_seededcone/board/serenity top_sim.dep
 ```
-This will add the `jet-sim` project in `../proj`.
+This will add the `LLPtagging` project in `../proj`.
 
 *   Run simulation and open vivado GUI:
 ```bash
-cd ../proj/jet-sim
+cd ../proj/LLPtagging
 ipbb vivado generate-project
 ```
 Locate the `.xpr` file that will be generated and run:
 ```bash
-vivado jet-sim.xpr
+vivado LLPtagging.xpr
 ```
 Make sure GUI can be activated, i.e. use `ssh -Y ...`.
 
