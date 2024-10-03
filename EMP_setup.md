@@ -227,4 +227,6 @@ $command run_hls_LLP.tcl
 
 14. Same thing in the folder `correlator-common/jetmet/htmht`. Use vitis 2019.2 and run `bash synth_all.sh`.
 
-15. After everything is synthesized without errors, follow the previous section `Building Project and Running a Quick Simulation`.
+15. Make sure to add the `JetLLPtag` library by adding the line `include -c jetmet/seededcone/LLPtag LLPtag.dep` in the file `correlator-common/jetmet/seededcone/firmware/cfg/jet.dep`. 
+
+16. After everything is synthesized without errors, follow the previous section `Building Project and Running a Quick Simulation`.
