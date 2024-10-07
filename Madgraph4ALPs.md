@@ -16,7 +16,9 @@ As the instructions in that repo suggest. This will install `madgraph`.
 ```bash
 mkdir MADGRAPH_Test
 ```
-and copy things there.
+and copy things there. `cp` the model wee need from `/madgraph_models/` and the card from `/madgraph_generation/`. For the `ALP_WB`, do:
+ * `cp -r madgraph_models/ALP_WB MADGRAPH_Test`
+ * `cp madgraph_generation generate_walp_<...>.dat`
 
 5. `cd MADGRAPH_Test` and run the `.dat file` with `mg5_aMC <file-name>.dat`.
 
