@@ -9,7 +9,7 @@ How to build the framework: https://serenity.web.cern.ch/serenity/emp-fwk/firmwa
 
 You want to make sure you install the prerequisites:
 
-* Xilinx Vivado: 2021.2
+* Xilinx vitis2022.2, vivado2019.2. I found that different versions give different results sometimes. I noted on the steps whenever I changed versions.
 * Python 2.7 - available on most linux distributions, natively or as miniconda distribution.
 * ipbb: dev/2022f pre-release or greater - the IPbus Builder Tool. Note: a single ipbb installation is not work area specific and suffices for any number of projects. Check EMP repo.
 
@@ -195,7 +195,7 @@ If working on `lxplus`, you should not run into this issue. Because I was workin
    -    mulder, untar the folder: `tar -xzvf dump.tar.gz`.
    -    Run `vivado_hls -f run_Sim.tcl`
 
-5.   Add the `LLPtag` folder with the hls files, similar to [here](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/tree/btag_nn_token/jetmet/seededcone/btag?ref_type=heads).
+5.   Add the `LLPtag` folder with the hls files, similar to [here](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/tree/btag_nn_token/jetmet/seededcone/btag?ref_type=heads). I used vivado2020.1 to convert the model to hls because it optimized the latency (versus vitis2022.2, for example).
       * Following the link, add the files `algo_llp.cpp` and `algo_llp.h` similar to the `btagger` on the link. Make sure you pay attention to the changes in `make_inputs`.
       * Add `synchronizer.h`.
       * Add `data.h` and make changes to the respective file following the one for the btagger file [here](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common/-/blob/btag_nn_token/jetmet/seededcone/firmware/data.h?ref_type=heads). Basically, we need to define `lllp_tag_score_t`, a `clear()` function, and some constants similar to the file on the link.
