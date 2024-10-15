@@ -15,6 +15,8 @@ You want to make sure you install the prerequisites:
 
 ### Useful commands to help debug:
 
+* `cp /home/rmarroqu/EMP/btag-work/proj/Btagging/Btagging/Btagging.sim/sim_1/behav/xsim/source.txt /home/rmarroqu/EMP/LLPtag-work/proj/LLPtagging/LLPtagging/LLPtagging.sim/sim_1/behav/xsim` and `cp /home/rmarroqu/EMP/btag-work/proj/Btagging/Btagging/Btagging.sim/sim_1/behav/xsim/source.txt /home/rmarroqu/EMP/LLPtag-work/src/emp-fwk/components/testbench/firmware/hdl` (last one is for synthesis).
+
 * `ipbb dep report` after `ipbb proj create ...`.
 * `lsof | grep <.nfs0000000358311012000009a8>`, then `kill PID`. The PID will be shown by the List of Open Files `lsof` with input file given.
 
@@ -174,7 +176,8 @@ gmake: *** [There are compilation/build errors. Please see the detail log above.
    ```
 
 3.   To get rid of errors because of definitions in `CMSSW` only defining the `btagger`, I made changes as follows:
-Because I need `llpTagScore` instead of `btag_Score`, I thought of changing things in my `CMSSW`. Thus, I manually changed things that were defined as `b_tag` to `llp_tag` and `Btag` to `LLPtag` in the files `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/jets.h`, `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/dataformats.h`, and `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/gt_datatypes.h`. Also, add `llptag` wherever we see `btag` in `correlator-common/jetmet/seededcone/RUFL/Jet/firmware/hdl/PkgJet.vhd` and include the correct number of bits.
+Because I need `llpTagScore` instead of `btag_Score`, I thought of changing things in my `CMSSW`. Thus, I manually changed things that were defined as `b_tag` to `llp_tag` and `Btag` to `LLPtag` in the files `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/jets.h`, `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/dataformats.h`, and `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/gt_datatypes.h`. The amount of the bits we'll use comes from `struct Jet` in the file `correlator-common/CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/jets.h`. The specific objects there are defined in `gt_datatypes.h` and `datatypes.h`. However, the bits we use are taken from `datatypes.h`.
+Also, add `llptag` wherever we see `btag` in `correlator-common/jetmet/seededcone/RUFL/Jet/firmware/hdl/PkgJet.vhd` and include the correct number of bits there, too.
 
 4.    Run `vivado_hls -f *.tcl`. Currently failing `vivado_hls -f run_Sim.tcl`run because:
 ```bash
@@ -228,6 +231,20 @@ $command run_hls_LLP.tcl
 14. Same thing in the folder `correlator-common/jetmet/htmht`. Use vitis 2019.2 and run `bash synth_all.sh`.
 
 15. Make sure to add the `JetLLPtag` library by adding the line `include -c jetmet/seededcone/LLPtag LLPtag.dep` in the file `correlator-common/jetmet/seededcone/firmware/cfg/jet.dep`.
+
 16. Did a minor change to `JetFormatWrapped.vhd`. I chaged the port `q` to `q_V` to match `seededcone/JetFormat/solution/syn/vhdl/jet_format.vhd/jetFormat.vhd`.
 
-17. After everything is synthesized without errors, follow the previous section `Building Project and Running a Quick Simulation`.
+17. Made minor change to `JetCorrectionWrapped.vhd`. `jet_in` and `jet_out` should amount to the bits used in `struct Jet` in the file `correlator-common/CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/jets.h`. The specific objects there are defined in `gt_datatypes.h` and `datatypes.h`. However, the bits we use are taken from `datatypes.h`. Then, the rest out of the 64 bits in `.data` datatype, we set to zero as `qjet.data(63) <= '0';`. This is is done in the btagger, too. Error 1 was related to this.
+
+
+18. After everything is synthesized without errors, follow the previous section `Building Project and Running a Quick Simulation`.
+
+ 
+
+
+## Possible errors: 
+
+1. This happened after messing with the `.data` type located in `correlator-common/l2-deregionizer/RUFL/IO/firmware/hdl/PkgIO.vhd`. It needs to have elements `[63:0]`. 
+```bash
+ERROR: [VRFC 10-666] expression has 64 elements; expected 63 [/home/rmarroqu/EMP/LLPtag-work/src/correlator-layer2/jet_seededcone/firmware/hdl/input.vhd:38]
+```
