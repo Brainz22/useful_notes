@@ -244,7 +244,9 @@ $command run_hls_LLP.tcl
 
 ## Possible errors: 
 
-1. This happened after messing with the `.data` type located in `correlator-common/l2-deregionizer/RUFL/IO/firmware/hdl/PkgIO.vhd`. It needs to have elements `[63:0]`. 
+1. Error about not finding the `source.txt` file. Download it from this [link](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-layer2/-/jobs/41147266/artifacts/file/emu_patterns/l2_in_merged_0.txt.gz) and name it `source.txt`. Then, add it to the respective locations shown by the error. This is the reason why I have the two `cp` commands in the `useful commands...` section.
+
+2. This happened after messing with the `.data` type located in `correlator-common/l2-deregionizer/RUFL/IO/firmware/hdl/PkgIO.vhd`. It needs to have elements `[63:0]`. 
 ```bash
 ERROR: [VRFC 10-666] expression has 64 elements; expected 63 [/home/rmarroqu/EMP/LLPtag-work/src/correlator-layer2/jet_seededcone/firmware/hdl/input.vhd:38]
 ```
