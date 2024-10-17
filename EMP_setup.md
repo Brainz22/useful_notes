@@ -72,34 +72,6 @@ You might get errors when adding some of the above repos. You need to add yourse
 
 
 
-### Building the Firmware on EMP
-I am starting from here: `/home/users/russelld/EMP/algo-work/src`, then going into seeded cone in `/home/users/russelld/EMP/algo-work/src/correlator-common/jetmet/seededcone` when needed.
-
-1. In `/seededcone/`, we need to run `vivado_hls xx.tcl` on several `.tcl` files on `correlator-common.git`. First, we need to install CMSSW in `/correlator-common/` .
-   * Run (this installation is only needed once):
-     ```bash
-     source /cvmfs/cms.cern.ch/cmsset_default.sh
-     ./utils/setup_cmssw.sh -run CMSSW_12_5_5_patch1 p2l1pfp:L1PF_12_5_X l1ct-125x-v1.15
-     ```
-     **Note** that on Scully, the file `./utils/setup_cmssw.sh` did not exist. I had to copy it from the `correlator 4`.
-
-   * Set the path by running `export CMSSW_VERSION=CMSSW_12_5_5_patch1`
-  
-   * Source `vivado 2019.1` (for now) on Scully as follows: 
-   ```bash
-   source /home/xilinx/Vivado/2019.1/.settings64-Vivado.sh  vivado
-   ```
-
-2. Run the `.tcl` files in `/correlator-common/jetmet/seededcone/`. We can use a bash for loop as follows:
-```bash
-command="vivado_hls"
-
-for file in run_Jet*.tcl; do
-    $command "$file"
-done
-```
-So, put that code inside a `<file_name>.sh` file and run `bash <file_name>.sh`. This should generate folders for each file and `.vhd` files inside `/firmware/` (DONE).
-
 # Building Project and Running a Quick Simulation
 
 After cloning the correct repos specified 1-4, and assuming I cloned the master branch of `correlator layer 2`:
