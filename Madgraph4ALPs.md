@@ -45,8 +45,8 @@ Then, run `git clone git@github.com:cms-sw/genproductions.git genproductions`. T
   * change directory (cd) to the cards location: `cd ~/ALPs/work/LLP-Reinterpretation/MADGRAPH_Test/llp_gen/madgraph_pythia/Cards`
   * Copy the cards to where they need to be in folder: `genproduction`: cp proc_card_mg5.dat run_card.dat ~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/cards/llp_gen`
   * change directory (cd) to where you copied the cards:  `cd ~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/cards/llp_gen` 
-  * rename the cards names by using the move (mv) command: `mv proc_card_mg5.dat ALP_WB_proc_card.dat` and `mv run_card.dat ALP_WB_run_card.dat`.
+  * rename the cards names by using the move (mv) command: `mv proc_card_mg5.dat llp_gen_proc_card.dat` and `mv run_card.dat llp_gen_run_card.dat`.
 
-4. Create a gridpack locally using the `./generate_gridpack.sh ALP_WB cards/ALP_WB 1nd`. See details of this command on the header of the file `generate_gridpack.sh`. This `.sh` script is found in `~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/`. See details of this command on the header of the file `generate_gridpack.sh`.
+4. Create a gridpack locally using the `./generate_gridpack.sh llp_gen cards/llp_gen 1nd`. See details of this command on the header of the file `generate_gridpack.sh`. This `.sh` script is found in `~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/`. See details of this command on the header of the file `generate_gridpack.sh`.
 
 
