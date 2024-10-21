@@ -41,11 +41,11 @@ Then, run `git clone git@github.com:cms-sw/genproductions.git genproductions`. T
 2. Run `cd genproductions/bin/MadGraph5_aMCatNLO/`. At this location, we can try the example cards to run a simulation to see if things work. Run `./gridpack_generation.sh wplustest_4f_LO cards/examples/wplustest_4f_LO 1nd`. This command should run without any immediate errors.
 
 3. The next would be to copy over the `proc` and `run` cards and create a new folder in `/cards/`, following the same format as the above: `cards/examples/wplustest_4f_LO`. Basically,
-  * `cd ~/ALPs/work/genproduction/bin/cards`, `mkdir ALP_WB`.
-  * `cd ~/ALPs/work/LLP-Reinterpretation/MADGRAPH_Test/llp_gen/madgraph_pythia/Cards`
-  * `cp proc_card_mg5.dat run_card.dat ~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/cards/ALP_WB`
-  * `cd ~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/cards/ALP_WB`
-  * `mv proc_card_mg5.dat ALP_WB_proc_card.dat` and `mv run_card.dat ALP_WB_run_card.dat`.
+  * `cd ~/ALPs/work/genproduction/bin/cards`, `mkdir llp_gen`. This directory comes from the definition in the file `generate_walp_1W0B_1GeV_2Jets.dat` we used to produce the `llp_gen` folder in the previous section.
+  * change directory (cd) to the cards location: `cd ~/ALPs/work/LLP-Reinterpretation/MADGRAPH_Test/llp_gen/madgraph_pythia/Cards`
+  * Copy the cards to where they need to be in folder: `genproduction`: cp proc_card_mg5.dat run_card.dat ~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/cards/llp_gen`
+  * change directory (cd) to where you copied the cards:  `cd ~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/cards/llp_gen` 
+  * rename the cards names by using the move (mv) command: `mv proc_card_mg5.dat ALP_WB_proc_card.dat` and `mv run_card.dat ALP_WB_run_card.dat`.
 
 4. Create a gridpack locally using the `./generate_gridpack.sh ALP_WB cards/ALP_WB 1nd`. See details of this command on the header of the file `generate_gridpack.sh`. This `.sh` script is found in `~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/`. See details of this command on the header of the file `generate_gridpack.sh`.
 
