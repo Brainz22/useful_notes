@@ -46,7 +46,16 @@ Then, run `git clone git@github.com:cms-sw/genproductions.git genproductions`. T
   * Copy the cards to where they need to be in folder: `genproduction`: cp proc_card_mg5.dat run_card.dat ~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/cards/llp_gen`
   * change directory (cd) to where you copied the cards:  `cd ~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/cards/llp_gen` 
   * rename the cards names by using the move (mv) command: `mv proc_card_mg5.dat llp_gen_proc_card.dat` and `mv run_card.dat llp_gen_run_card.dat`.
+  * go back two directories: `cd ../..`. You should see several `.sh` files if you do `ls`.
 
-4. Create a gridpack locally using the `./generate_gridpack.sh llp_gen cards/llp_gen 1nd`. See details of this command on the header of the file `generate_gridpack.sh`. This `.sh` script is found in `~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/`. See details of this command on the header of the file `generate_gridpack.sh`.
+
+4. Create a gridpack locally using the `./generate_gridpack.sh llp_gen cards/llp_gen 1nd`. See details of this command on the header of the file `generate_gridpack.sh`. This `.sh` script is found in `~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/`. See details of this command on the header of the file `generate_gridpack.sh`. It will generate a file like the following: `llp_gen_el8_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz`.
+
+5. This is the gridpack we need. Now, we need to input this into a cms `fragment.py`:
+   *  Use the fragment in this [link](https://gist.github.com/Brainz22/8538908efe29ab002eb1863be3db0589). Only the change the path in line 5 for the file you generated in the previous step.
+   * git-add configuration package
+   * move fragment in that package
+   * run cmsDriver command ...
+
 
 
