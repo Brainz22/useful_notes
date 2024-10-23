@@ -51,12 +51,27 @@ Then, run `git clone git@github.com:cms-sw/genproductions.git genproductions`. T
 
 4. Create a gridpack locally using the `./generate_gridpack.sh llp_gen cards/llp_gen 1nd`. See details of this command on the header of the file `generate_gridpack.sh`. This `.sh` script is found in `~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/`. See details of this command on the header of the file `generate_gridpack.sh`. It will generate a file like the following: `llp_gen_el8_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz`.
 
-5. This is the gridpack we need. Now, we need to input this into a cms `fragment.py`:
-   * Move to `CMSSW_12_4_14_patch3`. Assuming you are in `ALPs/work`
+5. Go back to the working directory. You need to be in `ALPs/work`. Now, we need to install a CMS Software (cmssw) package. You can do that as follows:
+ * Run the following commands: 
+```bash
+source /cvmfs/cms.cern.ch/cmsset_default.sh
+export SCRAM_ARCH=el8_amd64_gcc10
+cmsrel CMSSW_12_4_14_patch3
+```   
+
+6. Step 4 gave us the gridpack we need. Now, we need to input this into a cms `fragment.py` and run the `cmsDriver.py` command:
+   * Change directory to `CMSSW_12_4_14_patch3`. Assuming you are in `ALPs/work`
    * Use the fragment in this [link](https://gist.github.com/Brainz22/8538908efe29ab002eb1863be3db0589) (it already has edits from Sie Xie). Only the change the path in line 5 for the file you generated in the previous step.
    * git-add configuration package. Do `git cms-addpkg Configuration/Generator`
-   * move fragment in that package
-   * run cmsDriver command ...
+   * Copy the file content from the link. Open a file with your terminal: `vim fragment.py`. Once in the `vim` editor, press `i` to switch to insert mode and paste the contents you copied. Exit `vim` via `esc` to exit insert mode and `:wq` to exit and save the file content with its contents.
+   * Change directory to and using `cd Configuration/Generator`.
+   * Make a directory named `python`: `mkdir python` and change into it: `cd python`.
+   * Bring the `fragment.py` by going back `src`, i.e. go back 3 directories: `cd ../../..` and `mv fragment.py Configuration/Generator/python`.
+   * Run `scram b -j8`. This is needed to compile any change we make to our `CMSSW_12_4_14_patch3` package.
+   * run cmsDriver as follows:
+```bash
+cmsDriver.py Configuration/Generator/python/fragment.py --mc --eventcontent NANOAODGEN --customise Configuration/DataProcessing/Utils.addMonitoring --datatier NANOAOD --conditions 124X_mcRun3_2022_realistic_v12 --beamspot Realistic25ns13p6TeVEarly2022Collision --step LHE,GEN,NANOGEN --geometry DB:Extended --era Run3
+```
 
 
 
