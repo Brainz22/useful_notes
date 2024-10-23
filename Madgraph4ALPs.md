@@ -52,8 +52,9 @@ Then, run `git clone git@github.com:cms-sw/genproductions.git genproductions`. T
 4. Create a gridpack locally using the `./generate_gridpack.sh llp_gen cards/llp_gen 1nd`. See details of this command on the header of the file `generate_gridpack.sh`. This `.sh` script is found in `~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/`. See details of this command on the header of the file `generate_gridpack.sh`. It will generate a file like the following: `llp_gen_el8_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz`.
 
 5. This is the gridpack we need. Now, we need to input this into a cms `fragment.py`:
-   *  Use the fragment in this [link](https://gist.github.com/Brainz22/8538908efe29ab002eb1863be3db0589). Only the change the path in line 5 for the file you generated in the previous step.
-   * git-add configuration package
+   * Move to `CMSSW_12_4_14_patch3`. Assuming you are in `ALPs/work`
+   * Use the fragment in this [link](https://gist.github.com/Brainz22/8538908efe29ab002eb1863be3db0589) (it already has edits from Sie Xie). Only the change the path in line 5 for the file you generated in the previous step.
+   * git-add configuration package. Do `git cms-addpkg Configuration/Generator`
    * move fragment in that package
    * run cmsDriver command ...
 
