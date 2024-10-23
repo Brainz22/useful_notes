@@ -70,7 +70,15 @@ cmsrel CMSSW_12_4_14_patch3
    * Run `scram b -j8`. This is needed to compile any change we make to our `CMSSW_12_4_14_patch3` package.
    * run cmsDriver as follows:
 ```bash
-cmsDriver.py Configuration/Generator/python/fragment.py --mc --eventcontent NANOAODGEN --customise Configuration/DataProcessing/Utils.addMonitoring --datatier NANOAOD --conditions 124X_mcRun3_2022_realistic_v12 --beamspot Realistic25ns13p6TeVEarly2022Collision --step LHE,GEN,NANOGEN --geometry DB:Extended --era Run3
+cmsDriver.py Configuration/Generator/python/fragment.py \
+--mc \
+--eventcontent NANOAODGEN \
+--customise Configuration/DataProcessing/Utils.addMonitoring \
+--datatier NANOAOD --conditions 124X_mcRun3_2022_realistic_v12 \
+--beamspot Realistic25ns13p6TeVEarly2022Collision \
+--step LHE,GEN,NANOGEN \
+--geometry DB:Extended \
+--era Run3
 ```
 
 
