@@ -1,3 +1,7 @@
+0. For lxplus, I don't need to produce any nanoAOD files since we can use the centrally produced ones here: `/eos/cms/store/group/dpg_trigger/comm_trigger/L1Trigger/alobanov/phase2/menu/ntuples/14X/v38/MinBias_TuneCP5_14TeV-pythia8/MinBias_131_L1Fix_IBv9_wTT/240412_211203/0000/*.root`.
+
+## Producing nanoAOD files:
+
 1. We have to install `CMSSW_14_0_pre3` by following the recipe on the twiki [here](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideL1TPhase2Instructions#Recipe_for_phase2_l1t_1400pre3_v2). Check that you have the correct SCRAM architecture for the correct OS. `el8` requires `export SCRAM_ARCH=el8_amd64_gcc12` for example. The link for different `CMSSW`'s and respective `SCRAM ARCH`'s is [here](https://cms-talk.web.cern.ch/c/offcomp/orp/swrelannounce/221). Then, basically, we have to run: 
 ```bash
 cmsrel CMSSW_14_0_0_pre3
