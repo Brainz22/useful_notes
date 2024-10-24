@@ -1,4 +1,4 @@
-0. For lxplus, I don't need to produce any nanoAOD files since we can use the centrally produced ones here: `/eos/cms/store/group/dpg_trigger/comm_trigger/L1Trigger/alobanov/phase2/menu/ntuples/14X/v38/MinBias_TuneCP5_14TeV-pythia8/MinBias_131_L1Fix_IBv9_wTT/240412_211203/0000/*.root`.
+0. For lxplus, I don't need to produce any nanoAOD files since we can use the centrally produced ones here: `/eos/cms/store/group/dpg_trigger/comm_trigger/L1Trigger/alobanov/phase2/menu/ntuples/14X/v38/MinBias_TuneCP5_14TeV-pythia8/MinBias_131_L1Fix_IBv9_wTT/240412_211203/0000/*.root` in the `caching.yaml`
 
 ## Producing nanoAOD files:
 
