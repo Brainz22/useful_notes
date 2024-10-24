@@ -76,7 +76,7 @@ The command `crab status -d crab_projects/crab_ucsd_MinBias` allows me to check 
 
 We can check that a Tier server does exist by doing for example: `crab checkwrite --site=T3_US_FNALLPC` on LPC. I am running into permission issues, which might be related to my LPC and CERN grid Certificate being different...
 
-### Producing Rates via [Phase2-L1MenuTools](https://github.com/cms-l1-dpg/Phase2-L1MenuTools/tree/main):
+# Producing Rates via [Phase2-L1MenuTools](https://github.com/cms-l1-dpg/Phase2-L1MenuTools/tree/main):
 
 1. Follow the setup instructions. Basically, we need a separate environment with python 3.11, `git clone` the repo, and run `pip install -e .` to install it. I am creating my environment as follows:
 ```bash
