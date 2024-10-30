@@ -19,6 +19,7 @@ You want to make sure you install the prerequisites:
 
 * `ipbb dep report` after `ipbb proj create ...`.
 * `lsof | grep <.nfs0000000358311012000009a8>`, then `kill PID`. The PID will be shown by the List of Open Files `lsof` with input file given.
+* `git rev-parse HEAD`, returns the commit hash of the current repo. I use it to check I cloned correct commit versions when needed.
 
 ## Building FWK
 
