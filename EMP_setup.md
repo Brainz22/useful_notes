@@ -91,13 +91,15 @@ You might get errors when adding some of the above repos. You need to add yourse
 
 
 
-# Building Project and Running a Quick Simulation
+# Building Project and Running Simulation and Synthesis
+
+### Simulation: 
 
 After cloning the correct repos specified 1-4, and assuming I cloned the master branch of `correlator layer 2`:
 
 *   Create a project via:
 ```bash
-source /data/software/xilinx/Vivado/2020.1/settings64.sh # Mulder or Scully
+source /data/software/xilinx/Vivado/2022.2/settings64.sh # Mulder or Scully
 ipbb proj create vivado LLPtagging correlator-layer2:jet_seededcone/board/serenity top_sim.dep
 ```
 This will add the `LLPtagging` project in `../proj`.
@@ -105,13 +107,27 @@ This will add the `LLPtagging` project in `../proj`.
 *   Run simulation and open vivado GUI:
 ```bash
 cd ../proj/LLPtagging
-ipbb vivado generate-project
+ipbb vivado generate-project --enable-ip-cache 
 ```
 Locate the `.xpr` file that will be generated and run:
 ```bash
 vivado LLPtagging.xpr
 ```
 Make sure GUI can be activated, i.e. use `ssh -Y ...`.
+
+# Synthesis:
+
+Similar to the above, but make the following changes to the commands (note the different `.dep` file):
+
+* `ipbb proj create vivado LLPtagging_syn correlator-layer2:jet_seededcone/board/serenity top_serenity.dep`. This creates a whole new folder in `/proj/` to run synthesis.
+* Generate project and start synthesis
+```bash
+cd proj/LLPtagging_syn
+ipbb vivado generate-project --enable-ip-cache -1
+ipbb vivado synth -j8 impl -j8
+```
+Synthesis might take a minute, so the last command can be run in the background in a `nohup` command as follows:
+`nohup ipbb vivado synth -j8 impl -j8 &`. You can even close the terminal. Output is stored in `nohup.out`
 
 # Deploying the Full Jet Project with the LLP Tagger:
 
