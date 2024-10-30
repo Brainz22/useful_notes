@@ -115,7 +115,7 @@ vivado LLPtagging.xpr
 ```
 Make sure GUI can be activated, i.e. use `ssh -Y ...`.
 
-# Synthesis:
+### Synthesis:
 
 Similar to the above, but make the following changes to the commands (note the different `.dep` file):
 
