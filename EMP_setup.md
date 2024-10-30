@@ -127,7 +127,8 @@ ipbb vivado generate-project --enable-ip-cache -1
 ipbb vivado synth -j8 impl -j8
 ```
 Synthesis might take a minute, so the last command can be run in the background in a `nohup` command as follows:
-`nohup ipbb vivado synth -j8 impl -j8 &`. You can even close the terminal. Output is stored in `nohup.out`
+`nohup ipbb vivado synth -j8 impl -j8 &`. You can even close the terminal. Output is stored in `nohup.out`.
+You can check that it's running using the command `jobs` or `ps -p <jobID>`. The job ID was an output directly on the terminal from running `nohup`. 
 
 # Deploying the Full Jet Project with the LLP Tagger:
 
