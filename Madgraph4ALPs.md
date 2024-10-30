@@ -8,6 +8,7 @@ git clone git@github.com:LLP-LHC/LLP-Reinterpretation.git
 cd LLP-Reinterpretation
 ./install.sh
 ```
+(Note: the link to `wget` madgraph has chanded. Change this in your `install.sh` to https://launchpad.net/mg5amcnlo/lts/2.9.x/+download/MG5_aMC_v2.9.3.tar.gz. You can also see all other madgraph versions here: https://launchpad.net/mg5amcnlo/+download.)
 As the instructions in that repo suggest. This will install `madgraph`.
 
 3. Add executable command to your path, e.g.: `export PATH=$PATH:/afs/cern.ch/user/r/russelld/ALPs/work/LLP-Reinterpretation/MG5_aMC_v2_9_3/bin`.
