@@ -22,18 +22,27 @@ You want to make sure you install the prerequisites:
 
 ## Building FWK
 
-### 1. Create and activate a new python environment with `python=2.7`
+0. You can work with `mamba` or `micromamba`. Here is a quick way to install `mamba`:
+```bash
+curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+bash Miniforge3-$(uname)-$(uname -m).sh
+```
+
+1. Create and activate a new python environment with `python=2.7`
 ```bash
 mamba create --name jetID python=2.7
 mamba activate jetID
+python --version #should return a 2.7 version
+mamba install git
+which git # Git should be in conda path now
 ```
 
-### 1.1 Download ippb command files:
+1.1 Download ippb command files:
    `curl -L https://github.com/ipbus/ipbb/archive/dev/2023a.tar.gz | tar xvz`.
 
-### 2. Source the following file as follows: `source ipbb-dev-2023a/env.sh`.
+2. Source the following file as follows: `source ipbb-dev-2023a/env.sh`.
 
-### 3. Run the `ipbb` commands specified on the link, which I also put inside the `EMP_setup.sh`. So, do `bash EMP_setup.sh`. My `EMP_setup.sh` has the following content:
+3. Run the `ipbb` commands specified on the link, which I also put inside the `EMP_setup.sh`. So, do `bash EMP_setup.sh`. My `EMP_setup.sh` has the following content:
 ```bash
 ipbb init LLPtag-work
 cd LLPtag-work
@@ -66,6 +75,15 @@ ipbb add git https://github.com/ipbus/ipbus-firmware -b v1.9
 ipbb add git https://:@gitlab.cern.ch:8443/rufl/RuflCore.git -r d3ddf86f
 ipbb add git https://:@gitlab.cern.ch:8443/cms-cactus/phase2/firmware/correlator-common.git
 ipbb add git https://:@gitlab.cern.ch:8443/cms-cactus/phase2/firmware/correlator-layer2.git
+```
+Alternative (and probably easier way) is using the file from Continuous Integration (CI). Note that the branch `-b` flag for the `correlator-common.git` can be removed and it will clone the master branch. When you in the folder `LLPtag-work/src` that we made above, run: 
+```bash
+
+kinit YOURUSERNAME@CERN.CH
+ipbb add git https://:@gitlab.cern.ch:8443/cms-cactus/phase2/firmware/correlator-layer2.git
+cd correlator-layer2/ci
+source add_ipbb_source_areas.sh
+
 ```
 
 You might get errors when adding some of the above repos. You need to add yourself to the e-groups `emp-fwk-users` and `cms-tcds2-users` using this [link](https://e-groups.cern.ch/e-groups/EgroupsSearchForm.do). Additionally, you might need `gitlab` and `github` keys. I put instructions on the notes [here](https://github.com/Brainz22/useful_notes/blob/main/Workflow%40corr4_APxV1.md).
