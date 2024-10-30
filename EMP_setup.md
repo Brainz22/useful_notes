@@ -161,7 +161,7 @@ gmake: *** [There are compilation/build errors. Please see the detail log above.
    #License
    export XILINXD_LICENSE_FILE=2100@cselm2.ucsd.edu
    export LM_LICENSE_FILE=2100@cselm2.ucsd.edu
-   #license @corr4
+   #license @corr4 and @Corr2
    export XILINXD_LICENSE_FILE=2100@xilinx-lic.fnal.gov
    export LM_LICENSE_FILE=2100@xilinx-lic.fnal.gov
    ```
