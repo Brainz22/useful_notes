@@ -132,7 +132,7 @@ You can check that it's running using the command `jobs` or `ps -p <jobID>`. The
 
 # Deploying the Full Jet Project with the LLP Tagger:
 
-The project is built using the following two gitlab repos (which are added in step 3 in the beginning): [correlator-layer2](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-layer2/-/tree/master/jet_seededcone?ref_type=heads) and [correlator-common](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common).
+The project is built using the following two gitlab repos (which are added in step 3 in the beginning): [correlator-layer2](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-layer2/-/tree/master/jet_seededcone?ref_type=heads) and [correlator-common](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common). **Note:** You will be able to skip some steps below if you cloned my branch `llptag_nn` from respective correlator repos (common and layer 2).
 
 0. We need to download and synthesize the IPs, as stated on the instructions [here](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-layer2/-/tree/master/jet_seededcone?ref_type=heads). After running the two commands there, move on to step 1.
 
@@ -184,7 +184,7 @@ gmake: *** [There are compilation/build errors. Please see the detail log above.
    ```
 
 3.   To get rid of errors because of definitions in `CMSSW` only defining the `btagger`, I made changes as follows:
-Because I need `llpTagScore` instead of `btag_Score`, I thought of changing things in my `CMSSW`. Thus, I manually changed things that were defined as `b_tag` to `llp_tag` and `Btag` to `LLPtag` in the files `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/jets.h`, `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/dataformats.h`, and `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/gt_datatypes.h`. The amount of the bits we'll use comes from `struct Jet` in the file `correlator-common/CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/jets.h`. The specific objects there are defined in `gt_datatypes.h` and `datatypes.h`. However, the bits we use are taken from `datatypes.h`.
+Because I need `llpTagScore` instead of `btag_Score`, I thought of changing things in my `CMSSW`. Thus, I manually changed things that were defined as `b_tag` to `llp_tag` and `Btag` to `LLPtag` in the files `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/jets.h`, `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/datatypes.h`, and `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/gt_datatypes.h`. The amount of the bits we'll use comes from `struct Jet` in the file `correlator-common/CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/jets.h`. The specific objects there are defined in `gt_datatypes.h` and `datatypes.h`. However, the bits we use are taken from `datatypes.h`.
 Also, add `llptag` wherever we see `btag` in `correlator-common/jetmet/seededcone/RUFL/Jet/firmware/hdl/PkgJet.vhd` and include the correct number of bits there, too.
 
 4.    Run `vivado_hls -f *.tcl`. Currently failing `vivado_hls -f run_Sim.tcl`run because:
