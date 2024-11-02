@@ -58,8 +58,8 @@ ipbb add git git@github.com:ipbus/ipbus-firmware.git -b v1.9
 
 #For the Jet setup
 ipbb add git ssh://git@gitlab.cern.ch:7999/rufl/RuflCore.git -r d3ddf86f
-ipbb add git ssh://git@gitlab.cern.ch:7999/cms-cactus/phase2/firmware/correlator-common.git
-ipbb add git ssh://git@gitlab.cern.ch:7999/cms-cactus/phase2/firmware/correlator-layer2.git
+ipbb add git ssh://git@gitlab.cern.ch:7999/cms-cactus/phase2/firmware/correlator-common -b llptag_nn
+ipbb add git ssh://git@gitlab.cern.ch:7999/cms-cactus/phase2/firmware/correlator-layer2 -b llptag_nn
 ```
 For Correlator 2 on FNAL, I had to use `kinit username@CERN.CH` and add repos the following way for some reason:
 
@@ -74,14 +74,14 @@ ipbb add git https://github.com/ipbus/ipbus-firmware -b v1.9
 
 #For the Jet & MET setup
 ipbb add git https://:@gitlab.cern.ch:8443/rufl/RuflCore.git -r d3ddf86f
-ipbb add git https://:@gitlab.cern.ch:8443/cms-cactus/phase2/firmware/correlator-common.git
-ipbb add git https://:@gitlab.cern.ch:8443/cms-cactus/phase2/firmware/correlator-layer2.git
+ipbb add git https://:@gitlab.cern.ch:8443/cms-cactus/phase2/firmware/correlator-common -b llptag_nn
+ipbb add git https://:@gitlab.cern.ch:8443/cms-cactus/phase2/firmware/correlator-layer2 -b llptag_nn
 ```
 Alternative (and probably easier way) is using the file from Continuous Integration (CI). Note that the branch `-b` flag for the `correlator-common.git` can be removed and it will clone the master branch. When you in the folder `LLPtag-work/src` that we made above, run: 
 ```bash
 
 kinit YOURUSERNAME@CERN.CH
-ipbb add git https://:@gitlab.cern.ch:8443/cms-cactus/phase2/firmware/correlator-layer2.git
+ipbb add git https://:@gitlab.cern.ch:8443/cms-cactus/phase2/firmware/correlator-layer2 -b llptag_nn
 cd correlator-layer2/ci
 source add_ipbb_source_areas.sh
 
