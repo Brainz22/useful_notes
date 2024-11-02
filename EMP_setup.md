@@ -132,7 +132,7 @@ You can check that it's running using the command `jobs` or `ps -p <jobID>`. The
 
 # Deploying the Full Jet Project with the LLP Tagger:
 
-The project is built using the following two gitlab repos (which are added in step 3 in the beginning): [correlator-layer2](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-layer2/-/tree/master/jet_seededcone?ref_type=heads) and [correlator-common](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common). **Note:** You will be able to skip some steps below if you cloned my branch `llptag_nn` from respective correlator repos (common and layer 2).
+The project is built using the following two gitlab repos (which are added in step 3 in the beginning): [correlator-layer2](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-layer2/-/tree/master/jet_seededcone?ref_type=heads) and [correlator-common](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-common). **Note:** You will be able to skip some steps below if you cloned my branch `llptag_nn` from respective correlator repos (common and layer 2) since I have changed all the needed files to deploy the the LLP tagger, except the ones in the `CMSSW_14_0_0_pre3` folder you will install.
 
 0. We need to download and synthesize the IPs, as stated on the instructions [here](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-layer2/-/tree/master/jet_seededcone?ref_type=heads). After running the two commands there, move on to step 1.
 
