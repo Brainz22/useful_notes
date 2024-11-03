@@ -107,7 +107,7 @@ This will add the `LLPtagging` project in `../proj`.
 *   Run simulation and open vivado GUI:
 ```bash
 cd ../proj/LLPtagging
-ipbb vivado generate-project --enable-ip-cache 
+ipbb vivado generate-project --enable-ip-cache -1
 ```
 Locate the `.xpr` file that will be generated and run:
 ```bash
