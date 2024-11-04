@@ -124,6 +124,7 @@ Similar to the above, but make the following changes to the commands (note the d
 ```bash
 cd proj/LLPtagging_syn
 ipbb vivado generate-project --enable-ip-cache -1
+cd LLPtagging_syn
 ipbb vivado synth -j8 impl -j8
 ```
 Synthesis might take a minute, so the last command can be run in the background in a `nohup` command as follows:
