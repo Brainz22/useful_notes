@@ -80,5 +80,6 @@ ipbb proj create vivado LLPtagging_syn correlator-layer2:jet_seededcone/board/se
 ```bash
 cd proj/LLPtagging_syn
 ipbb vivado generate-project --enable-ip-cache -1
+cd LLPtagging_syn
 ipbb vivado synth -j8 impl -j8
 ```
