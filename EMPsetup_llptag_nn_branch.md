@@ -63,3 +63,22 @@ vitis_hls -f run_Synth.tcl
 source /data/Xilinx/Vitis/2022.2/settings64.sh
 bash synth_all.sh
 ```
+10. Synthesize the IPs in our local `correlator-common`. This will produce a new source folder named `ip_cores_firmware` under `llp-tagger/src/`. When you are in `llp-tagger/src/`:
+```bash
+python3 correlator-layer2/util/hls_cores.py --build -c correlator-layer2/hls-cores.yaml -p l2-seededcone
+```
+These command comes from the HLS IPs section [here](https://gitlab.cern.ch/cms-cactus/phase2/firmware/correlator-layer2/-/tree/master/jet_seededcone?ref_type=heads).
+
+## Run Synthesis via Terminal
+
+1. Create the synthesis `LLPtagging_syn` project. Starting at the location `/llp-tagger/`:
+```bash
+source /data/Xilinx/Vivado/2022.2/settings64.sh
+ipbb proj create vivado LLPtagging_syn correlator-layer2:jet_seededcone/board/serenity top_serenity.dep
+```
+2. Generate project and start both synthesis and implementation:
+```bash
+cd proj/LLPtagging_syn
+ipbb vivado generate-project --enable-ip-cache -1
+ipbb vivado synth -j8 impl -j8
+```
