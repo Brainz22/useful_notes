@@ -43,5 +43,23 @@ export LM_LICENSE_FILE=2100@xilinx-lic.fnal.gov
 6. When you are in `/correlator-common/jetmet/seededcone`, 
 ```bash
 source /data/Xilinx/Vivado/2019.2/settings64.sh
-run bash run_all_tcl/sh
+bash run_all_tcl.sh
+```
+
+7. Synthesize the `LLPtagger`. When you are in `/correlator-common/jetmet/seededcone/LLPtag`:
+```bash
+source /data/Xilinx/Vitis/2022.2/settings64.sh
+bash run_all_llptag.sh
+```
+
+8. When you are in `correlator-common/jetmet/jec`:
+```bash
+source /data/Xilinx/Vitis/2022.2/settings64.sh
+vitis_hls -f run_Synth.tcl
+```
+
+9. When you are in `correlator-common/jetmet/htmht`:
+```bash
+source /data/Xilinx/Vitis/2022.2/settings64.sh
+bash synth_all.sh
 ```
