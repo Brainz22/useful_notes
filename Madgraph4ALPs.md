@@ -44,7 +44,7 @@ Then, run `git clone git@github.com:cms-sw/genproductions.git genproductions`. T
 3. The next would be to copy over the `proc` and `run` cards and create a new folder in `/cards/`, following the same format as the above: `cards/examples/wplustest_4f_LO`. Basically,
   * `cd ~/ALPs/work/genproduction/bin/cards`, `mkdir llp_gen`. This directory comes from the definition in the file `generate_walp_1W0B_1GeV_2Jets.dat` we used to produce the `llp_gen` folder in the previous section.
   * change directory (cd) to the cards location: `cd ~/ALPs/work/LLP-Reinterpretation/MADGRAPH_Test/llp_gen/madgraph_pythia/Cards`
-  * Copy the cards to where they need to be in folder: `genproduction`: cp proc_card_mg5.dat run_card.dat ~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/cards/llp_gen`
+  * Copy the cards to where they need to be in folder: `genproduction`: `cp proc_card_mg5.dat run_card.dat ~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/cards/llp_gen`
   * change directory (cd) to where you copied the cards:  `cd ~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/cards/llp_gen` 
   * rename the cards names by using the move (mv) command: `mv proc_card_mg5.dat llp_gen_proc_card.dat` and `mv run_card.dat llp_gen_run_card.dat`.
   * go back two directories: `cd ../..`. You should see several `.sh` files if you do `ls`.
