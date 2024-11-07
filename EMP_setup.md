@@ -23,11 +23,7 @@ You want to make sure you install the prerequisites:
 
 ## Building FWK
 
-0. You can work with `mamba` or `micromamba`. Here is a quick way to install `mamba`:
-```bash
-curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
-bash Miniforge3-$(uname)-$(uname -m).sh
-```
+0. You can work with `mamba` or `micromamba`. Here is a quick way to install [micromamba](https://github.com/Brainz22/useful_notes/blob/main/micromamba.md) (on correlator 2 and 4). 
 
 1. Create and activate a new python environment with `python=2.7`
 ```bash
