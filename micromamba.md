@@ -4,10 +4,9 @@
 ```bash
 cd ~/
 curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
-ls -t
 ./bin/micromamba shell init -s bash -r ~/micromamba
 source ~/.bashrc
 micromamba info
-micromamba activate
+micromamba activate #check that it activates the base environment
 micromamba deactivate
 ```
