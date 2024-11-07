@@ -27,10 +27,10 @@ You want to make sure you install the prerequisites:
 
 1. Create and activate a new python environment with `python=2.7`
 ```bash
-mamba create --name jetID python=2.7
-mamba activate jetID
+micromamba create --name jetID python=2.7
+micromamba activate jetID
 python --version #should return a 2.7 version
-mamba install git
+micromamba install git
 which git # Git should be in conda path now
 ```
 
