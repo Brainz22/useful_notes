@@ -71,6 +71,13 @@ These command comes from the HLS IPs section [here](https://gitlab.cern.ch/cms-c
 
 ## Run Synthesis via Terminal
 
+0. Source the Uhal:
+```bash
+export LD_LIBRARY_PATH=/opt/cactus/lib:$LD_LIBRARY_PATH
+export PATH=/opt/cactus/bin:$PATH
+export PATH=/opt/cactus/bin/uhal/tools:$PATH
+```
+
 1. Create the synthesis `LLPtagging_syn` project. Starting at the location `/llp-tagger/`:
 ```bash
 source /data/Xilinx/Vivado/2022.2/settings64.sh
