@@ -50,7 +50,7 @@ Then, run `git clone git@github.com:cms-sw/genproductions.git genproductions`. T
   * go back two directories: `cd ../..`. You should see several `.sh` files if you do `ls`.
 
 
-4. Create a gridpack locally using the `./gridpack_generation.sh llp_gen cards/llp_gen 1nd`. See details of this command on the header of the file `generate_gridpack.sh`. This `.sh` script is found in `~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/`. See details of this command on the header of the file `generate_gridpack.sh`. It will generate a file like the following: `llp_gen_el8_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz`.
+4. Create a gridpack locally using the `./gridpack_generation.sh llp_gen cards 1nd`. See details of this command on the header of the file `generate_gridpack.sh`. This `.sh` script is found in `~/ALPs/work/genproductions/bin/MadGraph5_aMCatNLO/`. See details of this command on the header of the file `generate_gridpack.sh`. It will generate a file like the following: `llp_gen_el8_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz`.
 
 5. Go back to the working directory. You need to be in `ALPs/work`. Now, we need to install a CMS Software (cmssw) package. You can do that as follows:
  * Run the following commands: 
