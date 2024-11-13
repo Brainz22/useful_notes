@@ -63,13 +63,17 @@ cmsrel CMSSW_12_4_14_patch3
 
 6. Step 4 gave us the gridpack we need. Now, we need to input this into a cms `fragment.py` and run the `cmsDriver.py` command:
    * Change directory to `CMSSW_12_4_14_patch3/src`. Assuming you are in `ALPs/work`
-   * Use the fragment in this [link](https://gist.github.com/Brainz22/8538908efe29ab002eb1863be3db0589) (it already has edits from Sie Xie). Only the change the path in line 5 for the file you generated in the previous step.
+   * Use the fragment in this  (it already has edits from Sie Xie). Only the change the path in line 5 for the file you generated in the previous step.
    * Run `cmsenv`
-   * git-add configuration package. Do `git cms-addpkg Configuration/Generator`
-   * Copy the file content from the link. Open a file with your terminal: `vim fragment.py`. Once in the `vim` editor, press `i` to switch to insert mode and paste the contents you copied. Exit `vim` via `esc` to exit insert mode and `:wq` to exit and save the file content with its contents.
-   * Change directory to and using `cd Configuration/Generator`.
-   * Make a directory named `python`: `mkdir python` and change into it: `cd python`.
-   * Bring the `fragment.py` by going back `src`, i.e. go back 3 directories: `cd ../../..` and `mv fragment.py Configuration/Generator/python`.
+   * make the following directories and `cd` into them: 
+      * `mkdir Configuration`, `cd Configuration`
+      * `mkdir GenProduction`, `cd GenProduction`
+      * `mkdir python`, `cd python` 
+   * Need fragment with Sie Xie edits. Copy the file content from this [link](https://gist.github.com/Brainz22/8538908efe29ab002eb1863be3db0589). Then,
+      * Open a file with your terminal: `vim fragment.py`. Once in the `vim` editor, press `i` to switch to insert mode and paste the contents you copied.
+      * Change the path (in line 5) and add the full path to your gridpack (file ending in `.tar.xz`).
+      * Exit `vim` via `esc` to exit insert mode and `:wq` to exit and save the file content with its contents.
+   * Go back to `CMSSW_12_4_14_patch3/src` with `cd ../../..`
    * Run `scram b -j8`. This is needed to compile any change we make to our `CMSSW_12_4_14_patch3` package.
    * run cmsDriver as follows:
 ```bash
