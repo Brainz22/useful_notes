@@ -20,7 +20,8 @@ mkdir MADGRAPH_Test
 and copy things there. `cp` the model wee need from `/madgraph_models/` and the card from `/madgraph_generation/`. For the `ALP_WB`, do:
  * `cp -r madgraph_models/ALP_WB MADGRAPH_Test/`
     * We might need to convert this model to python3 via opening madgraph with the command: `mg5_aMC`. Once in the madgraph terminal, use `convert model ./ALP_WB`. 
- * `cp madgraph_generation/generate_walp_1W0B_1GeV_2Jets.dat MADGRAPH_Test/generate_walp_1W0B_1GeV_2Jets.dat`
+ * `cp madgraph_generation/generate_walp_1W0B_1GeV_2Jets.dat MADGRAPH_Test/generate_walp_1W0B_1GeV_2Jets.dat`.
+ * Open `generate_walp_1W0B_1GeV_2Jets.dat` by going into that directory and using `vim generate_walp_1W0B_1GeV_2Jets.dat`, for example. Change the output path to `output llp_gen` 
 
 5. `cd MADGRAPH_Test` and run the `.dat file` with `mg5_aMC <file-name>.dat`.
 
