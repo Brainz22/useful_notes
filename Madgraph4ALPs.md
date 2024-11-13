@@ -13,21 +13,6 @@ As the instructions in that repo suggest, this will install `madgraph`.
 
 3. Add executable command to your path, e.g.: `export PATH=$PATH:/afs/cern.ch/user/r/russelld/ALPs/work/LLP-Reinterpretation/MG5_aMC_v2_9_3/bin`.
 
-4. We need put the `.dat` file and the respective model package in `madgraph_models`. So, I made a directory and put these two there, i.e.,
-```bash
-mkdir MADGRAPH_Test
-```
-and copy things there. `cp` the model wee need from `/madgraph_models/` and the card from `/madgraph_generation/`. For the `ALP_WB`, do:
- * `cp -r madgraph_models/ALP_WB MADGRAPH_Test/`
-    * We might need to convert this model to python3 via opening madgraph with the command: `mg5_aMC`. Once in the madgraph terminal, use `convert model ./ALP_WB`. 
- * `cp madgraph_generation/generate_walp_1W0B_1GeV_2Jets.dat MADGRAPH_Test/generate_walp_1W0B_1GeV_2Jets.dat`.
- * Open `generate_walp_1W0B_1GeV_2Jets.dat` by going into that directory and using `vim generate_walp_1W0B_1GeV_2Jets.dat`, for example. Change the output path to `output llp_gen` 
-
-5. `cd MADGRAPH_Test` and run the `.dat file` with `mg5_aMC <file-name>.dat`.
-
-6. After execution, the above will generate a new folder based on the output command at the end of the `.dat` file. For me, it was `llp_gen`. In this folder, we will need the `proc`(process) card and `run` card, which are also `.dat` files.
-
-
 ## Producing CMS Gridpack
 
 1. I am starting from the directory (this will be different in UAF)
