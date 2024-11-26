@@ -1,7 +1,8 @@
-# Instructions for ALPs Study
 ### Useful notes
 * `nEvents` sets the number of events to generate on our `.root` file.
 * `process.maxEvents` is `<= nEvents`. Not so sure yet what it does, but set to `maxEvents=-1` to process all the events we generate.
+
+# Instructions for ALPs Study
 
 0. Made a virtual environment with python3 in it. **Note:** Some of the paths will change depending on whether you are working on UAF or lxplus, for example.
 
