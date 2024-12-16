@@ -1,5 +1,5 @@
 ### Useful notes
-* `nEvents` sets the number of events to generate on our `.root` file.
+* `nEvents` sets the number of events to generate on our `.root` file (starting with just `10`).
 * `process.maxEvents` is `<= nEvents`. Not so sure yet what it does, but set to `maxEvents=-1` to process all the events we generate.
 
 # Instructions for ALPs Study
