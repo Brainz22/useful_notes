@@ -76,8 +76,14 @@ cmsDriver.py Configuration/Generator/python/fragment.py \
 --beamspot Realistic25ns13p6TeVEarly2022Collision \
 --step LHE,GEN,NANOGEN \
 --geometry DB:Extended \
---era Run3
+--era Run3 \
+--no_exec
 ```
+6. From the driver command, we get a file like `fragment2_py_LHE_GEN_NANOGEN.py`. We need to edit this file:
+* Change `nEvents` parameter to `10` (for now) and `maxEvents` to `-1`.
+* Find a file with branching ratios [here](https://github.com/LLP-LHC/branchingRatios/tree/master/ALPs) that corresponds to our LLP mass in the `param_card.dat` generated from the command `mg5_aMC` in step 2.
+* All of the commands in the file that you have found need to added under `pythia8CommonSettings` formatted the same way you see the other commands there.
 
+7. Once done with the changes from the last step, run `cmsenv` to activate CMS environment and run `cmsRun fragment2_py_LHE_GEN_NANOGEN.py` to produce the `.root` file.
 
 
