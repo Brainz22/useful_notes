@@ -67,7 +67,7 @@ cmsrel CMSSW_12_4_14_patch3
 * Run `scram b -j8`. This is needed to compile any change we make to our `CMSSW_12_4_14_patch3` package.
 * run cmsDriver as follows:
 ```bash
-cmsDriver.py Configuration/Generator/python/fragment.py \
+cmsDriver.py Configuration/GenProduction/python/fragment.py \
 --mc \
 --eventcontent NANOAODGEN \
 --customise Configuration/DataProcessing/Utils.addMonitoring \
