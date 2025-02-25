@@ -54,7 +54,6 @@ cmsrel CMSSW_12_4_14_patch3
 
 5. Step 3 gave us the gridpack we need. Now, we need to input this into a cms `fragment.py` and run the `cmsDriver.py` command:
 * Change directory to `CMSSW_12_4_14_patch3/src`. Assuming you are in `ALPs/work`
-* Use the fragment in this  (it already has edits from Sie Xie). Only the change the path in line 5 for the file you generated in the previous step.
 * Run `cmsenv`
 * make the following directories and `cd` into them: 
    * `mkdir Configuration`, `cd Configuration`
