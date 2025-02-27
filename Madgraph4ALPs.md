@@ -1,6 +1,7 @@
 ### Useful notes
 * `nEvents` sets the number of events to generate on our `.root` file (starting with just `10`).
 * `process.maxEvents` is `<= nEvents`. Not so sure yet what it does, but set to `maxEvents=-1` to process all the events we generate.
+* I found it useful to set the full path of the model, e.g. the path of `ALP_WB` model, inside the respective file used in the command `mg5_aMC generate_walp_1W0B_1GeV_2Jets.dat`. Here I added the paths in this `.dat` file.
 
 # Instructions for ALPs Study
 
