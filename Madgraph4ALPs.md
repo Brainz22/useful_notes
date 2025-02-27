@@ -42,6 +42,7 @@ Then, run `git clone git@github.com:cms-sw/genproductions.git genproductions`. T
    * `mv run_card.dat llp_gen_run_card.dat`. Changes the name to `lp_gen_run_card.dat`.
 
 3. Go back to the location `genproductions/bin/MadGraph5_aMCatNLO/`. Then, Create a gridpack locally using the `./gridpack_generation.sh llp_gen llp_gen/Cards 1nd`. See details of this command on the header of the file `gridpack_generation.sh`. It will generate a file like the following: `llp_gen_el8_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz` (UAF will have the prefix `llp_gen_slc7_amd64_gcc10`).
+     - **Note:** the gridpack generation command might complain about needing the full path for a command in either in process card or run card.         Add the full path there, delete the `llp_gen` folder that was create, and re-run the `./gridpack_generation.sh ...`.
 
 4. Go back to the working directory. You need to be in `ALPs/work`. Now, we need to install a CMS Software (cmssw) package. You can do that as follows:
  * Run the following commands: 
