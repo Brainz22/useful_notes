@@ -83,7 +83,7 @@ source add_ipbb_source_areas.sh
 
 ```
 
-You might get errors when adding some of the above repos. You need to add yourself to the e-groups `emp-fwk-users` and `cms-tcds2-users` using this [link](https://e-groups.cern.ch/e-groups/EgroupsSearchForm.do). Additionally, you might need `gitlab` and `github` keys. I put instructions on the notes [here](https://github.com/Brainz22/useful_notes/blob/main/Workflow%40corr4_APxV1.md).
+You might get errors when adding some of the above repos. You need to add yourself to the e-groups, `cms-cactus`, `emp-fwk-users`, and `cms-tcds2-users` using this [link](https://e-groups.cern.ch/e-groups/EgroupsSearchForm.do). Additionally, you might need `gitlab` and `github` keys. I put instructions on the notes [here](https://github.com/Brainz22/useful_notes/blob/main/Workflow%40corr4_APxV1.md).
 
 
 
