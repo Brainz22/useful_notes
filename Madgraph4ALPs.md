@@ -37,10 +37,12 @@ Then, run `git clone git@github.com:cms-sw/genproductions.git genproductions`. T
 * `cp -r ~/ALPs/work/LLP-Reinterpretation/madgraph_models/ALP_WB  ~/ALPs/work/LLP-Reinterpretation/madgraph_generation/generate_walp_1W0B_1GeV_2Jets.dat .`. This copies the folder `ALP_WB` and file `generate_walp_1W0B_1GeV_2Jets.dat` to our current directory.
 * We might need to convert the `ALP_WB` model to python3 via opening madgraph with the command: `mg5_aMC`. Once in the madgraph terminal, use `convert model ./ALP_WB`. Quit typing `quit`.
 * Open `generate_walp_1W0B_1GeV_2Jets.dat` by going into that directory and using `vim generate_walp_1W0B_1GeV_2Jets.dat`, for example. Change the output path to `output llp_gen` .
+  * Also **note**, you may need the command `set decay 9000005 <witdth>` below the `launch` command inside this file. Otherwise, particle will keep decaying to itself.
 * Run the `.dat file` with `mg5_aMC generate_walp_1W0B_1GeV_2Jets.dat`. This will create the folder `llp_gen`.
 * Change to `cd llp_gen/Cards/` and change the names of process and run cards as follows:
    * `mv <name of process card_m5.dat> llp_gen_proc_card.dat`. Changes the name to `llp_gen_proc_card.dat`.
-   * `mv run_card.dat llp_gen_run_card.dat`. Changes the name to `lp_gen_run_card.dat`.
+   * `mv run_card.dat llp_gen_run_card.dat`. Changes the name to `llp_gen_run_card.dat`.
+   * `mv param_card.dat llp_gen_param_card.dat`. Changes the name to `llp_gen_param_card.dat`.
 
 3. Go back to the location `genproductions/bin/MadGraph5_aMCatNLO/`. Then, Create a gridpack locally using the `./gridpack_generation.sh llp_gen llp_gen/Cards`. See details of this command on the header of the file `gridpack_generation.sh`. It will generate a file like the following: `llp_gen_el8_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz` (UAF will have the prefix `llp_gen_slc7_amd64_gcc10`).
      - **Note:** the gridpack generation command might complain about needing the full path for a command in either in process card or run card.         Add the full path there, delete the `llp_gen` folder that was create, and re-run the `./gridpack_generation.sh ...`.
