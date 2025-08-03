@@ -86,6 +86,15 @@ cmsDriver.py Configuration/GenProduction/python/fragment.py \
 * Change `nEvents` parameter to `10` (for now) and `maxEvents` to `-1`.
 * Find a file with branching ratios [here](https://github.com/LLP-LHC/branchingRatios/tree/master/ALPs) that corresponds to our LLP mass in the `param_card.dat` generated from the command `mg5_aMC` in step 2.
 * All of the commands in the file that you have found need to added under `pythia8CommonSettings`, formatted in the same way you see the other commands there.
+* We need to add some commands close to the bottom of this file so that we will get the vertex information in our root file. Under the commented out line that says, `#call to customisation function customizeNanoGEN imported from PhysicsTools.NanoAOD.nanogen_cff`, add the lines:
+```python
+from PhysicsTools.NanoAOD.common_cff import *
+process.genParticleTable.variables.vx = Var("vx",float, precision=8)
+process.genParticleTable.variables.vy = Var("vy",float, precision=8)
+process.genParticleTable.variables.vz = Var("vz",float, precision=8)
+process = customizeNanoGEN(process)
+```
+
 
 7. Once done with the changes from the last step, run `cmsenv` to activate CMS environment and run `cmsRun fragment2_py_LHE_GEN_NANOGEN.py` to produce the `.root` file.
 
