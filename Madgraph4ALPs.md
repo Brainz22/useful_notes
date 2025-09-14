@@ -17,7 +17,10 @@ cd LLP-Reinterpretation
 (**Note**: the link to `wget` madgraph has chanded. Change this in your `install.sh` to https://launchpad.net/mg5amcnlo/lts/2.9.x/+download/MG5_aMC_v2.9.3.tar.gz. You can also see all other madgraph versions here: https://launchpad.net/mg5amcnlo/+download.)
 As the instructions in that repo suggest, this will install `madgraph`.
 
-3. Add executable command to your path, e.g.: `export PATH=$PATH:/afs/cern.ch/user/r/russelld/ALPs/work/LLP-Reinterpretation/MG5_aMC_v2_9_3/bin`.
+3. Add executable command to your path:
+* lxplus: `export PATH=$PATH:/afs/cern.ch/user/r/russelld/ALPs/work/LLP-Reinterpretation/MG5_aMC_v2_9_3/bin`
+* UCSD uaf: `export PATH=$/home/users/russelld/ALPs/work/LLP-Reinterpretation/MG5_aMC_v2_9_3/bin`
+   
 
 ## Producing CMS Gridpack
 
