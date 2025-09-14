@@ -19,7 +19,7 @@ As the instructions in that repo suggest, this will install `madgraph`.
 
 3. Add executable command to your path:
 * lxplus: `export PATH=$PATH:/afs/cern.ch/user/r/russelld/ALPs/work/LLP-Reinterpretation/MG5_aMC_v2_9_3/bin`
-* UCSD uaf: `export PATH=$/home/users/russelld/ALPs/work/LLP-Reinterpretation/MG5_aMC_v2_9_3/bin`
+* UCSD uaf: `export PATH=$PATH:/home/users/russelld/ALPs/work/LLP-Reinterpretation/MG5_aMC_v2_9_3/bin`
    
 
 ## Producing CMS Gridpack
