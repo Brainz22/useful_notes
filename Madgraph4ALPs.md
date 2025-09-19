@@ -2,7 +2,7 @@
 * `nEvents` sets the number of events to generate on our `.root` file (starting with just `10`).
 * `process.maxEvents` is `<= nEvents`. Not so sure yet what it does, but set to `maxEvents=-1` to process all the events we generate.
 * I found it useful to set the full path of the model, e.g. the path of `ALP_WB` model, inside the respective file used in the command `mg5_aMC generate_walp_1W0B_1GeV_2Jets.dat`. Here I added the paths in this `.dat` file.
-
+* The command `grep -riI 9900012 ./` finds where the value `9900012` is used in any file in the current folder.
 # Instructions for ALPs Study
 
 0. Made a virtual environment with python3 in it. **Note:** Some of the paths will change depending on whether you are working on UAF or lxplus, for example.
