@@ -4,7 +4,7 @@ I am following a combination of the (a) `Jet Tagging CMSSW Recipe` [instructions
 
 1. (a) Start with a CMSSW version 
    ```bash
-   export SCRAM=el8_amd64_gcc12
+   export SCRAM_ARCH=el8_amd64_gcc12
    source /cvmfs/cms.cern.ch/cmsset_default.sh
    cmsrel CMSSW_15_1_0_pre1
    cd CMSSW_15_1_0_pre1/src
