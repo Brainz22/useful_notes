@@ -14,12 +14,20 @@ I am following a combination of the (a) `Jet Tagging CMSSW Recipe` [instructions
 2. (b) Clone the respective packages we need from CMSSW
    ```bash
    git cms-addpkg L1Trigger/Phase2L1ParticleFlow
+   git cms-addpkg L1Trigger/Configuration
+   git cms-addpkg DataFormats
+
+   git remote set-url origin https://github.com/Brainz22/cmssw.git # I switched to my fork
+   git remote -v #check the push and fetch origins
+   git remote remove official-cmssw #if official cmssw origing still appeared
+   
+   
    #build CMSSW release (8 is the number of threads)
    scram b -j 8
    ```
 
 
-3. When adding a new model like `TOoLLiP_v2`, we need to make some changes files in the repo. A commit showing all the changes with [updates](https://github.com/cms-hls4ml/TOoLLiP/commit/6064629a002391a6822791513f8610e2d66747ff) is in the link.
+3. When adding a new model like `TOoLLiP_v2`, we need to make changes to some files in the repo. A commit showing all the changes with [updates](https://github.com/cms-hls4ml/TOoLLiP/commit/6064629a002391a6822791513f8610e2d66747ff) is in the link.
 
 4. (a) Get `hls4ml` emulator extras needed for building the jet tagger emulator
    ```bash
