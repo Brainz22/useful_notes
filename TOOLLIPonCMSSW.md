@@ -19,6 +19,7 @@ I am following a combination of the (a) `Jet Tagging CMSSW Recipe` [instructions
    git cms-addpkg DPGAnalysis
 
    git remote set-url origin https://github.com/Brainz22/cmssw.git # I switched to my fork
+   git remote set-url my-cmssw git@github.com:Brainz22/cmssw.git #to keep both fetch and push origins with ssh keys
    git remote -v #check the push and fetch origins
    git remote remove official-cmssw #if official cmssw origing still appeared
    
