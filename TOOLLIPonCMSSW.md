@@ -53,8 +53,12 @@ I am following a combination of the (a) `Jet Tagging CMSSW Recipe` [instructions
    cd ..
    ```
 
-8. We need to tell CMSSW to use the `TOOLLIP` version we want. We can check the files that were changed during the first [pull-request](https://github.com/cms-sw/cmssw/pull/43638/files) to integrate `TOoLLiP/TOoLLiP_v1` in CMSSW. I only see one place where `TOoLLiP_v1` appears inside `CMSSW_15_1_0_pre1/src/L1Trigger/Phase2L1ParticleFlow/plugins/TOoLLiPProducer.cc`. Find the function shown below and change to `TOoLLiP_v2` if that's the correct folder (subsequent lines might also need changes)
+8. We need to tell CMSSW to use the `TOOLLIP` version we want. We can check the files that were changed during the first [pull-request](https://github.com/cms-sw/cmssw/pull/43638/files) to integrate `TOoLLiP/TOoLLiP_v1` in CMSSW. I only see two places we need to make changes inside `CMSSW_15_1_0_pre1/src/L1Trigger/Phase2L1ParticleFlow/plugins/TOoLLiPProducer.cc`: 1) where `TOoLLiP_v1` appears and 2) where we point it to the correct `.so` file (when a version has been pull requested, this 2nd. part is not needed, according to Melissa). Find the function shown below and change to `TOoLLiP_v2` if that's the correct folder (subsequent lines might also need changes)
    ```c++
+   loader(hls4mlEmulator::ModelLoader(cfg.getParameter<string>("/home/users/russelld/TOOLLIP_TESTS/work/CMSSW_15_1_0_pre1/src/TOoLLiP/TOoLLiP_v2/TOoLLiP_v2.so"))) {
+   .
+   .
+   .
    void TOoLLiPProducer::fillDescriptions(edm::ConfigurationDescriptions& descriptions) {
      edm::ParameterSetDescription desc;
      desc.add<edm::InputTag>("jets", edm::InputTag("scPFL1Puppi"));
