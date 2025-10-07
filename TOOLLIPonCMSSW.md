@@ -16,6 +16,7 @@ I am following a combination of the (a) `Jet Tagging CMSSW Recipe` [instructions
    git cms-addpkg L1Trigger/Phase2L1ParticleFlow
    git cms-addpkg L1Trigger/Configuration
    git cms-addpkg DataFormats
+   git cms-addpkg DPGAnalysis
 
    git remote set-url origin https://github.com/Brainz22/cmssw.git # I switched to my fork
    git remote -v #check the push and fetch origins
