@@ -9,7 +9,7 @@ I am following a combination of the (a) `Jet Tagging CMSSW Recipe` [instructions
    export SCRAM_ARCH=el8_amd64_gcc13
    source /cvmfs/cms.cern.ch/cmsset_default.sh
    cmsrel CMSSW_16_0_0_pre1
-   cd CMSSW_15_1_0_pre1/src
+   cd CMSSW_16_0_0_pre1/src
    cmsenv
    git cms-init # git asked me to create a fork before this
    ```
