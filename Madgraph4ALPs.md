@@ -55,8 +55,8 @@ Then, run `git clone git@github.com:cms-sw/genproductions.git genproductions`. T
 ```bash
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 export SCRAM_ARCH=el8_amd64_gcc10
-#In UAF use: export SCRAM_ARCH=llp_gen_slc7_amd64_gcc10
-cmsrel CMSSW_12_4_14_patch3
+#export SCRAM_ARCH=llp_gen_slc7_amd64_gcc10
+cmsrel CMSSW_13_0_13_patch3
 ```   
 
 5. Step 3 gave us the gridpack we need. Now, we need to input this into a cms `fragment.py` and run the `cmsDriver.py` command:
