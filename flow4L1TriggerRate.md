@@ -76,6 +76,10 @@ The command `crab status -d crab_projects/crab_ucsd_MinBias` allows me to check 
 
 We can check that a Tier server does exist by doing for example: `crab checkwrite --site=T3_US_FNALLPC` on LPC. I am running into permission issues, which might be related to my LPC and CERN grid Certificate being different...
 
+Also, check that the dataset we point it to exists in the CMS Data Aggregation System (DAS). See how I found it:
+
+![Untitled](./images/CMSDAS-Minbias4CRABjob.png) 
+
 # Producing Rates via [Phase2-L1MenuTools](https://github.com/cms-l1-dpg/Phase2-L1MenuTools/tree/main):
 
 1. Follow the setup instructions. Basically, we need a separate environment with python 3.11, `git clone` the repo, and run `pip install -e .` to install it. I am creating my environment as follows:
