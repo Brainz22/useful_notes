@@ -74,7 +74,7 @@ crab submit -c CRAB_L1Nano_Minbias.py
 where `CRAB_L1Nano_Minbias.py` has he crab job specifications. 
 The command `crab status -d crab_projects/crab_ucsd_MinBias` allows me to check the status of the CRAB job.
 
-We can check that a Tier server does exist by doing for example: `crab checkwrite --site=T3_US_FNALLPC` on LPC. I am running into permission issues, which might be related to my LPC and CERN grid Certificate being different...
+We can check that a Tier server does exist by doing for example: `crab checkwrite --site=T3_US_FNALLPC` on LPC. I am running into permission issues, which might be related to my LPC and CERN grid Certificate being different. You need to follow the instructions in the "How to get an EOS area enabled or linked to CERNusername" section on this ![link](https://www.uscms.org/uscms_at_work/computing/LPC/usingEOSAtLPC.shtml#createEOSArea). Your grid certificate DN found with `voms-proxy-info --identity` needs to be added in the LPC computing system. Marguerite Tongues can be found on the LPC CERN mattermost and she is really helpful for these things.
 
 Also, check that the dataset we point it to exists in the CMS Data Aggregation System (DAS). See how I found it:
 
