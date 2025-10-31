@@ -82,9 +82,79 @@ I am following a combination of the (a) `Jet Tagging CMSSW Recipe` [instructions
 
 3. Convert a trained and tested model to HLS using this ![notebook](https://github.com/Brainz22/L1LLPJetTagger/blob/2590070869380e8bf9078abc7789dc979044a344/qkL1JetTagModel_hls_config.ipynb) (need to update my commit in TOoLLiP). Make sure you add the emulation commands in `hls4ml.converters.convert_from_keras_model(...)`.
 
-4. After running the conversion script on step 3, look for the folder `firmware` in the `output_dir` you specified.  
-   
+4. After running the conversion script on step 3, look for the folder `firmware` in the `output_dir` you specified.
 
+
+   
+# Testing TOoLLiP_v3
+
+1. Start with a CMSSW version and add necessary submodules.
+   ```bash
+   export SCRAM_ARCH=el8_amd64_gcc13
+   export TOOLLIP_PATH=$PWD/TOoLLiP/TOoLLiP_v3
+   source /cvmfs/cms.cern.ch/cmsset_default.sh
+   cmsrel CMSSW_16_0_0_pre1
+   cd CMSSW_16_0_0_pre1/src
+   cmsenv
+   #git cms-init # git asked me to create a fork before this
+   git cms-checkout-topic -u Brainz22:from-CMSSW_16_0_0_pre1
+   git cms-addpkg L1Trigger/Configuration
+   git cms-addpkg DataFormats
+   git cms-addpkg DPGAnalysis
+   ```
+
+2. Get `hls4ml` emulator extras needed for building the jet tagger emulator
+   ```bash
+   git clone https://github.com/cms-hls4ml/hls4mlEmulatorExtras.git 
+   cd hls4mlEmulatorExtras 
+   git checkout -b v1.1.3 tags/v1.1.3
+   make install
+   cd ..
+   ```
+
+3. (a) Clone HLS libraries for building jet tagger emulator
+   ```bash
+   git clone --quiet https://github.com/Xilinx/HLS_arbitrary_Precision_Types.git hls
+   ```
+4. (b) Clone `TOOLLIP` emulator, make binaries, and give it a `TOOLLIP_PATH` that points to `.so` file to be used in the `toollip producer`.
+   ```bash
+   git clone git@github.com:cms-hls4ml/TOoLLiP.git
+   cd TOoLLiP
+   make install
+   export TOOLLIP_PATH=$PWD/TOoLLiP_v3
+   cd ..
+   ```
+5. Complile these changes in `src` with `scram b -j 8`.
+
+### TOoLLiP_v3: Producing minBias Jets
+
+6. In a `.sh` file, save the following `cmsDriver` command for 10 events:
+   ```bash
+   cmsDriver.py -s L1,L1TrackTrigger,L1P2GT,NANO:@Phase2L1DPGwithGen \
+   --conditions auto:phase2_realistic_T33 \
+   --geometry ExtendedRun4D110 \
+   --era Phase2C17I13M9 \
+   --eventcontent NANOAOD \
+   --datatier GEN-SIM-DIGI-RAW-MINIAOD \
+   --customise SLHCUpgradeSimulations/Configuration/aging.customise_aging_1000,Configuration/DataProcessing/Utils.addMonitoring,L1Trigger/Configuration/customisePhase2TTOn110.customisePhase2TTOn110 \
+   --filein root://cmsxrootd.fnal.gov///store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/00a8a3a7-388d-488a-a184-ac1725eacce9.root \
+   --fileout file:output_Phase2_L1T.root \
+   --python_filename rerunL1_cfg.py \
+   --inputCommands="keep *, drop l1tPFJets_*_*_*, drop l1tTrackerMuons_l1tTkMuonsGmt*_*_HLT" \
+   --mc \
+   -n 10 --nThreads 4 --no_exec
+   ```
+This will produce the config file `rerunL1_cfg.py`.
+
+7_A. Run `cmsRun rerunL1_cfg.py` to produce `output_Phase2_L1T.root`. Check that one of the branches is `L1puppiExtJetSC4_llpTagScore`.
+
+7_B. Run a CRAB job. I am using the crab file [here](https://gist.github.com/Brainz22/69cf0c8602e6f3eabbfcea860f60c7f0).
+   ```bash
+   mkdir -p CRABjobs
+   cd CRABjobs
+   ```
+   * Create a `CRAB.py` file with the contents from the file in the link.
+   * submit job as: `crab submit -c CRAB.py`
 
 
 
