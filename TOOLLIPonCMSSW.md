@@ -111,11 +111,11 @@ I am following a combination of the (a) `Jet Tagging CMSSW Recipe` [instructions
    cd ..
    ```
 
-3. (a) Clone HLS libraries for building jet tagger emulator
+3. Clone HLS libraries for building jet tagger emulator
    ```bash
    git clone --quiet https://github.com/Xilinx/HLS_arbitrary_Precision_Types.git hls
    ```
-4. (b) Clone `TOOLLIP` emulator, make binaries, and give it a `TOOLLIP_PATH` that points to `.so` file to be used in the `toollip producer`.
+4. Clone `TOOLLIP` emulator, make binaries, and give it a `TOOLLIP_PATH` that points to `.so` file to be used in the `toollip producer`.
    ```bash
    git clone git@github.com:cms-hls4ml/TOoLLiP.git
    cd TOoLLiP
