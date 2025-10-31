@@ -152,9 +152,11 @@ This will produce the config file `rerunL1_cfg.py`.
    ```bash
    mkdir -p CRABjobs
    cd CRABjobs
+   cp ../rerunL1_cfg.py . #config needs to be in same dir
    ```
    * Create a `CRAB.py` file with the contents from the file in the link.
    * submit job as: `crab submit -c CRAB.py`
+   * Note that it might complain about numCores (in `CRAB.py`) and numberOfThreads (in `rerunL1_cfg.py`). It asked me to match them a couple of times.
 
 
 
