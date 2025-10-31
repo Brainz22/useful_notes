@@ -91,7 +91,6 @@ I am following a combination of the (a) `Jet Tagging CMSSW Recipe` [instructions
 1. Start with a CMSSW version and add necessary submodules.
    ```bash
    export SCRAM_ARCH=el8_amd64_gcc13
-   export TOOLLIP_PATH=$PWD/TOoLLiP/TOoLLiP_v3
    source /cvmfs/cms.cern.ch/cmsset_default.sh
    cmsrel CMSSW_16_0_0_pre1
    cd CMSSW_16_0_0_pre1/src
