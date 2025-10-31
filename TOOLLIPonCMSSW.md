@@ -127,7 +127,7 @@ I am following a combination of the (a) `Jet Tagging CMSSW Recipe` [instructions
 
 ### TOoLLiP_v3: Producing minBias Jets
 
-6. In a `.sh` file, save the following `cmsDriver` command for 10 events:
+6. In a `.sh` file, save the following `cmsDriver` command for 10 events and run it with `bash file_name.sh`:
    ```bash
    cmsDriver.py -s L1,L1TrackTrigger,L1P2GT,NANO:@Phase2L1DPGwithGen \
    --conditions auto:phase2_realistic_T33 \
