@@ -96,7 +96,7 @@ I am following a combination of the (a) `Jet Tagging CMSSW Recipe` [instructions
    cmsrel CMSSW_16_0_0_pre1
    cd CMSSW_16_0_0_pre1/src
    cmsenv
-   #git cms-init # git asked me to create a fork before this
+   #checkout branch in my fork
    git cms-checkout-topic -u Brainz22:from-CMSSW_16_0_0_pre1
    git cms-addpkg L1Trigger/Configuration
    git cms-addpkg DataFormats
