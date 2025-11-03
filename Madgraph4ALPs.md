@@ -101,4 +101,10 @@ process = customizeNanoGEN(process)
 
 7. Once done with the changes from the last step, run `cmsenv` to activate CMS environment and run `cmsRun fragment2_py_LHE_GEN_NANOGEN.py` to produce the `.root` file.
 
+# ALP Sample MiniAOD file production for Analysis
 
+The previous steps were to correctly verify that the gridpack generation is correct. Now, we need to generate the files we will use for the analysis. Christina shared instructions for this:
+
+* We need to follow the steps in the git repo [here](https://github.com/Christinaw97/LLPSignalGeneration/tree/main). We will need to run the steps in the readme: GENSIM, DR step1, DR step2, MDSNano. With this, we will get a flavor of nanoAOD as output.
+
+* Try running with ~50 events just to make sure the workflow works, then submit jobs on crab for like tens of thousands events.
