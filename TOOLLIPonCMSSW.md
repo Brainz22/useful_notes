@@ -84,6 +84,8 @@ I am following a combination of the (a) `Jet Tagging CMSSW Recipe` [instructions
 
 4. After running the conversion script on step 3, look for the folder `firmware` in the `output_dir` you specified.
 
+5. In my fork of CMSSW, [branch](https://github.com/Brainz22/cmssw/tree/from-CMSSW_16_0_0_pre1), I had to update `cmssw/L1TriggerPhase2L1ParticleFlow/src/JetId.cc` (see [commit](https://github.com/Brainz22/cmssw/commit/9df6e22d103847c35df10244faf67f2ede1657d0)) and `cmssw/L1TriggerPhase2L1ParticleFlow/inteface/JetId.h` (see [commit](https://github.com/Brainz22/cmssw/commit/9df6e22d103847c35df10244faf67f2ede1657d0)) to match our model input and output datatypes. Otherwise, this will cause an error coming from `TOoLLiP_v3/TOoLLiP_emulator_v3.cpp`, concerning type of the `any` variable there.
+
 
    
 # Testing TOoLLiP_v3
