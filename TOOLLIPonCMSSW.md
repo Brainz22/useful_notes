@@ -146,6 +146,11 @@ I am following a combination of the (a) `Jet Tagging CMSSW Recipe` [instructions
    -n 10 --nThreads 4 --no_exec
    ```
 This will produce the config file `rerunL1_cfg.py`.
+We can also produce signal nanoAOD config files if we input a signal miniAOD. On CMS DAS, here is the [location](https://cmsweb.cern.ch/das/request?view=list&limit=50&instance=prod%2Fglobal&input=file+dataset%3D%2FHiddenGluGluH_mH-125_Phi-60_ctau-1000_bbbb_TuneCP5_14TeV-pythia8%2FPhase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2%2FGEN-SIM-DIGI-RAW-MINIAOD+site%3DT1_RU_JINR_Disk) of a set of signal files ON DISK:
+```bash
+file dataset=/HiddenGluGluH_mH-125_Phi-60_ctau-1000_bbbb_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/GEN-SIM-DIGI-RAW-MINIAOD site=T1_RU_JINR_Disk
+```
+
 
 7_A. Run `cmsRun rerunL1_cfg.py` to produce `output_Phase2_L1T.root`. Check that one of the branches is `L1puppiExtJetSC4_llpTagScore`.
 
