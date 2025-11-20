@@ -164,8 +164,35 @@ file dataset=/HiddenGluGluH_mH-125_Phi-60_ctau-1000_bbbb_TuneCP5_14TeV-pythia8/P
    * submit job as: `crab submit -c CRAB.py`
    * Note that it might complain about numCores (in `CRAB.py`) and numberOfThreads (in `rerunL1_cfg.py`). It asked me to match them a couple of times.
 
+# Testing TOoLLiP_v3 on CMSSW_15_1_X
 
+* Start by adding your desired CMSSW version
+   ```bash
+   cmsrel CMSSW_15_1_0_pre1
+   cd CMSSW_15_1_0_pre1/src
+   git cms-init # initialize as a git repo
+   git branch # shows that you are in a CMSSW_15_1_0_pre1 branch
+   ```
 
+* Add the needed packages:
+   ```bash
+   git cms-addpkg L1Trigger/Phase2L1ParticleFlow
+   git cms-addpkg L1Trigger/Configuration
+   git cms-addpkg DataFormats
+   ```
+* Cherry pick [commits](https://github.com/Brainz22/cmssw/commit/1f54d18ec2be30c642e26bbaae3887c4a8f8373c) from my fork which add `TOoLLiP` to CMSSW and the writer files:
+   ```bash
+    git cherry-pick 1f54d18ec2b #adds writer class files 
+   ```
+   And I think if you try `git status`, it will show that `TOoLLiPProducer.cc` was modified. If so,
+   ```bash
+   git add <path/to/TOoLLiPProducer.cc> #correctly adds changes.
+   ```
+   If not, the other cherry-pick [commit](https://github.com/Brainz22/cmssw/commit/f0eb9b96930a102c7142b9d726fa2c740d47534c) where I modified this file:
+   ```bash
+   git cherry-pick f0eb9b9
+   ```
+* Continue to add the `TOoLLiP` and other folders upto just before `scram b -j8` in the previous section because we need a new extra repo before running `scram b`. 
 
 
    
