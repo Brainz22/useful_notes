@@ -165,6 +165,7 @@ file dataset=/HiddenGluGluH_mH-125_Phi-60_ctau-1000_bbbb_TuneCP5_14TeV-pythia8/P
    * Note that it might complain about numCores (in `CRAB.py`) and numberOfThreads (in `rerunL1_cfg.py`). It asked me to match them a couple of times.
 
 # Testing TOoLLiP_v3 on CMSSW_15_1_X
+These steps worked on `lxplus`:
 
 * Start by adding your desired CMSSW version (CMSSW_15_1_0_pre4) in order to follow [fastPUPPI](https://github.com/p2l1pfp/FastPUPPI/tree/15_1_X/NtupleProducer) Ntuple producer.
    ```bash
