@@ -166,10 +166,10 @@ file dataset=/HiddenGluGluH_mH-125_Phi-60_ctau-1000_bbbb_TuneCP5_14TeV-pythia8/P
 
 # Testing TOoLLiP_v3 on CMSSW_15_1_X
 
-* Start by adding your desired CMSSW version
+* Start by adding your desired CMSSW version (CMSSW_15_1_0_pre4) in order to follow [fastPUPPI](https://github.com/p2l1pfp/FastPUPPI/tree/15_1_X/NtupleProducer) Ntuple producer.
    ```bash
-   cmsrel CMSSW_15_1_0_pre1
-   cd CMSSW_15_1_0_pre1/src
+   cmsrel CMSSW_15_1_0_pre4
+   cd CMSSW_15_1_0_pre4/src
    git cms-init # initialize as a git repo
    git branch # shows that you are in a CMSSW_15_1_0_pre1 branch
    ```
