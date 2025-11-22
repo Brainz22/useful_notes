@@ -198,7 +198,12 @@ file dataset=/HiddenGluGluH_mH-125_Phi-60_ctau-1000_bbbb_TuneCP5_14TeV-pythia8/P
    ```bash
    git cherry-pick f0eb9b9
    ```
-* Continue to add the `TOoLLiP` and other folders upto just before `scram b -j8`. Once the folders are added, run `scram b -j8`. 
+* Continue to add the `TOoLLiP` and other folders upto just before `scram b -j8`. Once the folders are added, run `scram b -j8`.
+* Once the above steps did not fail, produce the nanoAODs as follows 
+   ```bash
+   cmsRun FastPUPPI/NtupleProducer/python/runPerformanceNTuple.py
+   ```
+   Note that to produce `MinBias` files, I need to point the input file to `eos/cms/store/cmst3/group/l1tr/FastPUPPI/15_1_X/fpinputs_140X/v1/MinBias.../.../.../inputXXX.root`.
 
 
    
