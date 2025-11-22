@@ -179,6 +179,12 @@ file dataset=/HiddenGluGluH_mH-125_Phi-60_ctau-1000_bbbb_TuneCP5_14TeV-pythia8/P
    git cms-addpkg L1Trigger/Phase2L1ParticleFlow
    git cms-addpkg L1Trigger/Configuration
    git cms-addpkg DataFormats
+   git cms-addpkg L1Trigger/TrackTrigger
+   git cms-addpkg SimTracker/TrackTriggerAssociation
+   git cms-checkout-topic -u p2l1pfp:L1PF_15_1_X
+   # scripts
+   git clone git@github.com:p2l1pfp/FastPUPPI.git -b 15_1_X
+   scram b -j8 #should work with no errors
    ```
 * Cherry pick [commits](https://github.com/Brainz22/cmssw/commit/1f54d18ec2be30c642e26bbaae3887c4a8f8373c) from my fork which add `TOoLLiP` to CMSSW and the writer files:
    ```bash
@@ -192,7 +198,7 @@ file dataset=/HiddenGluGluH_mH-125_Phi-60_ctau-1000_bbbb_TuneCP5_14TeV-pythia8/P
    ```bash
    git cherry-pick f0eb9b9
    ```
-* Continue to add the `TOoLLiP` and other folders upto just before `scram b -j8` in the previous section because we need a new extra repo before running `scram b`. 
+* Continue to add the `TOoLLiP` and other folders upto just before `scram b -j8`. Once the folders are added, run `scram b -j8`. 
 
 
    
