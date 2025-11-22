@@ -194,7 +194,7 @@ file dataset=/HiddenGluGluH_mH-125_Phi-60_ctau-1000_bbbb_TuneCP5_14TeV-pythia8/P
    ```bash
    git add <path/to/TOoLLiPProducer.cc> #correctly adds changes.
    ```
-   If not, the other cherry-pick [commit](https://github.com/Brainz22/cmssw/commit/f0eb9b96930a102c7142b9d726fa2c740d47534c) where I modified this file:
+   If not, use the other cherry-pick [commit](https://github.com/Brainz22/cmssw/commit/f0eb9b96930a102c7142b9d726fa2c740d47534c) where I modified this file:
    ```bash
    git cherry-pick f0eb9b9
    ```
