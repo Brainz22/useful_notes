@@ -187,18 +187,14 @@ These steps worked on `lxplus`:
    git clone git@github.com:p2l1pfp/FastPUPPI.git -b 15_1_X
    scram b -j8 #should work with no errors
    ```
-* Cherry pick [commits](https://github.com/Brainz22/cmssw/commit/1f54d18ec2be30c642e26bbaae3887c4a8f8373c) from my fork which add `TOoLLiP` to CMSSW and the writer files:
-   ```bash
-    git cherry-pick 1f54d18ec2b #adds writer class files 
-   ```
-   And I think if you try `git status`, it will show that `TOoLLiPProducer.cc` was modified. If so,
-   ```bash
-   git add <path/to/TOoLLiPProducer.cc> #correctly adds changes.
-   ```
-   If not, use the other cherry-pick [commit](https://github.com/Brainz22/cmssw/commit/f0eb9b96930a102c7142b9d726fa2c740d47534c) where I modified this file:
-   ```bash
-   git cherry-pick f0eb9b9
-   ```
+
+* Clone my `cmssw` fork, branch `from-CMSSW_15_1_0_pre4` which contains `TOoLLiP` changes:
+  ```bash
+   git clone https://github.com/Brainz22/cmssw.git
+   cd cmssw
+   git checkout from-CMSSW_15_1_0_pre4
+   git branch #check that you are in the correct branch.
+  ```
 * Continue to add the `TOoLLiP` and other folders upto just before `scram b -j8`. Once the folders are added, run `scram b -j8`.
 * Once the above steps did not fail, produce the nanoAODs as follows 
    ```bash
