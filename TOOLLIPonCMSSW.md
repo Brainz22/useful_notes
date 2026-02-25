@@ -184,7 +184,7 @@ These steps worked on `lxplus`:
    git cms-addpkg SimTracker/TrackTriggerAssociation
    git cms-checkout-topic -u p2l1pfp:L1PF_15_1_X
    # scripts
-   git clone git@github.com:p2l1pfp/FastPUPPI.git -b 15_1_X
+   git clone git@github.com:Brainz22/FastPUPPI.git -b 15_1_X_LLPtagging #clones my branch
    scram b -j8 #should work with no errors
    ```
 
