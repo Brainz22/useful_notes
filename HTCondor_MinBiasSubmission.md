@@ -6,10 +6,11 @@ CMSSW environment set up and cmsenv sourced
 The [cerminar/submission](https://github.com/CMS-L1T-Jet-Tagging/submission) repository cloned into your CMSSW src/ directory
 Input files accessible on EOS
 An output directory you have write access to (e.g. CERN box: /eos/user/r/<initial>/<username>/)
-1. Create the output directory
+
+### 1. Create the output directory
 `mkdir -p /eos/user/r/russelld/fp_ntuples`.
 
-3. Write a YAML config
+### 2. Write a YAML config
 Model it after `submit_FP_131X.yaml`. Key fields:
 
 ```bash
@@ -37,7 +38,7 @@ Use `mode: FP` (not `NTP`) for `runPerformanceNTuple.py` — it uses the correct
 Output files are saved as `perfNano_<ClusterID>_<ProcID>.root` under:
 `<output_dir_base>/<task_name>/FP/<version>/`
 
-3. Apply two bug fixes to `submit.py`
+### 3. Apply two bug fixes to `submit.py`
 These are needed when using a non-`/eos/cms/` output path and no inline_customize:
 
 Fix 1 — guard CRAB-only parameter (~line 269):
@@ -58,18 +59,18 @@ else:
     params['TEMPL_CUSTOMIZE'] = ''
 ```
 
-4. Create, submit, and monitor
+### 4. Create, submit, and monitor
 
 cd src/submission
 
-### Create job configs and sandbox
+1. Create job configs and sandbox
 `python3 submit.py -f submit_FP_151X_MinBias.yaml --create`
 
-### Submit to HTCondor
+2. Submit to HTCondor
 `python3 submit.py -f submit_FP_151X_MinBias.yaml --submit`
 
-### Monitor
+3. Monitor
 `condor_q $USER`
 
-### Count output files as they arrive
+4. Count output files as they arrive
 `ls /eos/user/r/russelld/fp_ntuples/NuGunAllEta_PU200_151Xv0/FP/v151Xv1/ | wc -l`
