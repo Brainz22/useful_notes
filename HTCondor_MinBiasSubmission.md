@@ -62,7 +62,7 @@ else:
 
 ### 4. Create, submit, and monitor
 
-cd src/submission
+`cd src/submission` and delete the sandbox if you submitted a previous job using the same `.yaml`: `rm fp/v151Xv1/sandbox.tgz`
 
 1. Create job configs and sandbox
 `python3 submit.py -f submit_FP_151X_MinBias.yaml --create`
