@@ -30,6 +30,7 @@ NuGunAllEta_PU200_151Xv0:
   crab: False
   splitting_mode: file_based
   splitting_granularity: 1   # files per job
+  max_njobs: 1 # test a single job. Remove this for all jobs.
   job_flavor: longlunch      # 2 hour wall time
   max_events: -1
 ```
