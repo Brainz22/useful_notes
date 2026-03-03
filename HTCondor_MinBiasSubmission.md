@@ -2,10 +2,10 @@
 
 ### Prerequisites
 
-CMSSW environment set up and cmsenv sourced
-The [cerminar/submission](https://github.com/CMS-L1T-Jet-Tagging/submission) repository cloned into your CMSSW src/ directory
-Input files accessible on EOS
-An output directory you have write access to (e.g. CERN box: /eos/user/r/<initial>/<username>/)
+* CMSSW environment set up and cmsenv sourced.
+* The [cerminar/submission](https://github.com/CMS-L1T-Jet-Tagging/submission) repository cloned into your CMSSW src/ directory.
+* Input files accessible on EOS.
+* An output directory you have write access to (e.g. CERN box: `/eos/user/r/<initial>/<username>/`).
 
 ### 1. Create the output directory
 `mkdir -p /eos/user/r/russelld/fp_ntuples`.
