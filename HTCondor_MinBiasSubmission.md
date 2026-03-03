@@ -62,6 +62,8 @@ else:
 
 ### 4. Create, submit, and monitor
 
+**Note:** Under `src`, I had to `mkdir data` and move the file `TOoLLiP_v3.so` in there to make it work.
+
 `cd src/submission` and delete the sandbox if you submitted a previous job using the same `.yaml`: `rm fp/v151Xv1/sandbox.tgz`
 
 1. Create job configs and sandbox
