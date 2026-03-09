@@ -9,7 +9,7 @@ This guide covers how to produce FastPUPPI input ROOT files (INFP step) and subs
 - Access to lxplus with a valid CERN account
 - A CMSSW environment set up with the relevant packages compiled
 - Input GEN-SIM-DIGI-RAW-MINIAOD files accessible on EOS (`/eos/cms/store/mc/...`)
-- The `submission` repository (located under `src/submission/`)
+- The `submission` [repository](https://github.com/CMS-L1T-Jet-Tagging/submission) (located under `src/submission/`)
 
 ```bash
 cd /path/to/CMSSW_X_Y_Z/src
