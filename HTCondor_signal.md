@@ -163,8 +163,9 @@ Output files will appear in:
 ---
 
 ## Troubleshooting
+---
 
-### Jobs complete but no output files
+### 1. Jobs complete but no output files
 
 Check the job error log:
 ```bash
@@ -185,3 +186,60 @@ After `--create`, verify the generated job config looks correct:
 ```bash
 cat fp/v151Xv1/<TaskName>/conf/job_config_0.py
 ```
+---
+### 2. File dataset on CMS DAS at `T1_ES_PIC_Disk`, but jobs failed to access it
+
+[Issue 1]: Global XRootD redirector does not route to PIC. **Symptom:** Jobs failed with:
+```[ERROR] No servers are available to read the file``` using `root://cms-xrd-global.cern.ch//` as the redirector.
+
+**Fix:** Use PIC's own XRootD server directly:
+
+```root://xrootd.pic.es//``` for `input_files` in `submit.py` (~ lines 200-230).
+
+[Issue 2]: `[FATAL] Auth failed: No protocols left to try` because Condor worker nodes did not have a VOMS proxy forwarded to them, so they could not authenticate with PIC's XRootD server.
+
+**Fix:** Add proxy forwarding to the Condor submit template (`condorSubmit_DEFAULT.sub`):
+`use_x509userproxy = true`, then copy your proxy to AFS (since `/tmp` is node-local and not shared across lxplus nodes) and specify the path explicitly:
+  ```bash
+  bash
+  mkdir -p ~/private
+  cp /tmp/x509up_u<uid> ~/private/x509up
+  chmod 600 ~/private/x509up
+  export X509_USER_PROXY=~/private/x509up
+  ```
+ Then in `condorSubmit_DEFAULT.sub`, add `x509userproxy = /afs/cern.ch/user/<u>/<username>/private/x509up` to use your grid certificate (after validation).
+
+[ISSUE 3]:  Files not physically present for the bbbb sample
+
+**Symptom**: Jobs ran and authenticated successfully but failed with:
+[ERROR] No such file (errno=3011)
+Cause: DAS listed the bbbb sample at T1_ES_PIC_Disk, but the files were not actually stored there. Verified by checking directly:
+
+`xrdfs xrootd.pic.es ls /pnfs/pic.es/data/cms/store/mc/Phase2Spring24DIGIRECOMiniAOD/ | grep HiddenGluGlu`
+The bbbb sample was absent; only cccc and uuuu variants were present.
+
+**Fix:** Switch to the cccc variant which is physically available:
+`/HiddenGluGluH_mH-125_Phi-30_ctau-10_cccc_TuneCP5_14TeV-pythia8/
+Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v6-v1/
+GEN-SIM-DIGI-RAW-MINIAOD`
+
+[Issue 4]: DAS returns no files for PIC even though files exist
+
+**Symptom:** `getFilesForDataset(..., site='T1_ES_PIC_Disk')` returned 0 files, resulting in only 1 job submitted.
+
+**Cause:** DAS metadata for this dataset at PIC was not registered, but the files were physically present. Also, PIC's XRootD does not serve files via the standard LFN path (`/store/mc/...`) — it requires the full PNFS path:
+
+`/pnfs/pic.es/data/cms/store/mc/...`
+**Fix:** Add `input_xrd_directory` support to `submit.py` to list files directly from the `XRootD` server using `xrdfs ls -R`, bypassing DAS entirely. In the `submit_INFP_151X_HiddenGluGluH_Phi30_ctau10_cccc.yaml` (since this is the input FastPUPPI step using the cfg `/FastPUPPI/NtupleProducer/python/runInputs151X.py`):
+
+```bash
+input_xrd_directory: root://xrootd.pic.es//pnfs/pic.es/data/cms/store/mc/Phase2Spring24DIGIRECOMiniAOD/HiddenGluGluH_mH-125_Phi-30_ctau-10_cccc_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v6-v1
+```
+
+The URL is parsed as:
+`root://<host>//<path>`
+
+where `<host> = xrootd.pic.es` and `<path> = /pnfs/pic.es/data/cms/store/mc/...`.
+This resulted in 46 jobs submitted and 46 output files successfully produced on EOS.
+
+
