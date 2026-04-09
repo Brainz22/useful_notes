@@ -108,3 +108,4 @@ The previous steps were to correctly verify that the gridpack generation is corr
 * We need to follow the steps in the git repo [here](https://github.com/Christinaw97/LLPSignalGeneration/tree/main). We will need to run the steps in the readme: GENSIM, DR step1, DR step2, MDSNano. With this, we will get a flavor of nanoAOD as output.
 
 * Try running with ~50 events just to make sure the workflow works, then submit jobs on crab for like tens of thousands events.
+* My fork is [here](https://github.com/Brainz22/LLPSignalGeneration).
