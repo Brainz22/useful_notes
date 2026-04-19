@@ -182,7 +182,7 @@ These steps worked on `lxplus`:
    git cms-addpkg DataFormats
    git cms-addpkg L1Trigger/TrackTrigger
    git cms-addpkg SimTracker/TrackTriggerAssociation
-   git cms-checkout-topic -u Brainz:from-CMSSW_15_0_1_pre4
+   git cms-checkout-topic -u Brainz22:from-CMSSW_15_1_0_pre4
    # scripts
    git clone git@github.com:Brainz22/FastPUPPI.git -b 15_1_X_LLPtagging #clones my branch
    scram b -j8 #should work with no errors
