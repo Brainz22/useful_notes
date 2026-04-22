@@ -63,9 +63,12 @@ else:
 ### 4. Create, submit, and monitor
 
 **Notes:** 
+
 1) Under `src/TOoLLiP`, I had to `mkdir data` and move the file `TOoLLiP_v3.so` in there to make it work.
 
 2) If submitting from an `/eos/` path, we have to run `module load lxbatch/eossubmit` right before the submiting to HTCondor to load the `EosSubmit` module. Otherwise, it will fail.
+
+2.1) From `/eos/`, your grid authentication file will be sent to `/tmp/` (local on lxplus). We need to point it to a an `/afs/` location. 
 
 After the notes have been considered, `cd src/submission` and delete the sandbox if you submitted a previous job using the same `.yaml`: `rm fp/v151Xv1/sandbox.tgz`
 
