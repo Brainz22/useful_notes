@@ -1,5 +1,8 @@
 # Submitting FastPUPPI performance ntuples with HTCondor at CERN
 
+### Useful HTCondor Commands
+* `condor_rm $USER` removes all jobs from user.
+
 ### Prerequisites
 
 * CMSSW environment set up and cmsenv sourced.
