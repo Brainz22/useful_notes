@@ -86,3 +86,9 @@ After the notes have been considered, `cd src/submission` and delete the sandbox
 
 4. Count output files as they arrive
 `ls /eos/user/r/russelld/fp_ntuples/NuGunAllEta_PU200_151Xv0/FP/v151Xv1/ | wc -l`
+
+## Troubleshooting
+
+* **[ISSUE 1]** `dlopen library cannot find model` or something like that.
+  
+  **[FIX]** Make sure `TOOLLIP_PATH` is set correctly via the variable and inside the respective config (e.g. `runPerformance.py`). If the error persists, you can add the respective `model.so` file via `addFiles()` inside `submit.py`. Or, I changed the variable `dataDirs = ['data', 'interface', 'python', 'TOoLLiP']` to include the full `TOoLLiP` folder.
