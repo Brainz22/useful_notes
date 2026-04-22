@@ -62,9 +62,12 @@ else:
 
 ### 4. Create, submit, and monitor
 
-**Note:** Under `src/TOoLLiP`, I had to `mkdir data` and move the file `TOoLLiP_v3.so` in there to make it work.
+**Notes:** 
+1) Under `src/TOoLLiP`, I had to `mkdir data` and move the file `TOoLLiP_v3.so` in there to make it work.
 
-`cd src/submission` and delete the sandbox if you submitted a previous job using the same `.yaml`: `rm fp/v151Xv1/sandbox.tgz`
+2) If submitting from an `/eos/` path, we have to run `module load lxbatch/eossubmit` right before the submiting to HTCondor to load the `EosSubmit` module. Otherwise, it will fail.
+
+After the notes have been considered, `cd src/submission` and delete the sandbox if you submitted a previous job using the same `.yaml`: `rm fp/v151Xv1/sandbox.tgz`
 
 1. Create job configs and sandbox
 `python3 submit.py -f submit_FP_151X_MinBias.yaml --create`
