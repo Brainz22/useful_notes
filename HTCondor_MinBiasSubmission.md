@@ -71,7 +71,8 @@ else:
 
 2) If submitting from an `/eos/` path, we have to run `module load lxbatch/eossubmit` right before the submiting to HTCondor to load the `EosSubmit` module. Otherwise, it will fail.
 
-2.1) From `/eos/`, your grid authentication file will be sent to `/tmp/` (local on lxplus). We need to point it to a an `/afs/` location. 
+2.1) From `/eos/`, your grid authentication file will be sent to `/tmp/` (local on lxplus). We need to point it to a an `/afs/` location:
+`cp /tmp/x509up_u151471 ~/private/x509up` copies to home `~`. 
 
 After the notes have been considered, `cd src/submission` and delete the sandbox if you submitted a previous job using the same `.yaml`: `rm fp/v151Xv1/sandbox.tgz`
 
