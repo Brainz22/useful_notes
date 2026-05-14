@@ -248,5 +248,9 @@ This resulted in 46 jobs submitted and 46 output files successfully produced on 
 
 **FIX:** Through the terminal, check for DISK sites with
 `dasgoclient --query="site dataset=/HiddenGluGluH_mH-125_Phi-15_ctau-1_cccc_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v6-v1/GEN-SIM-DIGI-RAW-MINIAOD"`, for example. Then, check that at least one of the files is there with:
-`dasgoclient --query="file dataset=/HiddenGluGluH_mH-125_Phi-15_ctau-1_cccc_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v6-v1/GEN-SIM-DIGI-RAW-MINIAOD site=T1_IT_CNAF_Disk" | head -1`
+`dasgoclient --query="file dataset=/HiddenGluGluH_mH-125_Phi-15_ctau-1_cccc_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v6-v1/GEN-SIM-DIGI-RAW-MINIAOD site=T1_IT_CNAF_Disk" | head -1`.
+
+We can also perform a quick check to see if file is readable via `cms-xrd-global`:
+```xrdfs cms-xrd-global.cern.ch stat /store/mc/Phase2Spring24DIGIRECOMiniAOD/HiddenGluGluH_mH-125_Phi-15_ctau-10_cccc_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v6-v1/2810000/0078c306-2f74-4bc0-a181-2aedaa9d81b1.root```
+It should say `isReadable` at end of the output
 
