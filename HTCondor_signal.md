@@ -242,4 +242,11 @@ The URL is parsed as:
 where `<host> = xrootd.pic.es` and `<path> = /pnfs/pic.es/data/cms/store/mc/...`.
 This resulted in 46 jobs submitted and 46 output files successfully produced on EOS.
 
+### 3. CMS DAS May Show Non-existent Data Sites
+
+[ISSUE 4] CMS DAS can be misleading. It might show sites, but the files are not there. 
+
+**FIX:** Through the terminal, check for DISK sites with
+`dasgoclient --query="site dataset=/HiddenGluGluH_mH-125_Phi-15_ctau-1_cccc_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v6-v1/GEN-SIM-DIGI-RAW-MINIAOD"`, for example. Then, check that at least one of the files is there with:
+`dasgoclient --query="file dataset=/HiddenGluGluH_mH-125_Phi-15_ctau-1_cccc_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v6-v1/GEN-SIM-DIGI-RAW-MINIAOD site=T1_IT_CNAF_Disk" | head -1`
 
