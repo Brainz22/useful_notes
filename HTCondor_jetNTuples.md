@@ -50,7 +50,7 @@ We can also perform a quick check to see if file is readable via `cms-xrd-global
   ```
   In the link attached, there are useful commands and debugging notes.
 
-5. If we produced the slimed down ntuples (fp_inputs) or skip steps 3 and 4 (fp_inputs files exist), then we can directly use the `jetNtupler` at `../FastPUPPI/NtupleProducer/python/runJetNTuple.py`.
+5. If we produced the slimed down ntuples (fp_inputs), or skipped steps 3 and 4 (fp_inputs files exist), then we can directly use the `jetNtupler` at `../FastPUPPI/NtupleProducer/python/runJetNTuple.py`.
    * Switch to the correct branch
      ```bash
      git checkout rm-l1tsc4ngjettagger
