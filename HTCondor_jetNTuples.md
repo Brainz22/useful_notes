@@ -37,13 +37,8 @@
   scram b -j8
   cd ../submission
   ```
-  * CMS DAS can be misleading. It might show sites, but the files are not there.
-
-  FIX: Through the terminal, check for DISK sites with `dasgoclient --query="site dataset=/HiddenGluGluH_mH-125_Phi-15_ctau-1_cccc_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v6-v1/GEN-SIM-DIGI-RAW-MINIAOD"`, for example. Then, check that at least one of the files is there with: `dasgoclient --query="file dataset=/HiddenGluGluH_mH-125_Phi-15_ctau-1_cccc_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v6-v1/GEN-SIM-DIGI-RAW-MINIAOD site=T1_IT_CNAF_Disk" | head -1`.
-
-We can also perform a quick check to see if file is readable via `cms-xrd-global: xrdfs cms-xrd-global.cern.ch stat /store/mc/Phase2Spring24DIGIRECOMiniAOD/HiddenGluGluH_mH-125_Phi-15_ctau-10_cccc_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v6-v1/2810000/0078c306-2f74-4bc0-a181-2aedaa9d81b1.root`. It should say isReadable at end of the output. 
-
-3. Once we have found the correct sites with files on DISK. We can add it to the `.yaml` and submit using `submit.py` as shown on **Step 2** section on the instructions [here](https://github.com/Brainz22/useful_notes/blob/main/HTCondor_signal.md). Basically, 
+  
+3. Once we have found the correct sites with files on DISK (see **Troubleshooting** for how to find datasets on DISK). We can add it to the `.yaml` and submit using `submit.py` as shown on **Step 2** section on the instructions [here](https://github.com/Brainz22/useful_notes/blob/main/HTCondor_signal.md). Basically, 
   ```bash
   python3 submit.py -f submit_INFP_151X_<sample_name>.yaml --create # creates folder with task name and creates sandbox.
   python3 submit.py -f submit_INFP_151X_<sample_name>.yaml --submit # submits HTCondor.
@@ -66,3 +61,24 @@ We can also perform a quick check to see if file is readable via `cms-xrd-global
    ```
 The files produced will be stored in the `output_dir` specified in the `.yaml`.
 
+## Troubleshooting
+
+ * CMS DAS can be misleading. It might show sites, but the files are not there.
+
+  [FIX]: Through the terminal, check for DISK sites with `dasgoclient --query="site dataset=/HiddenGluGluH_mH-125_Phi-15_ctau-1_cccc_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v6-v1/GEN-SIM-DIGI-RAW-MINIAOD"`, for example. Then, check that at least one of the files is there with: `dasgoclient --query="file dataset=/HiddenGluGluH_mH-125_Phi-15_ctau-1_cccc_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v6-v1/GEN-SIM-DIGI-RAW-MINIAOD site=T1_IT_CNAF_Disk" | head -1`.
+
+We can also perform a quick check to see if file is readable via `cms-xrd-global: xrdfs cms-xrd-global.cern.ch stat /store/mc/Phase2Spring24DIGIRECOMiniAOD/HiddenGluGluH_mH-125_Phi-15_ctau-10_cccc_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v6-v1/2810000/0078c306-2f74-4bc0-a181-2aedaa9d81b1.root`. It should say isReadable at end of the output.
+
+* If a dataset is not accessible or it is completely on DISK, we can submit a `rucio` request to transfer to UCSD tier 2. The steps are:
+
+   ```bash
+   cmsenv
+   source /cvmfs/cms.cern.ch/rucio/setup.sh
+   rucio add-rule --ask-approval --activity "User AutoApprove" \
+   --comment "For Run 3 L1LLP trigger" \
+   --lifetime 14000000 \
+   cms:/HiddenGluGluH_mH-125_Phi-15_ctau-100_cccc_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v6-v1/GEN-SIM-DIGI-RAW-MINIAOD 1 T2_US_UCSD
+   ```
+This outputs a job ID of the `rucio` request for a given dataset and we can check the status as:
+`rucio rule-info 895803ee3cc54d7a928b00029a71e4eb`, where the ID is the string of characters on the right. The dataset is transferred to:
+`/ceph/cms/store/mc/Phase2Spring24DIGIRECOMiniAOD/` on UCSD UAF.
