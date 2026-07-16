@@ -109,3 +109,9 @@ The previous steps were to correctly verify that the gridpack generation is corr
 
 * Try running with ~50 events just to make sure the workflow works, then submit jobs on crab for like tens of thousands events.
 * My fork is [here](https://github.com/Brainz22/LLPSignalGeneration).
+
+# Running LLP Analyzer
+
+* Instructions are on [this](https://github.com/cms-lpc-llp/run3_llp_analyzer) repository. Instructions are there to set it up. Then, we run 
+```./RazorRun filesList.txt llp_MuonSystem_CA_mdsnano -d=no -f=trialRun.root -l=Summer24 > output.txt 2>&1```
+The `filesList.txt` file has the paths to the MDS nanoAOD files produced from the previous section.
