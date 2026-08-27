@@ -143,4 +143,4 @@ Backtrace for this error:
           echo "set nb_core ${NB_CORE:-4}" >> mgconfigscript # → newly added line
       elif [ "$queue" == "pdmv" ]; then
 ```
-You can override the cap per-run without editing the script again, e.g. `NB_CORE=8`, `nohup bash setup.sh ...`.
+You can override the cap per-run without editing the script again, e.g. `NB_CORE=8`, and change `NB_CORE:-4` to `NB_CORE:-8` in gridpack_generation.sh,   `nohup bash setup.sh ...`.
