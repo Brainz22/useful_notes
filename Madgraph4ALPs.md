@@ -115,3 +115,32 @@ The previous steps were to correctly verify that the gridpack generation is corr
 * Instructions are on [this](https://github.com/cms-lpc-llp/run3_llp_analyzer) repository. Instructions are there to set it up. Then, we run 
 ```./RazorRun filesList.txt llp_MuonSystem_CA_mdsnano -d=no -f=trialRun.root -l=Summer24 > output.txt 2>&1```
 The `filesList.txt` file has the paths to the MDS nanoAOD files produced from the previous section.
+
+# Debugging
+
+### Issue 1
+Gridpack log showed something like:
+
+```bash
+Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
+
+Backtrace for this error:
+#0  0x7f059573562f in ???
+#1  0x7f059578e8da in ???
+#2  0x7f059608680d in read_default_char1
+	at ../../../libgfortran/io/read.c:430
+#3  0x7f059608b334 in formatted_transfer_scalar_read
+	at ../../../libgfortran/io/transfer.c:1647
+#4  0x7f059608c37b in formatted_transfer
+	at ../../../libgfortran/io/transfer.c:2339
+```
+**Diagnostic** `gridpack_generation.sh (lines 221-235)`: with queue == "local", the script sets run_mode 2 (MG5's built-in multicore mode) with no cap on parallelism at all. The nb_core cap only gets applied in the separate "pdmv" branch. So MG5 falls back to its own auto-detected core count — on this 256-core box, that means it likely launches all 29 survey channels simultaneously, which lines up with Idle: 0 appearing immediately in every log (nothing ever waited for a slot) and with 3 different channels crashing in 3 different runs under that same heavy concurrent load. 
+
+**Solution:** cap concurrency for the local branch too, `gridpack_generation.sh (lines 223-224)`:
+```bash
+      if [ "$queue" == "local" ]; then
+          echo "set run_mode 2" >> mgconfigscript
+          echo "set nb_core ${NB_CORE:-4}" >> mgconfigscript # → newly added line
+      elif [ "$queue" == "pdmv" ]; then
+```
+You can override the cap per-run without editing the script again, e.g. `NB_CORE=8`, `nohup bash setup.sh ...`.
