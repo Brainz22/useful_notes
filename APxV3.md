@@ -49,7 +49,10 @@ This is needed because I am working locally and not on CI.
     ********************************************************
     ********************************************************
    ```
-   I need to resemble the code from my `llptag_nn` branch.
+   I need to resemble the code from my `llptag_nn` branch. Actually, I am rebuilding the HLS IPs from scratch because claude found mismatches with my HLS firmware. Thus, I am building them locally as:
+   ```bash
+   nohup python3 util/hls_cores.py --build -c hls-cores.yaml -p l2-seededcone --cc-path submodules/correlator-common > buildIPs.log 2>&1 &
+   ```
 
 ## Debugging
 
