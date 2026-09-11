@@ -27,7 +27,7 @@ This is needed because I am working locally and not on CI.
   cd -
   ```
 
-5. Manually add the `LLPtagger` objects to your CMSSW. Inside the files `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/jets.h`, `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/datatypes.h`, and `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/gt_datatypes.h`, 1) repeat the lines with `b_tag` and change to `llp_tag` and 2) repeat the lines with `Btag` and change to `LLPtag`. Make sure you add the correct number of bits when required. Note: The model added in the `llptag_nn` branch outputs 6 bits. Thus, changes bits to 6 were needed. `NEED TO DO...`
+5. Manually add the `LLPtagger` objects to your CMSSW. Inside the files `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/jets.h`, `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/datatypes.h`, and `CMSSW_14_0_0_pre3/src/DataFormats/L1TParticleFlow/interface/gt_datatypes.h`, 1) repeat the lines with `b_tag` and change to `llp_tag` and 2) repeat the lines with `Btag` and change to `LLPtag`. Make sure you add the correct number of bits when required. Note: The model added in the `llptag_nn` branch outputs 6 bits. Thus, changes bits to 6 were needed.
 
 6. Manually build HLS IP cores because of error 3 described in the `debugging` section below. To build from scratch, I need to `export` the license as a variable:
   ```bash
@@ -42,7 +42,7 @@ This is needed because I am working locally and not on CI.
   ```
   Then, `cd correlator-common/jetmet/seededcone` and run: 
   ```bash
-  nohup bash run_all_tcl.sh > buildIPs.log 2>&1 &`
+  nohup bash run_all_tcl.sh > buildIPs.log 2>&1 &
   ```
 7. Synthesize other IP cores in `jec` and `htmht` folders, too, not just `seededcone`. NEED TO DO...
 
