@@ -42,11 +42,12 @@ This is needed because I am working locally and not on CI.
   ```
   Then, `cd correlator-common/jetmet/seededcone` and run: 
   ```bash
+  source /data/software/xilinx/Vivado/2020.1/settings64.sh #UCSD
   nohup bash run_all_tcl.sh > buildIPs.log 2>&1 &
   ```
-7. Synthesize other IP cores in `jec` and `htmht` folders, too, not just `seededcone`. NEED TO DO...
+7. Synthesize other IP cores in `jec` and `htmht` folders, too, not just `seededcone`. Note that they require `vitis_hls -f <file.tcl>` instead of `vivado_hls` to build the IP cores, as specified by the `cores.yaml` in the `jec/` and `htmht/` folders. I used `vitis_hls` version 2023.2 to be precise.
 
-8. `cd correlator-layer2/jet_seededcone/board/apx` and run `make`.
+8. `cd correlator-layer2/jet_seededcone/board/apx` and run `make`. I've been using `vivado` version 2023.2 so far.
 
   
 
