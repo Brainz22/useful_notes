@@ -29,5 +29,35 @@ This is needed because I am working locally and not on CI.
     cd -
     ```
 
-5. Manually build HLS IP cores from scratch because of error 3 in V3 instructions.I need to export the license as a variable and run `bash run_all_tcl.sh`...
+5. Manually build HLS IP cores from scratch because of error 3 in V3 instructions. I need to export the license as a variable and run `bash run_all_tcl.sh` (I have the alias `vars`; activate it via `source ~/.bashrc` and run `vars`):
+  ```bash
+  alias vars='{ source /cvmfs/cms.cern.ch/cmsset_default.sh;
+  export CMSSW_VERSION=CMSSW_17_0_0_pre2;
+  export XILINXD_LICENSE_FILE=2100@xilinx-lic.fnal.gov;
+  export LM_LICENSE_FILE=2100@xilinx-lic.fnal.gov;
+  export LD_LIBRARY_PATH=/opt/cactus/lib:$LD_LIBRARY_PATH;
+  export PATH=/opt/cactus/bin:$PATH;
+  export PATH=/opt/cactus/bin/uhal/tools:$PATH;
+  }'
+  ```
+Then run, 
+  ```bash
+  source /data/Xilinx/Vitis/2023.2/settings64.sh
+  bash run_all_tcl.sh
+  ```
+
+6. Repeat this in `/jec` and `htmht/` folders, i.e. build the HLS IPs.
+
+7. Run `make`.
+
+
+## Debugging: 
+
+[ISSUE 1]: `make` was failing because of the input links in `correlator-layer2/jet_seededcone/board/apx/rtl/input.vhd` were wrongly defined. There should only be 32.
+
+**Solution:** So far, I had `claude` define the ports for me...
+
+[ISSUE 2]: `correlator-layer2/jet_seededcone/board/apx/cfg/PrjSpecPkg.vhd` allocates the 100 links that need to be used. 
+
+**Solution:** Make sure the links defined in `input.vhd` are not off.
 
