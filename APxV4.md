@@ -50,6 +50,38 @@ Then run,
 
 7. Run `make`.
 
+## Useful Commands:
+
+* The following commands allow me to highlight with a different color each algorithm on the `payload.vhd`. The commands must be input into the `tcl` CLI on the `Vivado GUI`:
+  ```tcl
+  highlight_objects -color red [get_cells -hierarchical -filter {NAME =~ *JetLoopInstance*}]
+  select_objects [get_cells -hierarchical -filter {NAME =~ *JetLoopInstance*}]
+
+  highlight_objects -color blue [get_cells -hierarchical -filter {NAME =~ *JetComputeInstance*}]
+  select_objects [get_cells -hierarchical -filter {NAME =~ *JetComputeInstance*}]
+
+  highlight_objects -color orange [get_cells -hierarchical -filter {NAME =~ *JetCorrectionInstance*}]
+  select_objects [get_cells -hierarchical -filter {NAME =~ *JetCorrectionInstance*}]
+
+  highlight_objects -color yellow [get_cells -hierarchical -filter {NAME =~ *JetTaggerInstance*}]
+  select_objects [get_cells -hierarchical -filter {NAME =~ *JetTaggerInstance*}]
+
+  highlight_objects -color green [get_cells -hierarchical -filter {NAME =~ *Deregionizer*}]
+  select_objects [get_cells -hierarchical -filter {NAME =~ *Deregionizer*}]
+
+  highlight_objects -color magenta [get_cells -hierarchical -filter {NAME =~ *HTMHTAlgo*}]
+  select_objects [get_cells -hierarchical -filter {NAME =~ *HTMHTAlgo*}]
+  ```
+* The following are to highlight SLR regions (no color needed):
+  ```tcl
+  select_objects [get_pblocks slr0]
+  select_objects [get_pblocks slr1]
+  select_objects [get_pblocks slr2]
+  ```
+  Or all three outlined at once:
+  ```tcl
+  show_objects -name slr_view [get_pblocks {slr0 slr1 slr2}]
+  ```
 
 ## Debugging: 
 
