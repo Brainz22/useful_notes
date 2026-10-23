@@ -1,5 +1,12 @@
 # Instructions to Generate Jet Tagger Bitstreams Using the APx Framework
 
+### Notes
+
+* LLP Model is synthesized on correlator 4 using `vitis_HLS` version 2021.2. Anything before that fails. Version 2023.2 works and has a small gain on LUTs, interval, and estimated clock period.
+
+
+--------
+
 Generating NG tagger bitstream from Fermilab correlator 4.
 
 1. Generated a `Gitlab` token to do the following:
