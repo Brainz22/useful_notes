@@ -28,8 +28,9 @@ This is needed because I am working locally and not on CI.
     source /cvmfs/cms.cern.ch/cmsset_default.sh
     
     cd submodules/correlator-common/
+    export SCRAM_ARCH=el9_amd64_gcc13
     ./utils/setup_cmssw.sh -run CMSSW_17_0_0_pre2 p2l1pfp:L1PF_17_0_X l1ct-170x-v1.6 # command found in README.md and [ tag ] in .gitlab-ci.yml
-    export CMSSW_17_0_0_pre2
+    export CMSSW_VERSION=CMSSW_17_0_0_pre2
     cd CMSSW_17_0_0_pre2/src
     source ~/.bashrc # or ~/.bashrc, which sources all CMSSW variables
     cmsenv
