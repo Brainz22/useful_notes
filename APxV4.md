@@ -21,7 +21,7 @@ Generating NG tagger bitstream from Fermilab correlator 4.
   ```
 This is needed because I am working locally and not on CI.
 
-3. From inside `correlator-layer2`, run `source ci/add_apx_source_areas.sh` to create the `submodules` folder.
+3. From inside `correlator-layer2`, run `source ci/add_apx_source_areas.sh` to create the `submodules` folder and switch to my gitlab branch `jet_s1_tm18_tagger_xF13P`.
 
 4. Set up CMSSW inside `submodules/correlator-common`:
    ```bash
@@ -56,7 +56,7 @@ Then run,
 
 6. Repeat this in `/jec` and `htmht/` folders, i.e. build the HLS IPs.
 
-7. Run `make`.
+7. Run `make BOARD=xF13P` from `correlator-layer2/board/apx`.
 
 ## Useful Commands:
 
