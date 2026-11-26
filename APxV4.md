@@ -58,6 +58,12 @@ Then run,
 
 7. Run `make BOARD=xF13P` from `correlator-layer2/board/apx`.
 
+After I edited `correlator-layer2/jet_seededcone/firmware/ruckus/ruckus.tcl`, we can run 
+```bash
+DISABLE_TAGGER=1 make BOARD=xF13P PROJECT=jet_seededcone_TAGGEROFF_apx_xF13P
+```
+to create a `correlator-layer2/build/` folder with that name that has `TAGGEROFF`.
+
 ## Useful Commands:
 
 * The following commands allow me to highlight with a different color each algorithm on the `payload.vhd`. The commands must be input into the `tcl` CLI on the `Vivado GUI`:
